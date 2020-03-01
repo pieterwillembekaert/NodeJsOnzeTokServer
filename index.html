@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<head lang="nl">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+    <title>Onze Tok de wereld rond</title>
+
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <!--<link href="css/StyleTok.mini.css" type="text/css" rel="stylesheet" media="screen,projection" />-->
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/banner.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/map.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="dist/svg-pan-zoom.js"></script>
+    <script src="js/zoom.js"></script>
+</head>
+
+<body onload="main();">
+    <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@1.0.1/dist/vuex.js"></script>
+
+
+    <!-- Navbar goes here -->
+    <div class="navbar-fixed">
+
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo"> <span class="" style="color: green;">Onze tok de
+                        wereld rond</span></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="tok-text-green" href="#">HOME</a></li>
+                    <li><a class="tok-text-green" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+                    <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
+                    <li><a class="tok-text-green" href="#Prikbord">PRIKBORD</a></li>
+                    <li><a class="tok-text-green" href="#LeesMeer">OVER ONS</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="sidenav">
+                    <li><a class="tok-text-green" href="#">HOME</a></li>
+                    <li><a class="tok-text-green" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+                    <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
+                    <li><a class="tok-text-green" href="#Prikbord">PRIKBORD</a></li>
+                    <li><a class="tok-text-green" href="#LeesMeer">OVER ONS</a></li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <!-- Slide -->
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="images/Demo/1.jpg">
+                <div class="caption center-align">
+                    <h3>Land 1</h3>
+
+                </div>
+            </li>
+            <li>
+                <img src="images/Demo/2.jpg">
+                <div class="caption center-align">
+                    <h3>land 2</h3>
+
+                </div>
+            </li>
+            <li>
+                <img src="images/Demo/3.jpg">
+                <div class="caption center-align">
+                    <h3>land 3</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/Demo/4.jpg">
+                <div class="caption center-align">
+                    <h3>Land 4 </h3>
+
+                </div>
+            </li>
+            <li>
+                <img src="images/Demo/5.jpg">
+                <div class="caption center-align">
+                    <h3>Land 4 </h3>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.slider').slider({
+                full_width: true
+            });
+
+        });
+    </script>
+
+    <div class="container" id="TotaleAfstand">
+        <div class="grid-container-home">
+
+            <div class="grid-item-home">
+                <p>Totaal aantal km van huis:</p>
+            </div>
+            <div class="grid-item-home">
+                <!--Dashboard km teller-->
+                <div class="grid-container-KM">
+                    <div class="grid-item-KM">
+                        <p id="km100000"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p id="km10000"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p id="km1000"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p id="km100"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p id="km10"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p id="km1"></p>
+                    </div>
+                    <div class="grid-item-KM">
+                        <p>km</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--map-->
+    <div class="container" id="Kaart">
+        <h1>Kaart</h1>
+    </div>
+    <div class="grid-container-map">
+        <div class="grid-item-map">
+            <object id='map' data='images/map/World_map.svg' class="map-svg" type='image/svg+xml'></object>
+        </div>
+
+        <div class="grid-item-map-data background-Prikbord">
+            <button class="btn KSA-blue" onclick="ZoomIn()" id="zoom-in">+</button>
+            <button class="btn KSA-blue" onclick="ZoomOut()" id="zoom-out">-</button>
+            <button class="btn KSA-blue" onclick="ZoomReset()" id="reset">R</button>
+            <button class="btn red" onclick="closePBdata()" id="reset">X</button>
+
+            <div>Land: <span id="PbLand"></span><br>bezoekers: <span id="PbNumbersVisit"></span></div>
+
+            <div id="dataPostMap" class="grid-container-map-data-PB"></div>
+        </div>
+    </div>
+
+
+    <div class="container" id="Prikbord">
+        <h1>Prikbord</h1>
+    </div>
+    <div id="dataPost" class="grid-container-Prikbord background-Prikbord"></div>
+
+
+    <div class="container" id="LeesMeer">
+        <h1>Het verhaal: </h1>
+        <p>
+            Lang geleden, toen de dieren nog spraken, of ja, misschien ook niet zooo lang geleden...kwamen een aantal
+            KSA'ers op een prachtig idee! Ze zouden onze tok de wereld rond laten reizen, samen met alle KSA'ers. De
+            eerste foto die we hiervan konden terugvinden is er eentje uit 1976. Toen was de tok samen met Hans Redee
+            (KSA'er van KSA Torhout) in Parijs.
+        </p>
+        <p>
+            Wat later ging de mooie traditie helaas verloren, maar daar willen we nu heel erg graag verandering in
+            brengen. Als iedereen meedoet kunnen we onze tok een fantastische wereldreis bezorgen.
+        </p>
+        <p>
+            Post je foto hier, samen met de datum en de plaats waar je de foto hebt genomen of stuur ze naar
+            info@ksanoordzeegouw.be
+        </p>
+        <p>
+            Met dank aan KSA 's Gravenwinkel Torhout voor het prachtige idee en de foto!
+        </p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer class="page-footer KSA-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">KSA Noordzeegouw</h5>
+                    <p class="grey-text text-lighten-4">
+                        KSA Noordzeegouw vzw <br> Dwarsweg 1<br> 8560 Gullegem<br>
+                        <br> 056 40 48 12<br> info@ksanoordzeegouw.be
+                    </p>
+
+
+                </div>
+
+                <div class="col l3 s12">
+
+                    <h5 class="white-text">Volg ons:</h5>
+
+                    <table width="200">
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="https://www.facebook.com/noordzeegouw/" target="new"><img
+                                            src="images/fb.png"></a>
+                                </td>
+                                <td>
+                                    <a href=" https://www.instagram.com/ksanoordzeegouw" target="new"><img
+                                            src="images/instagram.png"></a>
+                                </td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                    <img src="images/LOGOKSA.png" width="90%">
+
+                </div>
+
+                <div class="col l3 s12">
+                    <h5 class="white-text">Menu</h5>
+                    <ul>
+                        <li><a class="white-text" href="#">HOME</a></li>
+                        <li><a class="white-text" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+                        <li><a class="white-text" href="Kaart">KAART</a></li>
+                        <li><a class="white-text" href="#Prikbord">PRIKBORD</a></li>
+                        <li><a class="white-text" href="#LeesMeer">OVER ONS</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="https://www.ksa.be/werkkringen/ksa-noordzeegouw">KSA
+                    NZG WERKGROEP MULTIMEDIA</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--Scripts-->
+    <script src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+
+</html>
