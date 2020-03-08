@@ -136,7 +136,7 @@ var ShowCountry = function(aAllCountry, DataJSON) {
 
 
             if (aAllCountry[ii] === DataJSON[i].country) {
-                console.log(aAllCountry[ii])
+               // console.log(aAllCountry[ii])
                 ColorVisitCountry(aAllCountry[ii])
                 state = 'block';
                 t.setAttribute('display', state);
@@ -862,19 +862,19 @@ var main = function() {
     function DataIn() {
         var state;
         var jqxhr = $.getJSON("json/bezocht.json", function(json) {
-                console.log("success");
+               // console.log("success");
             })
             .done(function() {
                 console.log("second success");
                 state = "second success";
             })
             .fail(function() {
-                console.log("error");
+               // console.log("error");
                 state = "error";
 
             })
             .always(function(json) {
-                console.log("complete");
+               // console.log("complete");
                 state = "complete";
                 var dataIN = json.members;
 
