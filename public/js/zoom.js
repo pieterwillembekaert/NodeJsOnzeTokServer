@@ -2,7 +2,8 @@
 function reset() {
     var panZoom = svgPanZoom('#map', {
         zoomEnabled: false,
-        controlIconsEnabled: false
+        controlIconsEnabled: false,
+        mouseWheelZoomEnabled: false
     });
 }
 
@@ -11,7 +12,9 @@ function ZoomIn() {
 
     var panZoom = svgPanZoom('#map', {
         zoomEnabled: true,
-        controlIconsEnabled: false
+        controlIconsEnabled: false,
+        mouseWheelZoomEnabled: false,
+       
     });
 
     document.getElementById('zoom-in').addEventListener('click', function (ev) {
@@ -27,7 +30,8 @@ function ZoomOut() {
 
     var panZoom = svgPanZoom('#map', {
         zoomEnabled: true,
-        controlIconsEnabled: false
+        controlIconsEnabled: false,
+        mouseWheelZoomEnabled: false
     });
 
     document.getElementById('zoom-out').addEventListener('click', function (ev) {
@@ -42,8 +46,9 @@ function ZoomOut() {
 function ZoomReset() {
 
     var panZoom = svgPanZoom('#map', {
-        zoomEnabled: true,
-        controlIconsEnabled: false
+        zoomEnabled: false,
+        controlIconsEnabled: false, 
+        mouseWheelZoomEnabled: false
     });
 
     document.getElementById('reset').addEventListener('click', function (ev) {
