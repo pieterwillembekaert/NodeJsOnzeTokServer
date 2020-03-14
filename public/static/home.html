@@ -1,0 +1,72 @@
+ <!-- Slide -->
+ <div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="/static/images/Demo/1.jpg">
+            <div class="caption center-align">
+                <h3></h3>
+
+            </div>
+        </li>
+        <li>
+            <img src="/static/images/Demo/2.jpg">
+            <div class="caption center-align">
+                <h3></h3>
+
+            </div>
+        </li>
+        <li>
+            <img src="/static/images/Demo/3.jpg">
+            <div class="caption center-align">
+                <h3></h3>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.slider').slider({
+            full_width: true
+        });
+
+    });
+</script>
+
+
+
+<div class="container" id="TotaleAfstand">
+    <div class="grid-container-home">
+
+        <div class="grid-item-home">
+            <p>Totaal aantal km van huis:</p>
+        </div>
+        <div ng-controller="dashboard" class="grid-item-home">
+            <!--Dashboard km teller-->
+            <div class="grid-container-KM">
+                <div class="grid-item-KM">
+                    <p id="km100000">{{km100000}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p id="km10000">{{km10000}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p id="km1000">{{km1000}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p id="km100">{{km100}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p id="km10">{{km10}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p id="km1">{{km10}}</p>
+                </div>
+                <div class="grid-item-KM">
+                    <p>km</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
