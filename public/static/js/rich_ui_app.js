@@ -109,12 +109,9 @@ app.controller('prikbord', ['$scope', '$http', '$window',
       data = response.data;
       $scope.data = data.members;
 
-
-
     }, function (error) {
       console.log(error, 'can not get data.');
       $scope.data = [];
-
 
     });
 
