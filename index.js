@@ -3,13 +3,17 @@
  */
 var dataObj;
 
+/**
+ * Init fuction 
+ */
+
 
 /**
  * Required External Modules
  */
 const express = require('express');
 const fs = require('fs');
-const dataPath = "./public/json/bezocht.json";
+
 
 /**
  * App Variables
@@ -23,6 +27,7 @@ const port = process.env.PORT || 3000;
  */
 
 app.use(express.static(__dirname + '/public'));
+const dataPath = "./public/json/bezocht.json";
 
 /**
  * Routes Definitions
