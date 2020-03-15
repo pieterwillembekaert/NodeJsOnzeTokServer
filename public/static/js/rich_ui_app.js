@@ -124,6 +124,7 @@ app.controller('prikbord', ['$scope', '$http', '$window',
 
       })
       .error(function (data, status, headers, config) {
+        $scope.data = [];
 
       });
 
