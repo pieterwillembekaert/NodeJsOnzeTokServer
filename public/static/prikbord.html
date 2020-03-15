@@ -3,19 +3,22 @@
         <h1>Prikbord</h1>
     </div>
 
+    <div class="background-Prikbord">
+        <div class="container ">
+            <div id="dataPost" class="grid-container-Prikbord ">
 
-    <div id="dataPost" class="grid-container-Prikbord background-Prikbord">
-
-        <div class="grid-item-Prikbord" ng-repeat="x in data">
-            <div class="grid-container-PB-Image">
-                <div class="grid-item-PB-Image"><img class="grid-item-PB-Image-Style" src="{{x.imgScr}}">
+                <div class="grid-item-Prikbord" ng-repeat="x in data">
+                    <div class="grid-container-PB-Image">
+                        <div class="grid-item-PB-Image"><img class="grid-item-PB-Image-Style" src="{{x.imgScr}}">
+                        </div>
+                        <div class="grid-item-PB-Text">{{x.name}}</div>
+                    </div>
                 </div>
-                <div class="grid-item-PB-Text">{{x.name}}</div>
+
             </div>
+
         </div>
-
-
-
     </div>
+
 
 </div>

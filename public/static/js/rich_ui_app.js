@@ -24,7 +24,7 @@ app.controller('switchCtrl', function ($scope, $http) {
   $scope.buttonText = 'Edit';
   $scope.isEditing = false;
   $scope.shared = 'shared value between templates.';
-  $scope.template = $scope.templates[3];
+  $scope.template = $scope.templates[0];
 
   $scope.doEdit0 = function () {
     $scope.template = $scope.templates[0];

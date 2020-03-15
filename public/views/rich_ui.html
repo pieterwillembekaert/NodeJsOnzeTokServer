@@ -44,7 +44,7 @@
 </head>
 
 <body onload="main();">
-
+  <div ng-controller="switchCtrl">
   <!-- Navbar goes here -->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
@@ -52,30 +52,25 @@
         <a id="logo-container" href="#" class="brand-logo"> <span class="" style="color: green;">Onze tok de
             wereld rond</span></a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="tok-text-green" href="#">HOME</a></li>
-          <li><a class="tok-text-green" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">HOME</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">TOTALE AFSTAND</a></li>
           <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
-          <li><a class="tok-text-green" href="#Prikbord">PRIKBORD</a></li>
-          <li><a class="tok-text-green" href="#LeesMeer">OVER ONS</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit2()" href="#">PRIKBORD</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit3()" href="#">OVER ONS</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li><a class="tok-text-green" href="#">HOME</a></li>
-          <li><a class="tok-text-green" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">HOME</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">TOTALE AFSTAND</a></li>
           <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
-          <li><a class="tok-text-green" href="#Prikbord">PRIKBORD</a></li>
-          <li><a class="tok-text-green" href="#LeesMeer">OVER ONS</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit2()" href="#">PRIKBORD</a></li>
+          <li><a class="tok-text-green" ng-click="doEdit3()" href="#">OVER ONS</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>
   </div>
 
-  <div ng-controller="switchCtrl">
-    <input type='button' ng-value='buttonText' ng-click="doEdit0()" />
-    <input type='button' ng-value='buttonText' ng-click="doEdit1()" />
-    <input type='button' ng-value='buttonText' ng-click="doEdit2()" />
-    <input type='button' ng-value='buttonText' ng-click="doEdit3()" />
 
     <div ng:include="template.url"></div>
   </div>
@@ -95,7 +90,7 @@
       <button class="btn KSA-blue material-icons" onclick="ZoomIn()" id="zoom-in">zoom_in</button>
       <button class="btn KSA-blue material-icons" onclick="ZoomOut()" id="zoom-out">zoom_out</button>
       <button class="btn KSA-blue material-icons" onclick="ZoomReset()" id="reset">replay</button>
-      <button class="btn red material-icons" onclick="closePBdata()" id="reset">close</button>
+      <button class="btn red material-icons" onclick="closePBdata()" id="close">close</button>
 
       <div>Land: <span id="PbLand"></span><br>bezoekers: <span id="PbNumbersVisit"></span></div>
 

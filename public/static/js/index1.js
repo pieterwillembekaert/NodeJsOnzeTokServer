@@ -88,7 +88,7 @@ function completeTotalDist(inputdata, status, NameID) {
 
 var svg = function () {
 
-    return document.getElementById('map').contentDocument;
+    return document.getElementById('map1').contentDocument;
 }
 
 //var myText = function(data) {
@@ -207,7 +207,7 @@ var showCountryFromTableToMap = function (DataFromJSON, aAllCountry, vLand) {
 var AnimationMap = function (country, DataFromJs) {
 
     var ms = svg().getElementById(country);
-
+    console.log(ms)
     if (DataFromJs.GvCountryClick !== null || DataFromJs.GvCountryClick !== undefined) {
         var msv = svg().getElementById(DataFromJs.GvCountryClick);
     }
@@ -852,8 +852,8 @@ var main = function () {
         var jqxhr = $.getJSON("json/bezocht.json", function (json) {
                 // console.log("success");
             })
-            .done(function (json) {
-                console.log("second success" + json);
+            .done(function () {
+                console.log("second success");
                 state = "second success";
             })
             .fail(function () {
@@ -867,14 +867,15 @@ var main = function () {
                 var dataIN = json.members;
 
                 DataFromJs.Sdata = dataIN;
-                ShowCountry(country, dataIN);
-                ShowDataInTable(dataIN)
+                //ShowCountry(country, dataIN);
+                //ShowDataInTable(dataIN)
                 //CreatePrikboard(dataIN, "dataPost");
 
 
 
                 for (let i = 0; i < country.length; i++) {
-                    AnimationMap(country[i], DataFromJs.Gdata);
+                   // AnimationMap(country[i], DataFromJs.Gdata);
+                   ;
                 }
             });
     }

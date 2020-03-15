@@ -265,7 +265,7 @@
     }
 
     .grid-item-Prikbord{
-        max-width: 200px;
+        max-width: 400px;
     }
 
     .grid-item-PB-Image{
@@ -279,7 +279,7 @@
     
 }
 
-@media screen and (min-width: 420px)  {
+@media screen and (min-width: 528px)  {
     .grid-container-map {
         grid-template-columns: auto; 
         
@@ -293,10 +293,11 @@
 
     .grid-container-Prikbord {
         grid-template-columns: auto auto;
+        padding: 30px;
     }
 
     .grid-item-Prikbord{
-        max-width: 200px;
+        max-width: 400px;
     }
 
     .grid-item-PB-Image{
@@ -349,7 +350,7 @@
     }
 
     .grid-container-Prikbord {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: auto auto;
         grid-column-gap: 5px; 
     
     }
@@ -378,7 +379,7 @@
     }
 
     .grid-container-Prikbord {
-        grid-template-columns: auto auto auto auto ;
+        grid-template-columns: auto auto auto ;
         grid-column-gap: 5px; 
     
     }
@@ -398,7 +399,7 @@
 }
  
 
-@media screen and (min-width: 1044px){
+@media screen and (min-width: 1252px){
    .grid-container-map {
         grid-template-columns: 70% 30%;
     }
@@ -408,7 +409,7 @@
     }
 
     .grid-container-Prikbord {
-        grid-template-columns: auto auto auto auto auto ;
+        grid-template-columns: auto auto auto auto;
         grid-column-gap: 5px; 
     
     }
@@ -427,7 +428,7 @@
     }
 }
 
-@media  screen and (min-width: 1245px)   {
+@media  screen and (min-width: 1681px)   {
     .grid-container-map {
         grid-template-columns: 70% 30%;
     }
