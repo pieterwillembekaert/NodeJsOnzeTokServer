@@ -2,6 +2,7 @@ var app = angular.module('OnzeTokDeWereldRond', []);
 
 app.controller('switchCtrl', function ($scope, $http) {
 
+  //veranderden van view
   $scope.templates = [{
       name: '/static/home.html',
       url: '/static/home.html'
@@ -26,6 +27,7 @@ app.controller('switchCtrl', function ($scope, $http) {
   $scope.shared = 'shared value between templates.';
   $scope.template = $scope.templates[0];
 
+  //actie bij het drukken op een navigatieknop 
   $scope.doEdit0 = function () {
     $scope.template = $scope.templates[0];
 
@@ -45,24 +47,6 @@ app.controller('switchCtrl', function ($scope, $http) {
 
   };
 
-
-
-
-  $scope.doEdit = function () {
-    if ($scope.isEditing) {
-      $scope.template = $scope.templates[0];
-      $scope.isEditing = false;
-      $scope.buttonText = 'Edit';
-    } else {
-      if ($scope.hasPermissionToEdit) {
-        $scope.template = $scope.templates[1];
-        $scope.isEditing = true;
-        $scope.buttonText = 'Go back';
-      } else {
-        alert('you don\'t have permission to edit');
-      }
-    }
-  }
 });
 
 app.controller('switchCtrl1', ['$scope', '$http', '$window',
@@ -82,8 +66,7 @@ app.controller('switchCtrl1', ['$scope', '$http', '$window',
 
 ]);
 
-
-
+//dashboard
 app.controller('dashboard', ['$scope', '$http', '$window',
   function ($scope, $http, $window) {
     $http({
@@ -115,6 +98,7 @@ app.controller('dashboard', ['$scope', '$http', '$window',
 
 ]);
 
+//prikbord
 app.controller('prikbord', ['$scope', '$http', '$window',
   function ($scope, $http, $window) {
     $http({
@@ -137,13 +121,3 @@ app.controller('prikbord', ['$scope', '$http', '$window',
   }
 
 ]);
-/* 
-  $http.get("http://localhost:3000/data").then(function (response) {
-    
-  if(response.data.records===undefined){
-    response.data.records={a:"10",b:"20",c:"30"}
-  }
-    $scope.myData11 = response.data.records;
-  });
- 
-*/

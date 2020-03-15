@@ -1,5 +1,6 @@
-//Test
-var test = 0;
+/**
+ * Global var
+ */
 var dataObj;
 
 
@@ -27,8 +28,6 @@ app.use(express.static(__dirname + '/public'));
  * Routes Definitions
  */
 app.get('/', function (req, res) {
-    test++;
-    console.log(test);
     res.sendFile(__dirname + "/index.html");
 });
 
@@ -61,17 +60,18 @@ app.get('/TotalDist', function (req, res) {
 });
 
 
-
-
-
-
-
 /**
  * Server Activation
  */
 app.listen(port, () => console.log("Example app listening on port!"));
 
 
+/**
+ * Functions
+ */
+
+
+//Open json file 
 function OpenJsonDataFile(dataPath) {
     var dataObj = {
         data: {},
@@ -90,16 +90,15 @@ function OpenJsonDataFile(dataPath) {
         if (err) {
             throw err;
         }
-
         dataObj.Sdata = JSON.parse(data);
 
 
     });
 
     return dataObj;
-
 }
 
+//Totale afstand 
 function completeTotalDist(inputdata) {
     var totaal = 0;
     var out = {
