@@ -36,7 +36,7 @@
 
 
 
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
 
 
 
@@ -71,53 +71,27 @@
     </nav>
   </div>
 
+  <div ng-controller="switchCtrl">
+    <input type='button' ng-value='buttonText' ng-click="doEdit0()" />
+    <input type='button' ng-value='buttonText' ng-click="doEdit1()" />
+    <input type='button' ng-value='buttonText' ng-click="doEdit2()" />
+    <input type='button' ng-value='buttonText' ng-click="doEdit3()" />
 
-   <!-- Slide -->
- <div class="slider">
-  <ul class="slides">
-      <li>
-          <img src="/static/images/Demo/1.jpg">
-          <div class="caption center-align">
-              <h3></h3>
-
-          </div>
-      </li>
-      <li>
-          <img src="/static/images/Demo/2.jpg">
-          <div class="caption center-align">
-              <h3></h3>
-
-          </div>
-      </li>
-      <li>
-          <img src="/static/images/Demo/3.jpg">
-          <div class="caption center-align">
-              <h3></h3>
-          </div>
-      </li>
-  </ul>
-</div>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-      $('.slider').slider({
-          full_width: true
-      });
-
-  });
-</script>
-
-<!--map-->
-<div  class="container" id="Kaart">
-  <h1>Kaart</h1>
-</div>
-<div class="grid-container-map">
-  <div class="grid-item-map">
-      <object id='map' data='images/map/World_map.svg' class="map-svg" type='image/svg+xml'></object>
+    <div ng:include="template.url"></div>
   </div>
 
 
-  <div class="grid-item-map-data background-Prikbord">
+  <!--map-->
+  <div class="container" id="Kaart">
+    <h1>Kaart</h1>
+  </div>
+  <div class="grid-container-map">
+    <div class="grid-item-map">
+      <object id='map' data='images/map/World_map.svg' class="map-svg" type='image/svg+xml'></object>
+    </div>
+
+
+    <div class="grid-item-map-data background-Prikbord">
       <button class="btn KSA-blue material-icons" onclick="ZoomIn()" id="zoom-in">zoom_in</button>
       <button class="btn KSA-blue material-icons" onclick="ZoomOut()" id="zoom-out">zoom_out</button>
       <button class="btn KSA-blue material-icons" onclick="ZoomReset()" id="reset">replay</button>
@@ -126,79 +100,70 @@
       <div>Land: <span id="PbLand"></span><br>bezoekers: <span id="PbNumbersVisit"></span></div>
 
       <div id="dataPostMap" class="grid-container-map-data-PB"></div>
+    </div>
   </div>
-</div>
 
-  <div ng-controller="switchCtrl">
-    <input type='button' ng-value='buttonText' ng-click="doEdit0()"/>
-    <input type='button' ng-value='buttonText' ng-click="doEdit1()"/>
-    <input type='button' ng-value='buttonText' ng-click="doEdit2()" />
-    <input type='button' ng-value='buttonText' ng-click="doEdit3()" />
 
-    <div ng:include="template.url"></div>
-  </div>
 
 
   <!-- Footer -->
   <footer class="page-footer KSA-blue">
     <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">KSA Noordzeegouw</h5>
-                <p class="grey-text text-lighten-4">
-                    KSA Noordzeegouw vzw <br> Dwarsweg 1<br> 8560 Gullegem<br>
-                    <br> 056 40 48 12<br> info@ksanoordzeegouw.be
-                </p>
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">KSA Noordzeegouw</h5>
+          <p class="grey-text text-lighten-4">
+            KSA Noordzeegouw vzw <br> Dwarsweg 1<br> 8560 Gullegem<br>
+            <br> 056 40 48 12<br> info@ksanoordzeegouw.be
+          </p>
 
 
-            </div>
-
-            <div class="col l3 s12">
-
-                <h5 class="white-text">Volg ons:</h5>
-
-                <table width="200">
-
-                    <tbody>
-                        <tr>
-                            <td>
-                                <a href="https://www.facebook.com/noordzeegouw/" target="new"><img
-                                        src="images/fb.png"></a>
-                            </td>
-                            <td>
-                                <a href=" https://www.instagram.com/ksanoordzeegouw" target="new"><img
-                                        src="images/instagram.png"></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-
-                <img src="images/LOGOKSA.png" width="90%">
-
-            </div>
-
-            <div class="col l3 s12">
-                <h5 class="white-text">Menu</h5>
-                <ul>
-                    <li><a class="white-text" href="#">HOME</a></li>
-                    <li><a class="white-text" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
-                    <li><a class="white-text" href="Kaart">KAART</a></li>
-                    <li><a class="white-text" href="#Prikbord">PRIKBORD</a></li>
-                    <li><a class="white-text" href="#LeesMeer">OVER ONS</a></li>
-
-                </ul>
-            </div>
         </div>
+
+        <div class="col l3 s12">
+
+          <h5 class="white-text">Volg ons:</h5>
+
+          <table width="200">
+
+            <tbody>
+              <tr>
+                <td>
+                  <a href="https://www.facebook.com/noordzeegouw/" target="new"><img src="images/fb.png"></a>
+                </td>
+                <td>
+                  <a href=" https://www.instagram.com/ksanoordzeegouw" target="new"><img src="images/instagram.png"></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+          <img src="images/LOGOKSA.png" width="90%">
+
+        </div>
+
+        <div class="col l3 s12">
+          <h5 class="white-text">Menu</h5>
+          <ul>
+            <li><a class="white-text" href="#">HOME</a></li>
+            <li><a class="white-text" href="#TotaleAfstand">TOTALE AFSTAND</a></li>
+            <li><a class="white-text" href="Kaart">KAART</a></li>
+            <li><a class="white-text" href="#Prikbord">PRIKBORD</a></li>
+            <li><a class="white-text" href="#LeesMeer">OVER ONS</a></li>
+
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="footer-copyright">
-        <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="https://www.ksa.be/werkkringen/ksa-noordzeegouw">KSA
-                NZG WERKGROEP MULTIMEDIA</a>
-        </div>
+      <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="https://www.ksa.be/werkkringen/ksa-noordzeegouw">KSA
+          NZG WERKGROEP MULTIMEDIA</a>
+      </div>
     </div>
-</footer>
+  </footer>
 
 
   <!--Script-->
@@ -208,11 +173,11 @@
   <script src="/static/js/index.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-  <script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
- 
- <!-- <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+  <!--<script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>-->
+
+  <!-- <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>-->
   <script src="/static/js/rich_ui_app.js"></script>
 
 </body>

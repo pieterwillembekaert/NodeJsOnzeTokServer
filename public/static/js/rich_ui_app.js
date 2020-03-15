@@ -1,6 +1,3 @@
-// Code goes here
-
-
 var app = angular.module('OnzeTokDeWereldRond', []);
 
 app.controller('switchCtrl', function ($scope, $http) {
@@ -85,29 +82,34 @@ app.controller('switchCtrl1', ['$scope', '$http', '$window',
 
 ]);
 
+
+
 app.controller('dashboard', ['$scope', '$http', '$window',
   function ($scope, $http, $window) {
+    $http({
+      method: 'get',
+      url: '/TotalDist'
+    }).then(function (response) {
+      console.log(response, 'res');
+      data = response.data;
 
-    $http.get('/TotalDist')
-      .success(function (data, status, headers, config) {
-        console.log(data)
-        $scope.km100000 = data.z5;
-        $scope.km10000 = data.z4;
-        $scope.km1000 = data.z3;
-        $scope.km100 = data.z2;
-        $scope.km10 = data.z1;
-        $scope.km1 = data.z;
+      $scope.km100000 = data.z5;
+      $scope.km10000 = data.z4;
+      $scope.km1000 = data.z3;
+      $scope.km100 = data.z2;
+      $scope.km10 = data.z1;
+      $scope.km1 = data.z;
 
+    }, function (error) {
+      console.log(error, 'can not get data.');
+      $scope.km100000 = "x";
+      $scope.km10000 = "x";
+      $scope.km1000 = "x";
+      $scope.km100 = "x";
+      $scope.km10 = "x";
+      $scope.km1 = "x";
 
-      })
-      .error(function (data, status, headers, config) {
-        $scope.km100000 = "x";
-        $scope.km10000 = "x";
-        $scope.km1000 = "x";
-        $scope.km100 = "x";
-        $scope.km10 = "x";
-        $scope.km1 = "x";
-      });
+    });
 
   }
 
@@ -115,34 +117,33 @@ app.controller('dashboard', ['$scope', '$http', '$window',
 
 app.controller('prikbord', ['$scope', '$http', '$window',
   function ($scope, $http, $window) {
+    $http({
+      method: 'get',
+      url: '/data'
+    }).then(function (response) {
+      console.log(response, 'res');
+      data = response.data;
+      $scope.data = data.members;
 
-    $http.get('/data')
-      .success(function (data, status, headers, config) {
-        console.log(data)
-        $scope.data = data.members;
 
 
-      })
-      .error(function (data, status, headers, config) {
-        $scope.data = [];
+    }, function (error) {
+      console.log(error, 'can not get data.');
+      $scope.data = [];
 
-      });
+
+    });
 
   }
 
 ]);
 /* 
-
   $http.get("http://localhost:3000/data").then(function (response) {
     
   if(response.data.records===undefined){
     response.data.records={a:"10",b:"20",c:"30"}
   }
-
     $scope.myData11 = response.data.records;
   });
  
-
-
-
 */
