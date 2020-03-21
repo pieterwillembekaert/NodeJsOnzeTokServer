@@ -11,7 +11,7 @@ var dataObj;
 /**
  * Required External Modules
  */
-var http = require('http');
+const http = require('http');
 const express = require('express');
 const fs = require('fs');
 
@@ -50,9 +50,8 @@ app
 
    
     .get('/data', function (req, res) {
-
         if (dataObj == null || dataObj == undefined) {
-            console.log("fault")
+            console.log("data not load")
             dataObj = OpenJsonDataFile(dataPath);
         } else {
 
@@ -63,10 +62,9 @@ app
     })
 
     .get('/TotalDist', function (req, res) {
-        console.log("test")
 
         if (dataObj == null || dataObj == undefined) {
-            console.log("fault")
+            console.log("data not load")
             dataObj = OpenJsonDataFile(dataPath);
         } else {
             var out = completeTotalDist(dataObj.Gdata.members);
@@ -74,7 +72,7 @@ app
         }
     })
     .all('/*', function (req, res) {
-        console.log('All');
+        
         res
             .status(200)
             .set({
