@@ -1,6 +1,5 @@
 <!doctype html>
-<html ng-app="OnzeTokDeWereldRond">
-
+<html>
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -33,18 +32,13 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
   <script src="https://unpkg.com/vuex@1.0.1/dist/vuex.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
-
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>-->
-
-
-
-
+  <script type="text/javascript" src="main.js"></script>
 </head>
 
-<body onload="main();">
-  <div ng-controller="switchCtrl">
+<body ng-app="OnzeTokDeWereldRond" onload="main()">
   <!-- Navbar goes here -->
   <div class="navbar-fixed">
     <nav class="white" role="navigation">
@@ -52,30 +46,30 @@
         <a id="logo-container" href="#" class="brand-logo"> <span class="" style="color: green;">Onze tok de
             wereld rond</span></a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">HOME</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">TOTALE AFSTAND</a></li>
+          <li><a class="tok-text-green" href="/home">HOME</a></li>
+          <li><a class="tok-text-green" href="/home">TOTALE AFSTAND</a></li>
           <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit2()" href="#">PRIKBORD</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit3()" href="#">OVER ONS</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit4()" href="#">VOLG ONS</a></li>
+          <li><a class="tok-text-green" href="/prikbord">PRIKBORD</a></li>
+          <li><a class="tok-text-green" href="/verhaal">OVER ONS</a></li>
+          <li><a class="tok-text-green" href="/volgons">VOLG ONS</a></li>
         </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">HOME</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit0()" href="#">TOTALE AFSTAND</a></li>
+          <li><a class="tok-text-green" href="/home">HOME</a></li>
+          <li><a class="tok-text-green" href="/home">TOTALE AFSTAND</a></li>
           <li><a class="tok-text-green" href="#Kaart">KAART</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit2()" href="#">PRIKBORD</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit3()" href="#">OVER ONS</a></li>
-          <li><a class="tok-text-green" ng-click="doEdit4()" href="#">VOLG ONS</a></li>
+          <li><a class="tok-text-green" href="/prikbord">PRIKBORD</a></li>
+          <li><a class="tok-text-green" href="/verhaal">OVER ONS</a></li>
+          <li><a class="tok-text-green" href="/volgons">VOLG ONS</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
     </nav>
   </div>
 
+   <!--load the views-->
+  <div ng-view></div>
 
-    <div ng:include="template.url"></div>
-  </div>
 
 
   <!--map-->
@@ -171,11 +165,11 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
   <!--<script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>-->
 
   <!-- <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>-->
-  <script src="/static/js/rich_ui_app.js"></script>
+
 
 </body>
 

@@ -11,6 +11,7 @@ var dataObj;
 /**
  * Required External Modules
  */
+var http = require('http');
 const express = require('express');
 const fs = require('fs');
 
@@ -26,49 +27,72 @@ const port = process.env.PORT || 3000;
  *  App Configuration
  */
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 const dataPath = "./public/json/bezocht.json";
 
 /**
  * Routes Definitions
  */
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + "/index.html");
-});
+app
+    .use(express.static('public'))
+    .get('/home/login', function (req, res) {
+        console.log('Login request');
+        res.status(200).send('Login from server.');
+    })
+    
+    .on('error', function (error) {
+        console.log("Error: \n" + error.message);
+        console.log(error.stack);
+    })
+    .get('/old', function (req, res) {
+        res.sendFile(__dirname + "/index.html");
+    })
 
-app.get('/test', function (req, res) {
-    res.sendFile(__dirname + "/public/views/rich_ui.html");
-});
+   
+    .get('/data', function (req, res) {
 
-app.get('/data', function (req, res) {
-
-    if (dataObj == null || dataObj == undefined) {
-        console.log("fault")
-        dataObj = OpenJsonDataFile(dataPath);
-    } else {
+        if (dataObj == null || dataObj == undefined) {
+            console.log("fault")
+            dataObj = OpenJsonDataFile(dataPath);
+        } else {
 
 
-        res.json(dataObj.Gdata);
-    }
+            res.json(dataObj.Gdata);
+        }
 
-});
+    })
 
-app.get('/TotalDist', function (req, res) {
+    .get('/TotalDist', function (req, res) {
+        console.log("test")
 
-    if (dataObj == null || dataObj == undefined) {
-        console.log("fault")
-        dataObj = OpenJsonDataFile(dataPath);
-    } else {
-        var out = completeTotalDist(dataObj.Gdata.members);
-        res.json(out);
-    }
-});
+        if (dataObj == null || dataObj == undefined) {
+            console.log("fault")
+            dataObj = OpenJsonDataFile(dataPath);
+        } else {
+            var out = completeTotalDist(dataObj.Gdata.members);
+            res.json(out);
+        }
+    })
+    .all('/*', function (req, res) {
+        console.log('All');
+        res
+            .status(200)
+            .set({
+                'content-type': 'text/html; charset=utf-8'
+            })
+            .sendfile('public/index.html');
+    })
 
 
 /**
  * Server Activation
  */
-app.listen(port, () => console.log("Example app listening on port!"));
+http
+    .createServer(app).listen(3000)
+    .on('error', function (error) {
+        console.log("Error: \n" + error.message);
+        console.log(error.stack);
+    });
 
 
 /**
