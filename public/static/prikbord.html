@@ -3,7 +3,25 @@
         <h1>Prikbord</h1>
     </div>
 
+
+
     <div class="background-Prikbord">
+        <div id="dataPost" class="grid-container-Prikbord">
+            <div ng-repeat="x in data">
+                <div class="polaroid">
+                    <img class="imagePolaroid" src="{{x.imgScr}}" alt="5 Terre">
+                    <div class="container-Polaroid">
+                        <p>{{x.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="background-Prikbord">
         <div class="container ">
             <div id="dataPost" class="grid-container-Prikbord ">
 
@@ -18,7 +36,4 @@
             </div>
 
         </div>
-    </div>
-
-
-</div>
+    </div>-->

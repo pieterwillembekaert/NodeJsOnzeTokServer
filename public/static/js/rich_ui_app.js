@@ -17,7 +17,12 @@ app.controller('switchCtrl', function ($scope, $http) {
     {
       name: '/static/verhaal.html',
       url: '/static/verhaal.html'
+    },
+    {
+      name: 'socialemedia',
+      url: '/static/socialemedia.html'
     }
+
   ];
 
 
@@ -44,6 +49,11 @@ app.controller('switchCtrl', function ($scope, $http) {
 
   $scope.doEdit3 = function () {
     $scope.template = $scope.templates[3];
+
+  };
+
+  $scope.doEdit4 = function () {
+    $scope.template = $scope.templates[4];
 
   };
 
