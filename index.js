@@ -86,7 +86,7 @@ app
  * Server Activation
  */
 http
-    .createServer(app).listen(3000)
+    .createServer(app).listen(port)
     .on('error', function (error) {
         console.log("Error: \n" + error.message);
         console.log(error.stack);
