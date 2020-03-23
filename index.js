@@ -5,11 +5,12 @@ var dataObj;
 var dataCountryG; 
 var login = {
     email: String,
-    password: String
+    password: String,
+    actief: Boolean
 };
 var CorrectLogin = {
-    "email": "ksa@mail.com",
-    "password": "1"
+    "email": "ksa@ksa.be",
+    "password": "ksagroetu"
 };
 /**
  * Init fuction 
@@ -61,8 +62,10 @@ app
         console.log(req.body)
         login.email = req.body.email;
         login.password = req.body.password;
+       
 
         if (login.email == CorrectLogin.email && login.password == CorrectLogin.password) {
+            login.actief=true; 
             console.log("ok")
             res.redirect('/home')
         }
@@ -137,28 +140,37 @@ app
         console.log(jsonContent);
         SaveDataToFile(dataPath, jsonContent)
     })
+    .post('/logout', bodyParser.json(), (req, res) => {
+        login.actief=false;
+
+    })
     .get('/home', function (req, res) {
         console.log("test")
+        var a={user: "", actief: false}
+        a.user= login.email; 
+        a.user= login.actief;
         if (true) {
             res
                 .status(200)
-                .set({
-                    'content-type': 'text/html; charset=utf-8'
-                })
-                .sendfile('public/database.html')
+                .json(a);
         } else {
             res.send('Please login to view this page!');
         }
         res.end();
     })
     .get('/database', bodyParser.json(), function (req, res) {
-
+        
         res
             .status(200)
             .set({
                 'content-type': 'text/html; charset=utf-8'
             })
-            .sendfile('public/database.html')
+        if(login.actief==true){
+            res.sendfile('public/database.html')
+        }else{
+            res.sendfile('public/login.html')
+
+        }
 
     })
     .get('/download', bodyParser.json(), function (req, res) {

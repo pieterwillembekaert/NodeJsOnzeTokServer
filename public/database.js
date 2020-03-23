@@ -1,10 +1,10 @@
-var DataFromJs,DataFromJsCountrys;
+var DataFromJs, DataFromJsCountrys;
 var app = angular.module('databaseTok', []);
 app
   .controller('database',
-  
+
     function ($scope, $http, $window) {
-      
+
       $http({
         method: 'get',
         url: '/data'
@@ -31,7 +31,7 @@ app
         DataFromJsCountrys = data;
         console.log(DataFromJsCountrys.countrys)
         $scope.countrys = DataFromJsCountrys.countrys;
-       
+
 
       }, function (error) {
         console.log(error, 'can not get data.');
@@ -41,14 +41,14 @@ app
 
 
       $scope.editUser = function (id) {
-        
+
         $http({
           method: 'get',
           url: '/data'
         }).then(function (response) {
           console.log(response, 'res');
           data = response.data;
-      
+
           $scope.name = data.members[id].name;
           $scope.country = data.members[id].country;
           $scope.distance = data.members[id].distance;
@@ -58,15 +58,36 @@ app
 
         }, function (error) {
           console.log(error, 'can not get data.');
-          $scope.new.name = [];
+          $scope.name = "?";
+          $scope.country = "?";
+          $scope.distance = "?";
+          $scope.imgScr = "?";
+          $scope.date = "?";
+          $scope.edithIndex = "?";
+
 
         });
       }
-      
 
+      $scope.removeData = function () {
+        var data = {
+          id: "",
+          name: "",
+          country: "",
+          distance: 0,
+          date: "",
+          imgScr: ""
+        }
 
+        data.id = $scope.edithIndex;
 
-    
+        $http({
+          method: 'post',
+          url: '/deletdata',
+          data: data
+        })
+      }
+
 
       $scope.addData = function () {
         var data = {
@@ -121,7 +142,7 @@ app
           url: '/download'
         })
       }
-     
+
       $scope.changeData = function () {
         data.name = $scope.name;
         data.country = $scope.country;
@@ -136,5 +157,18 @@ app
           data: data
         })
       }
-      
+
+      $scope.logout = function () {
+        $http({
+          method: 'post',
+          url: '/logout',
+          data: data
+        })
+        window.open("/login", "_self");
+
+
+
+
+      }
+
     });
