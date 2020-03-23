@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- LOGO -->
+  <link rel="icon" type="image/png" href="images/logotok.png">
+
+  <title>database</title>
+
+
+  <!-- CSS -->
+  <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/banner.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="/static/js/index.js"></script>
+  <script src="dist/svg-pan-zoom.js"></script>
+  <script src="/static/js/zoom.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@1.0.1/dist/vuex.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+  <script type="text/javascript" src="database.js"></script>
+</head>
+
+<body ng-app="databaseTok" ng-controller="database">
+  <div class="container">
+    <table>
+      <tr>
+        <th>wijzig</th>
+        <th>id</th>
+        <th>naam</th>
+        <th>land</th>
+        <th>afstand</th>
+        <th>datum</th>
+        <th>afbeelding</th>
+      </tr>
+      <tr ng-repeat="x in data">
+
+        <td> <a href="#" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td>{{ x.id }}</td>
+        <td>{{ x.name }}</td>
+        <td>{{ x.country }}</td>
+        <td>{{ x.distance }}</td>
+        <td>{{ x.date }}</td>
+        <td><img src="{{ x.imgScr }}" alt="{{ x.name }}" width="100px"></td>
+
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+  <style>
+    .kot{
+      height: 100px;
+      width: 200px;
+      overflow: scroll;
+    }
+  </style>
+  <div class="container">
+    <form>
+    
+      <div class="row">
+        <div class="input-field col s6">
+          Name: <input type="text" ng-model="name">
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <div class="input-field col s6">
+            country: <input type="text" ng-model="country">
+          </div>
+      <div class="kot">
+        <ul>
+          <li ng-repeat="x in countrys | filter: country">
+            {{ x }}
+          </li>
+  
+  
+        </ul>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s6">
+          distance: <input type="number" ng-model="distance">
+        </div>
+        <div class="input-field col s6">
+          imgScr: <input type="text" ng-model="imgScr">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s6">
+          datum: <input type="number" ng-model="date">
+        </div>
+        <div class="input-field col s6">
+          index: <input type="number" ng-model="edithIndex">
+        </div>
+      </div>
+  
+      
+      
+      <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
+      <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
+      <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
+      <a href="/download"  class="btn waves-effect waves-light col s12">download</a>
+
+    </form>
+
+    <br>
+    <br>
+
+  </div>
+
+  <footer class="page-footer KSA-blue">
+    <div class="footer-copyright">
+      <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="https://www.ksa.be/werkkringen/ksa-noordzeegouw">KSA
+          NZG WERKGROEP MULTIMEDIA</a>
+      </div>
+  </footer>
+
+
+</body>
+
+</html>

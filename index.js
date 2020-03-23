@@ -2,7 +2,15 @@
  * Global var
  */
 var dataObj;
-
+var dataCountryG; 
+var login = {
+    email: String,
+    password: String
+};
+var CorrectLogin = {
+    "email": "ksa@mail.com",
+    "password": "1"
+};
 /**
  * Init fuction 
  */
@@ -14,6 +22,7 @@ var dataObj;
 const http = require('http');
 const express = require('express');
 const fs = require('fs');
+const bodyParser = require('body-parser')
 
 
 /**
@@ -29,7 +38,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 const dataPath = "./public/json/bezocht.json";
-
+const dataCountry = "./public/json/country.json";
 /**
  * Routes Definitions
  */
@@ -39,23 +48,149 @@ app
         console.log('Login request');
         res.status(200).send('Login from server.');
     })
-    
+    .get('/Login', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .set({
+                'content-type': 'text/html; charset=utf-8'
+            })
+            .sendfile('public/login.html');
+    })
+    .post('/Login/requist', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        login.email = req.body.email;
+        login.password = req.body.password;
+
+        if (login.email == CorrectLogin.email && login.password == CorrectLogin.password) {
+            console.log("ok")
+            res.redirect('/home')
+        }
+
+    })
+    .post('/newdata', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        console.log(dataObj.Gdata)
+        let newData = req.body;
+        let dataGet = dataObj.Gdata;
+        let length = dataGet.members.length;
+        console.log(length)
+        dataGet.members[length] = newData;
+        for (let i = 0;  i < dataGet.members.length; i++) {
+            dataGet.members[i].id=i; 
+        }
+        dataObj.Sdata = dataGet;
+        console.log(dataObj.Gdata);
+        console.log("save data");
+        console.log(dataObj.members)
+        var newdata1 = dataObj.Gdata;
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataPath, jsonContent)
+    })
+    .post('/changedata', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        console.log(dataObj.Gdata)
+        let DataFromPage = req.body;
+        let dataGet = dataObj.Gdata;
+        let i = DataFromPage.index;
+        console.log(i)
+        dataGet.members[i].name = DataFromPage.name;
+        dataGet.members[i].country = DataFromPage.country;
+        dataGet.members[i].distance = DataFromPage.distance;
+        dataGet.members[i].imgScr = DataFromPage.imgScr;
+        dataGet.members[i].date = DataFromPage.date;
+
+        for (let i = 0;  i < dataGet.members.length; i++) {
+            dataGet.members[i].id=i; 
+        }
+        dataObj.Sdata = dataGet;
+        console.log(dataObj.Gdata);
+        console.log("save data");
+        console.log(dataObj.members)
+        var newdata1 = dataObj.Gdata;
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataPath, jsonContent)
+    })
+    .post('/deletdata', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        console.log(dataObj.Gdata)
+        let DataFromPage = req.body;
+        let dataGet = dataObj.Gdata;
+        let i = DataFromPage.index;
+        console.log(i)
+        dataGet.members[i] = null;
+        dataGet.members.sort();
+        dataGet.members.pop();
+
+        for (let i = 0;  i < dataGet.members.length; i++) {
+            dataGet.members[i].id=i; 
+        }
+        dataObj.Sdata = dataGet;
+        console.log(dataObj.Gdata);
+        console.log("save data");
+        console.log(dataObj.members)
+        var newdata1 = dataObj.Gdata;
+        console.log(newdata1)
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataPath, jsonContent)
+    })
+    .get('/home', function (req, res) {
+        console.log("test")
+        if (true) {
+            res
+                .status(200)
+                .set({
+                    'content-type': 'text/html; charset=utf-8'
+                })
+                .sendfile('public/database.html')
+        } else {
+            res.send('Please login to view this page!');
+        }
+        res.end();
+    })
+    .get('/database', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .set({
+                'content-type': 'text/html; charset=utf-8'
+            })
+            .sendfile('public/database.html')
+
+    })
+    .get('/download', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .download(dataPath)
+
+    })
+    .get('/county', function (req, res) {
+        if (dataCountryG == null || dataCountryG == undefined) {
+            console.log("data not load dataCountryG")
+            dataCountryG = OpenJsonDataFile(dataCountry);
+        } else {
+            console.log(dataCountryG.Gdata)
+            res.json(dataCountryG.Gdata);
+        }
+    })
+
+
+
     .on('error', function (error) {
         console.log("Error: \n" + error.message);
         console.log(error.stack);
     })
-    .get('/old', function (req, res) {
-        res.sendFile(__dirname + "/index.html");
-    })
 
-   
     .get('/data', function (req, res) {
         if (dataObj == null || dataObj == undefined) {
             console.log("data not load")
             dataObj = OpenJsonDataFile(dataPath);
         } else {
-
-
+            console.log(dataObj.Gdata)
             res.json(dataObj.Gdata);
         }
 
@@ -67,12 +202,16 @@ app
             console.log("data not load")
             dataObj = OpenJsonDataFile(dataPath);
         } else {
-            var out = completeTotalDist(dataObj.Gdata.members);
+            let out = completeTotalDist(dataObj.Gdata.members);
             res.json(out);
         }
     })
     .all('/*', function (req, res) {
-        
+        if (dataObj == null || dataObj == undefined) {
+            console.log("data not load")
+            dataObj = OpenJsonDataFile(dataPath);
+        }
+
         res
             .status(200)
             .set({
@@ -80,6 +219,7 @@ app
             })
             .sendfile('public/index.html');
     })
+
 
 
 /**
@@ -96,7 +236,18 @@ http
 /**
  * Functions
  */
+function SaveDataToFile(dataPath, newdata) {
+    //var jsonContent = JSON.stringify(newdata);
+    //console.log(jsonContent);
+    fs.writeFile(dataPath, newdata, function (err) {
+        if (err) {
+            console.log("An error occured while writing JSON Object to File.");
+            return console.log(err);
+        }
 
+        console.log("JSON file has been saved.");
+    });
+}
 
 //Open json file 
 function OpenJsonDataFile(dataPath) {
@@ -123,6 +274,33 @@ function OpenJsonDataFile(dataPath) {
     });
 
     return dataObj;
+}
+
+function OpenJsonDataFileCounrty(dataPath) {
+    var dataOut = {
+        data: {},
+
+        set Sdata(dataSet) {
+            this.data = dataSet;
+        },
+        get Gdata() {
+            return this.data;
+        }
+
+
+
+    };
+    fs.readFile(dataPath, (err, data) => {
+        if (err) {
+            throw err;
+        }
+        dataOut.Sdata = JSON.parse(data);
+        
+
+    });
+    
+    return dataOut;
+    
 }
 
 //Totale afstand 
