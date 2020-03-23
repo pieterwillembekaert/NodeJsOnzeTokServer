@@ -39,7 +39,7 @@
 </head>
 
 <body ng-app="databaseTok" ng-controller="database">
-  <div class="container">
+  <div id="table" class="container">
     <table>
       <tr>
         <th>wijzig</th>
@@ -52,7 +52,7 @@
       </tr>
       <tr ng-repeat="x in data">
 
-        <td> <a href="#" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
         <td>{{ x.id }}</td>
         <td>{{ x.name }}</td>
         <td>{{ x.country }}</td>
@@ -72,7 +72,7 @@
       overflow: scroll;
     }
   </style>
-  <div class="container">
+  <div class="container" id="controlpanel">
     <form>
     
       <div class="row">
