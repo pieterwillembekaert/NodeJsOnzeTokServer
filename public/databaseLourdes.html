@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- LOGO -->
+  <link rel="icon" type="image/png" href="images/logotok.png">
+
+  <title>database lourdeskamp</title>
+
+
+  <!-- CSS -->
+  <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/banner.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="/static/js/index.js"></script>
+  <script src="dist/svg-pan-zoom.js"></script>
+  <script src="/static/js/zoom.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue@1.0.28/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@1.0.1/dist/vuex.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+  
+</head>
+
+<body ng-app="databaseLourdes" ng-controller="database">
+  <a href="#" ng-click="logout()" class="btn waves-effect waves-light col s12">uitloggen</a>
+
+  <div id="table" class="container">
+    <table>
+      <tr>
+        <th>wijzig</th>
+        <th>id</th>
+        <th>bond</th>
+        <th>weide</th>
+      </tr>
+      <tr ng-repeat="x in dataGroepen">
+        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td>{{ x.id }}</td>
+        <td>{{ x.bond }}</td>
+        <td>{{ x.weide }}</td>
+
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+  
+  <div class="container" id="controlpanel">
+    <form>
+    
+      <div class="row">
+        <div class="input-field col s6">
+          bond: <input type="text" ng-model="bond">
+        </div>
+
+        <div class="input-field col s6">
+          weide: <input type="text" ng-model="weide">
+        </div>
+
+        
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          index: <input type="number" ng-model="id">
+        </div>
+      </div>
+  
+      
+      
+      <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
+      <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
+      <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
+      <a href="/download"  class="btn waves-effect waves-light col s12">download</a>
+
+    </form>
+
+    <br>
+    <br>
+
+  </div>
+
+  <footer class="page-footer KSA-blue">
+    <div class="footer-copyright">
+      <div class="container">
+        Made by <a class="brown-text text-lighten-3" href="https://www.ksa.be/werkkringen/ksa-noordzeegouw">KSA
+          NZG WERKGROEP MULTIMEDIA</a>
+      </div>
+  </footer>
+
+  <script type="text/javascript" src="databaseLourdes.js"></script>
+</body>
+
+</html>

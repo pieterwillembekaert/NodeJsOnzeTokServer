@@ -2,7 +2,27 @@
  * Global var
  */
 var dataObj;
-var dataCountryG; 
+var LourdesData = {
+    Groepen: {},
+    weide: {},
+
+    set SdataGroepen(dataSet) {
+        this.Groepen = dataSet;
+    },
+    get GdataGroepen() {
+        return this.Groepen;
+    }, 
+    set SdataWeide(dataSet) {
+        this.weide = dataSet;
+    },
+    get GdataWeide() {
+        return this.weide;
+    }
+
+
+
+};
+var dataCountryG;
 var login = {
     email: String,
     password: String,
@@ -40,6 +60,8 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));
 const dataPath = "./public/json/bezocht.json";
 const dataCountry = "./public/json/country.json";
+const dataGroepen = "./public/json/Lourdes_Groepen.json";
+const dataWeide = "./public/json/Lourdes_Weide.json";
 /**
  * Routes Definitions
  */
@@ -62,10 +84,10 @@ app
         console.log(req.body)
         login.email = req.body.email;
         login.password = req.body.password;
-       
+
 
         if (login.email == CorrectLogin.email && login.password == CorrectLogin.password) {
-            login.actief=true; 
+            login.actief = true;
             console.log("ok")
             res.redirect('/home')
         }
@@ -79,8 +101,8 @@ app
         let length = dataGet.members.length;
         console.log(length)
         dataGet.members[length] = newData;
-        for (let i = 0;  i < dataGet.members.length; i++) {
-            dataGet.members[i].id=i; 
+        for (let i = 0; i < dataGet.members.length; i++) {
+            dataGet.members[i].id = i;
         }
         dataObj.Sdata = dataGet;
         console.log(dataObj.Gdata);
@@ -90,6 +112,27 @@ app
         var jsonContent = JSON.stringify(newdata1);
         console.log(jsonContent);
         SaveDataToFile(dataPath, jsonContent)
+    })
+    .post('/newdataLourdes', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        console.log(LourdesData.GdataGroepen)
+        let newData = req.body;
+        let dataGet = LourdesData.GdataGroepen;
+        console.log(dataGet)
+        let length = dataGet.bonden.length;
+        console.log(length)
+        dataGet.bonden[length] = newData;
+        for (let i = 0; i < dataGet.bonden.length; i++) {
+            dataGet.bonden[i].id = i;
+        }
+        LourdesData.SdataGroepen = dataGet;
+        console.log(LourdesData.GdataGroepen);
+        console.log("save data");
+        
+        var newdata1 = LourdesData.GdataGroepen;
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataGroepen, jsonContent)
     })
     .post('/changedata', bodyParser.json(), (req, res) => {
         console.log(req.body)
@@ -104,8 +147,8 @@ app
         dataGet.members[i].imgScr = DataFromPage.imgScr;
         dataGet.members[i].date = DataFromPage.date;
 
-        for (let i = 0;  i < dataGet.members.length; i++) {
-            dataGet.members[i].id=i; 
+        for (let i = 0; i < dataGet.members.length; i++) {
+            dataGet.members[i].id = i;
         }
         dataObj.Sdata = dataGet;
         console.log(dataObj.Gdata);
@@ -115,6 +158,28 @@ app
         var jsonContent = JSON.stringify(newdata1);
         console.log(jsonContent);
         SaveDataToFile(dataPath, jsonContent)
+    })
+    .post('/changedataLourdes', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        let DataFromPage = req.body;
+        let dataGet = LourdesData.GdataGroepen;
+        let i = DataFromPage.id;
+        console.log(i)
+        dataGet.bonden[i].bond = DataFromPage.bond;
+        dataGet.bonden[i].weide = DataFromPage.weide;
+        dataGet.bonden[i].id = DataFromPage.id;
+        
+        for (let i = 0; i < dataGet.bonden.length; i++) {
+            dataGet.bonden[i].id = i;
+        }
+        LourdesData.SdataGroepen = dataGet;
+        console.log(LourdesData.GdataGroepen);
+        console.log("save data");
+        console.log(LourdesData.bonden)
+        var newdata1 = LourdesData.GdataGroepen;
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataGroepen, jsonContent)
     })
     .post('/deletdata', bodyParser.json(), (req, res) => {
         console.log(req.body)
@@ -127,8 +192,8 @@ app
         dataGet.members.sort();
         dataGet.members.pop();
 
-        for (let i = 0;  i < dataGet.members.length; i++) {
-            dataGet.members[i].id=i; 
+        for (let i = 0; i < dataGet.members.length; i++) {
+            dataGet.members[i].id = i;
         }
         dataObj.Sdata = dataGet;
         console.log(dataObj.Gdata);
@@ -140,15 +205,39 @@ app
         console.log(jsonContent);
         SaveDataToFile(dataPath, jsonContent)
     })
+    .post('/deletdataLourdes', bodyParser.json(), (req, res) => {
+        console.log(req.body)
+        let DataFromPage = req.body;
+        let dataGet = LourdesData.GdataGroepen;
+        let i = DataFromPage.id;
+        console.log(i)
+        dataGet.bonden[i] = null;
+        dataGet.bonden.sort();
+        dataGet.bonden.pop();
+
+        for (let i = 0; i < dataGet.bonden.length; i++) {
+            dataGet.bonden[i].id = i;
+        }
+        LourdesData.SdataGroepen = dataGet;
+        console.log("save data");
+    
+        var newdata1 = LourdesData.GdataGroepen;
+        var jsonContent = JSON.stringify(newdata1);
+        console.log(jsonContent);
+        SaveDataToFile(dataGroepen, jsonContent)
+    })
     .post('/logout', bodyParser.json(), (req, res) => {
-        login.actief=false;
+        login.actief = false;
 
     })
     .get('/home', function (req, res) {
         console.log("test")
-        var a={user: "", actief: false}
-        a.user= login.email; 
-        a.user= login.actief;
+        var a = {
+            user: "",
+            actief: false
+        }
+        a.user = login.email;
+        a.user = login.actief;
         if (true) {
             res
                 .status(200)
@@ -159,25 +248,52 @@ app
         res.end();
     })
     .get('/database', bodyParser.json(), function (req, res) {
-        
+
         res
             .status(200)
             .set({
                 'content-type': 'text/html; charset=utf-8'
             })
-        if(login.actief==true){
+        if (login.actief == true) {
             res.sendfile('public/database.html')
-        }else{
+        } else {
             res.sendfile('public/login.html')
 
         }
 
+    })
+    .get('/LourdesDatabase', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .set({
+                'content-type': 'text/html; charset=utf-8'
+            })
+
+            .sendfile('public/databaseLourdes.html')
+    })
+    .get('/timeline', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .set({
+                'content-type': 'text/html; charset=utf-8'
+            })
+
+            .sendfile('public/Timeline.html')
     })
     .get('/download', bodyParser.json(), function (req, res) {
 
         res
             .status(200)
             .download(dataPath)
+
+    })
+    .get('/downloadLourdes', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .download(dataGroepen)
 
     })
     .get('/county', function (req, res) {
@@ -207,8 +323,28 @@ app
         }
 
     })
+    .get('/dataLourdes', function (req, res) {
 
-    .get('/TotalDist', function (req, res) {
+    
+            fs.readFile(dataGroepen, (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                LourdesData.SdataGroepen=JSON.parse(data);
+               
+               
+            });
+
+            fs.readFile(dataWeide, (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                LourdesData.SdataWeide=JSON.parse(data);
+            });
+            res.json(LourdesData);
+    })
+
+.get('/TotalDist', function (req, res) {
 
         if (dataObj == null || dataObj == undefined) {
             console.log("data not load")
@@ -284,7 +420,7 @@ function OpenJsonDataFile(dataPath) {
 
 
     });
-
+    console.log(dataObj)
     return dataObj;
 }
 
@@ -307,12 +443,12 @@ function OpenJsonDataFileCounrty(dataPath) {
             throw err;
         }
         dataOut.Sdata = JSON.parse(data);
-        
+
 
     });
-    
+
     return dataOut;
-    
+
 }
 
 //Totale afstand 
