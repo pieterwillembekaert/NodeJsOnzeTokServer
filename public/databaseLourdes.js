@@ -620,7 +620,7 @@ app
       $scope.downloadData = function () {
         $http({
           method: 'get',
-          url: '/downloadLourdes'
+          url: '/downloadKeuzeProgrammaLourdes'
         })
       }
 

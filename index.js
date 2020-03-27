@@ -549,7 +549,14 @@ app
 
         res
             .status(200)
-            .download(dataWeide)
+            .download(dataPathVastProgramma)
+
+    })
+    .get('/downloadKeuzeProgrammaLourdes', bodyParser.json(), function (req, res) {
+
+        res
+            .status(200)
+            .download(dataPathKeuzeProgramma)
 
     })
     .get('/county', function (req, res) {
