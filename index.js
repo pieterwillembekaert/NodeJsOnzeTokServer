@@ -247,11 +247,14 @@ app
         console.log(req.body)
         let DataFromPage = req.body;
         let dataGet = LourdesData.GdataGroepen;
+        console.log(dataGet)
+        console.log(dataGet.bonden)
         let i = DataFromPage.id;
         console.log(i)
         dataGet.bonden[i].bond = DataFromPage.bond;
         dataGet.bonden[i].weide = DataFromPage.weide;
         dataGet.bonden[i].id = DataFromPage.id;
+        dataGet.bonden[i].keuzeprogramma = DataFromPage.keuzeprogramma;
         
         for (let i = 0; i < dataGet.bonden.length; i++) {
             dataGet.bonden[i].id = i;

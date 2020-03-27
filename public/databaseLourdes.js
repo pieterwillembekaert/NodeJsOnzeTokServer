@@ -2,6 +2,7 @@ var DataFromJs, DataFromJsCountrys;
 var dataGroepen, dataWeide, dataVastprogramma, dataKeuzeprogramma;
 var SelectWeides = ["A", "B", "C", "D"];
 var selectVastProgramma = [];
+var selectKeuzeProgramma = [];
 var app = angular.module('databaseLourdes', ['ngRoute']);
 app
   .config(function ($locationProvider) {
@@ -61,6 +62,12 @@ app
           for (let i = 0; i < dataVastprogramma.length; i++) {
             selectVastProgramma[i] = dataVastprogramma[i].wat;
           }
+
+          for (let i = 0; i < dataKeuzeprogramma.length; i++) {
+            selectKeuzeProgramma[i] = dataKeuzeprogramma[i].wat;
+          }
+       
+          console.log(selectKeuzeProgramma)
        
 
 
@@ -91,10 +98,7 @@ app
 
         $scope.dataGroepen = dataGroepen;
         $scope.weides = SelectWeides;
-
-
-
-
+        $scope.selectKeuzeprogramma=selectKeuzeProgramma; 
 
       }, function (error) {
         console.log(error, 'can not get data.');
@@ -108,6 +112,7 @@ app
         $scope.bond = dataGroepen[id].bond;
         $scope.selectedWeide = dataGroepen[id].weide;
         $scope.id = dataGroepen[id].id;
+        $scope.keuzeprogramma= dataGroepen[id].keuzeprogramma; 
 
       }
 
@@ -115,6 +120,7 @@ app
         var data = {
           "bond": "",
           "weide": "",
+          "keuzeprogramma": "",
           "id": 0
         }
 
@@ -132,17 +138,15 @@ app
       $scope.addData = function () {
         var data = {
           "bond": "",
-          "weide": ""
-
+          "weide": "",
+          "keuzeprogramma": "",
+          "id": 0
         }
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
+        data.keuzeprogramma = $scope.keuzeprogramma;
 
-        console.log($scope.selectedWeide)
-        console.log(data)
-
-
-
+    
         $http({
           method: "POST",
           url: "/newDataBondenLourdes",
@@ -151,8 +155,6 @@ app
 
         $window.location.reload();
       }
-
-
 
 
       $scope.downloadData = function () {
@@ -166,18 +168,21 @@ app
         var data = {
           "bond": "",
           "weide": "",
+          "keuzeprogramma": "",
           "id": 0
         }
 
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
         data.id = $scope.id;
+        data.keuzeprogramma= $scope.keuzeprogramma; 
+        console.log(data)
         $http({
           method: 'post',
           url: '/changedataBondenLourdes',
           data: data
         })
-        $window.location.reload();
+        //$window.location.reload();
       }
 
       $scope.logout = function () {
@@ -187,9 +192,6 @@ app
           data: data
         })
         window.open("/login", "_self");
-
-
-
 
       }
 
