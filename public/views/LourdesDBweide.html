@@ -1,0 +1,106 @@
+<div ng-controller="LourdesDBweide">
+    <div class="container" id="Prikbord">
+        <h1>Database weide</h1>
+    </div>
+
+    <div id="table" class="container">
+        <table>
+            <tr>
+                <th>wijzig</th>
+                <th>id</th>
+                <th>weide</th>
+                <th>NM_2108</th>
+                <th>VM_2208</th>
+                <th>NM_2208</th>
+                <th>VM_2308</th>
+                <th>NM_2308</th>
+                <th>VM_2508</th>
+                <th>NM_2508</th>
+                <th>VM_2608</th>
+                <th>NM_2608</th>
+
+            </tr>
+            <tr ng-repeat="x in dataWeide">
+                <td> <a href="#!/databaseWeide#controlpanel" ng-click="editUser(x.id)"
+                        class="btn waves-effect waves-light col s12">wijzig</a></td>
+                <td>{{ x.id }}</td>
+                <td>{{ x.weide }}</td>
+                <td>{{ x.NM_2108 }}</td>
+                <td>{{ x.VM_2208 }}</td>
+                <td>{{ x.NM_2208 }}</td>
+                <td>{{ x.VM_2308 }}</td>
+                <td>{{ x.NM_2308 }}</td>
+                <td>{{ x.VM_2508 }}</td>
+                <td>{{ x.NM_2508 }}</td>
+                <td>{{ x.VM_2608 }}</td>
+                <td>{{ x.NM_2608 }}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+
+    <div class="container" id="controlpanel">
+        <form>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    weide: <select ng-model="weide" ng-options="x for x in weides"></select>
+                </div>
+
+                <div class="input-field col s6">
+                    id: <input type="text" ng-model="id">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    NM_2108: 
+                    <select ng-model="NM_2108" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+
+                <div class="input-field col s6">
+                    VM_2208: <select ng-model="VM_2208" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s6">
+                    NM_2208: <select ng-model="NM_2208" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+                <div class="input-field col s6">
+                    VM_2308: <select ng-model="VM_2308" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    NM_2308: <select ng-model="NM_2308" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+                <div class="input-field col s6">
+                    VM_2508: <select ng-model="VM_2508" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    NM_2508: <select ng-model="NM_2508" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+                <div class="input-field col s6">
+                    VM_2608: <select ng-model="VM_2608" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    NM_2608: <select ng-model="NM_2608" ng-options="x for x in VastProgrammaSelect"></select>
+                </div>
+            </div>
+
+
+
+            <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
+            <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
+            <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
+            <a href="/download" class="btn waves-effect waves-light col s12">download</a>
+
+        </form>
+    </div>

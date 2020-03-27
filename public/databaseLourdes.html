@@ -35,65 +35,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
+  <script>
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+  </script>
   
 </head>
 
 <body ng-app="databaseLourdes" ng-controller="database">
   <a href="#" ng-click="logout()" class="btn waves-effect waves-light col s12">uitloggen</a>
-
-  <div id="table" class="container">
-    <table>
-      <tr>
-        <th>wijzig</th>
-        <th>id</th>
-        <th>bond</th>
-        <th>weide</th>
-      </tr>
-      <tr ng-repeat="x in dataGroepen">
-        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
-        <td>{{ x.id }}</td>
-        <td>{{ x.bond }}</td>
-        <td>{{ x.weide }}</td>
-
-      </tr>
-    </table>
-  </div>
-  <br>
-  <br>
   
-  <div class="container" id="controlpanel">
-    <form>
-    
-      <div class="row">
-        <div class="input-field col s6">
-          bond: <input type="text" ng-model="bond">
-        </div>
-
-        <div class="input-field col s6">
-          weide: <input type="text" ng-model="weide">
-        </div>
-
-        
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          index: <input type="number" ng-model="id">
-        </div>
-      </div>
-  
-      
-      
-      <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
-      <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
-      <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
-      <a href="/download"  class="btn waves-effect waves-light col s12">download</a>
-
-    </form>
-
-    <br>
-    <br>
-
-  </div>
+  <div class="container">
+  <a href="#!/databaseBonden" ng-click="" class="btn waves-effect waves-light col s12">database bonden</a>
+  <a href="#!/databaseWeide" ng-click="" class="btn waves-effect waves-light col s12">database weide</a>
+  <a href="#!/databaseVastProgramma" ng-click="" class="btn waves-effect waves-light col s12">database vast programma</a>
+  <a href="#!/databaseKeuzeProgramma" ng-click="" class="btn waves-effect waves-light col s12">database keuze programma</a>
+</div>
+  <!--load the views-->
+   <div ng-view></div>
 
   <footer class="page-footer KSA-blue">
     <div class="footer-copyright">

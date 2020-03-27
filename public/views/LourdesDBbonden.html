@@ -1,0 +1,64 @@
+<div ng-controller="LourdesDBbonden">
+  <div class="container" id="Prikbord">
+    <h1>Database weide</h1>
+  </div>
+
+  <div id="table" class="container">
+    <table>
+      <tr>
+        <th>wijzig</th>
+        <th>id</th>
+        <th>bond</th>
+        <th>weide</th>
+      </tr>
+      <tr ng-repeat="x in dataGroepen">
+        <td> <a href="#!/databaseBonden#controlpanel" ng-click="editUser(x.id)"
+            class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td>{{ x.id }}</td>
+        <td>{{ x.bond }}</td>
+        <td>{{ x.weide }}</td>
+
+      </tr>
+    </table>
+  </div>
+  <br>
+  <br>
+
+
+  <div class="container" id="controlpanel">
+    <form>
+
+      <div class="row">
+        <div class="input-field col s6">
+          bond: <input type="text" ng-model="bond">
+        </div>
+
+        <div class="input-field col s6">
+          weide: <select ng-model="selectedWeide" ng-options="x for x in weides"></select>
+        </div>
+
+
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          index: <input type="number" ng-model="id">
+        </div>
+      </div>
+      
+      
+
+      
+
+      <br>
+      <br>
+      <br>
+
+     
+
+      <a href="#!/databaseBonden" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
+      <a href="#!/databaseBonden" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
+      <a href="#!/databaseBonden" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
+      <a href="/download" class="btn waves-effect waves-light col s12">download</a>
+
+    </form>
+  </div>

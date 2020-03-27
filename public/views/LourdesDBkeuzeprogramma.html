@@ -1,0 +1,89 @@
+<div ng-controller="LourdesDBkeuzeprogramma">
+    <div class="container" id="Prikbord">
+        <h1>Database keuze programma</h1>
+    </div>
+
+    <div id="table" class="container">
+        <table>
+            <tr>
+                <th>wijzig</th>
+                <th>id</th>
+                <th>wat</th>
+                <th>waar</th>
+                <th>duur</th>
+                <th>start</th>
+                <th>stop</th>
+                <th>benodigdheden</th>
+                <th>beschrijving</th>
+            
+
+            </tr>
+            <tr ng-repeat="x in dataKeuzeprogramma">
+                <td> <a href="#!/databaseKeuzeProgramma#controlpanel" ng-click="editUser(x.id)"
+                        class="btn waves-effect waves-light col s12">wijzig</a></td>
+                <td>{{ x.id }}</td>
+                <td>{{ x.wat }}</td>
+                <td>{{ x.waar }}</td>
+                <td>{{ x.duur }}</td>
+                <td>{{ x.start }}</td>
+                <td>{{ x.stop }}</td>
+                <td>{{ x.benodigdheden }}</td>
+                <td>{{ x.beschrijving }}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+
+    <div class="container" id="controlpanel">
+        <form>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    id: <input type="text" ng-model="id">
+                </div>
+
+                <div class="input-field col s6">
+                    wat: <input type="text" ng-model="wat">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    waar: <input type="text" ng-model="waar">
+                </div>
+
+                <div class="input-field col s6">
+                    duur: <input type="text" ng-model="duur">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s6">
+                    start: <input type="text" ng-model="start">
+                </div>
+                <div class="input-field col s6">
+                    stop: <input type="text" ng-model="stop">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    benodigdheden: <input type="text" ng-model="benodigdheden">
+                </div>
+                <div class="input-field col s6">
+                    beschrijving: <input type="text" ng-model="beschrijving">
+                </div>
+            </div>
+           
+            
+
+
+
+            <a href="#!/databaseKeuzeProgramma" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
+            <a href="#!/databaseKeuzeProgramma" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
+            <a href="#!/databaseKeuzeProgramma" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
+            <a href="/download" class="btn waves-effect waves-light col s12">download</a>
+
+        </form>
+    </div>

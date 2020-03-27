@@ -1,1 +1,58 @@
-{"bonden":[{"bond":"KSA Moorslede","weide":"A","id":0},{"bond":"KSA Roeselare","weide":"B","id":1},{"bond":" KSA Brugge","weide":"C","id":2},{"bond":"KSA Izegem","weide":"D","id":3},{"bond":"KSA Gullegem","weide":"A","id":4},{"bond":"KSA Ieper","weide":"B","id":5},{"bond":"KSA Menen","weide":"C","id":6},{"bond":"KSA Knokke","weide":"B","id":7}]}
+{
+    "bonden": [{
+        "bond": "KSA Moorslede",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "id": 0
+    }, {
+        "bond": "KSA Roeselare",
+        "weide": "B",
+        "keuzeprogramma": "",
+        "id": 1
+    }, {
+        "bond": " KSA Brugge",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "id": 2
+    }, {
+        "bond": "KSA Izegem",
+        "weide": "D",
+        "keuzeprogramma": "",
+        "id": 3
+    }, {
+        "bond": "KSA Gullegem",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "id": 4
+    }, {
+        "bond": "KSA Ieper",
+        "weide": "B",
+        "keuzeprogramma": "",
+        "id": 5
+    }, {
+        "bond": "KSA Menen",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "id": 6
+    }, {
+        "bond": "KSA Knokke",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "id": 7
+    }, {
+        "bond": "KSA Diksmuide",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "id": 8
+    }, {
+        "bond": "KSA Oostende",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "id": 9
+    }, {
+        "bond": "KSA Oostrozebeke",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "id": 10
+    }]
+}
