@@ -1,6 +1,28 @@
 <div ng-controller="LourdesDBbonden">
   <div class="container" id="Prikbord">
-    <h1>Database weide</h1>
+    <h1>Database bonden</h1>
+  </div>
+
+  <div class="container">
+    <p>
+      Op deze pagina kan een bond toegevoed worden aan de database. <br>
+      Onderaan de pagina is een formulier terug te vinden.
+      <ul>
+        <li>bond: voer de naam in van de bond</li>
+        <li>weide: kies de weide van de bond</li>
+        <li>keuzeprogramma: kies het keuzeprogramma</li>
+        <li>index: niet invullen, dit is informatief</li>
+      </ul>
+
+      <br><br>
+      Als de weide niet zichtbaar is, dan kan een weide aangemaakt worden op de pagina "Database weide".
+      <br><br>
+      De keuze programma's dienen eerst aangemaakt te worden binnen de pagina "Database keuze programma".
+      <br><br>
+      Opmerking: als de data bij het inladen niet onmiddellijk zichtbaar is refresh de pagina.
+      <br><br>
+      download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup. 
+    </p>
   </div>
 
   <div id="table" class="container">
@@ -49,16 +71,16 @@
           keuzeprogramma: <select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select>
         </div>
       </div>
-      
-      
 
-      
+
+
+
 
       <br>
       <br>
       <br>
 
-     
+
 
       <a href="#!/databaseBonden" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
       <a href="#!/databaseBonden" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
