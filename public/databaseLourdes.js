@@ -3,6 +3,36 @@ var dataGroepen, dataWeide, dataVastprogramma, dataKeuzeprogramma;
 var SelectWeides = ["A", "B", "C", "D"];
 var selectVastProgramma = [];
 var selectKeuzeProgramma = [];
+
+
+function DataIn() {
+  var state;
+  var jqxhr = $.getJSON("https://onzetokdewereldrond.herokuapp.com/data", function (json) {
+          // console.log("success");
+      })
+      .done(function (json) {
+          console.log("second success" + json);
+          state = "second success";
+      })
+      .fail(function () {
+          // console.log("error");
+          state = "error";
+
+      })
+      .always(function (json) {
+          // console.log("complete");
+          state = "complete";
+          var dataIN = json;
+          console.log(dataIN)
+
+      
+      });
+}
+
+
+
+
+
 var app = angular.module('databaseLourdes', ['ngRoute']);
 app
   .config(function ($locationProvider) {
@@ -57,7 +87,7 @@ app
         $scope.dataGroepen = dataGroepen;
         $scope.selectWeide = ["A", "B", "C", "D"];
        
-       
+        DataIn();
           
           for (let i = 0; i < dataVastprogramma.length; i++) {
             selectVastProgramma[i] = dataVastprogramma[i].wat;

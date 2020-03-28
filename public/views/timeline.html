@@ -1,0 +1,360 @@
+<div ng-controller="timeline">
+    <header>
+        <div class="container text-center">
+            <h1>Welkome</h1>
+            <p>{{bond}}</p>
+            <p>Weide: {{weide}}</p>
+        </div>
+    </header>
+
+    <section class="timeline">
+        <div class="container">
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content js--fadeInLeft">
+                    <h2 class="fontsize1-black">Dag 1</h2>
+                    <div class="date">20 augustus 2020</div>
+                    <p class="fontsize1-black">Vertrek uit eigen bond<br>Startmoment<br>Busreis naar Lourdes</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content timeline-card js--fadeInRight">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 2: voormiddag</h2>
+                    </div>
+                    <div class="date">21 augustus 2020</div>
+                    <p class="fontsize1-black">
+                        Aankomst en ontbijt <br>
+                        Kampopbouw en groepsfoto</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content js--fadeInLeft">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 2: namiddag</h2>
+                    </div>
+                    <div class="date">21 augustus 2020</div>
+                    <p class="fontsize1-black">keuzeprogramma per weide <br>
+                        {{weideProgramma.NM_2108}}
+                    </p>
+                    <p class="fontsize1-black">waar: {{activiteit_NM_2108.waar}}</p>
+                    <p class="fontsize1-black">benodigdheden: {{activiteit_NM_2108.benodigdheden}}</p>
+                    <p class="fontsize1-black">duur: {{activiteit_NM_2108.duur}}</p>
+                    <p class="fontsize1-black">wat: {{activiteit_NM_2108.beschrijving}}</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content js--fadeInRight">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 2: avond</h2>
+                    </div>
+                    <div class="date">21 augustus 2020</div>
+                    <p class="fontsize1-black">Activiteiten op de weide.</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content timeline-card js--fadeInLeft">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 3: voormiddag</h2>
+                    </div>
+                    <div class="date">22 AUGUSTUS 2020</div>
+                    <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                        {{weideProgramma.VM_2208}}
+                    </p>
+                    <p class="fontsize1-black">waar: {{activiteit_VM_2208.waar}}</p>
+                    <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2208.benodigdheden}}</p>
+                    <p class="fontsize1-black">duur: {{activiteit_VM_2208.duur}}</p>
+                    <p class="fontsize1-black">wat: {{activiteit_VM_2208.beschrijving}}</p>
+                    
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content timeline-card js--fadeInRight">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 3: namiddag</h2>
+                    </div>
+                    <div class="date">22 AUGUSTUS 2020</div>
+                    <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                        {{weideProgramma.NM_2208}}
+                    </p>
+                    <p class="fontsize1-black">waar: {{activiteit_NM_2208.waar}}</p>
+                    <p class="fontsize1-black">benodigdheden: {{activiteit_NM_2208.benodigdheden}}</p>
+                    <p class="fontsize1-black">duur: {{activiteit_NM_2208.duur}}</p>
+                    <p class="fontsize1-black">wat: {{activiteit_NM_2208.beschrijving}}</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-img"></div>
+                <div class="timeline-content js--fadeInLeft">
+                    <div class="timeline-img-header">
+                        <h2 class="fontsize1-black">Dag 3: avond</h2>
+                    </div>
+                    <div class="date">22 AUGUSTUS 2020</div>
+                    <p class="fontsize1-black">Kaarsjeprocessie</p>
+                    <a class="bnt-more" href="javascript:void(0)">More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 4: vroege ochtend</h2>
+                </div>
+                <div class="date">23 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">viering aan de grot</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 4: voormiddag</h2>
+                </div>
+                <div class="date">23 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.VM_2308}}
+                </p>
+                <p class="fontsize1-black">waar: {{activiteit_VM_2308.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2308.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_VM_2308.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_VM_2308.beschrijving}}</p>
+                
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 4: namiddag</h2>
+                </div>
+                <div class="date">23 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.NM_2308}}
+                </p>
+                <p class="fontsize1-black">waar: {{activiteit_NM_2308.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_NM_2308.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_NM_2308.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_NM_2308.beschrijving}}</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 4: avond</h2>
+                </div>
+                <div class="date">23 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Zangstonde</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 5: ochtend</h2>
+                </div>
+                <div class="date">24 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Keuzeprogramma</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="fontsize1-black">Dag 5: namiddag</h2>
+                </div>
+                <div class="date">24 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Keuzeprogramma</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 5: avond</h2>
+                </div>
+                <div class="date">24 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">verzoeningsviering</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 6: voormiddag</h2>
+                </div>
+                <div class="date">25 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.VM_2508}}
+                </p>
+                <p class="fontsize1-black">waar: {{activiteit_VM_2508.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2508.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_VM_2508.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_VM_2508.beschrijving}}</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 6: avond</h2>
+                </div>
+                <div class="date">25 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.NM_2508}}
+                </p>
+                <p class="fontsize1-black">waar: {{activiteit_NM_2508.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_NM_2508.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_NM_2508.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_NM_2508.beschrijving}}</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 6: avond</h2>
+                </div>
+                <div class="date">25 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">culturele avond</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 7: voormiddag</h2>
+                </div>
+                <div class="date">26 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.VM_2608}}
+                </p>
+
+                <p class="fontsize1-black">waar: {{activiteit_VM_2608.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2608.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_VM_2608.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_VM_2608.beschrijving}}</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 7: namiddag</h2>
+                </div>
+                <div class="date">26 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    {{weideProgramma.NM_2608}}
+                </p>
+                <p class="fontsize1-black">waar: {{activiteit_NM_2608.waar}}</p>
+                <p class="fontsize1-black">benodigdheden: {{activiteit_NM_2608.benodigdheden}}</p>
+                <p class="fontsize1-black">duur: {{activiteit_NM_2608.duur}}</p>
+                <p class="fontsize1-black">wat: {{activiteit_NM_2608.beschrijving}}</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 7: voormiddag</h2>
+                </div>
+                <div class="date">25 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">slotviering en feestavond</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 8: ochtend</h2>
+                </div>
+                <div class="date">27 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">kampafbraak</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 8: voormiddag</h2>
+                </div>
+                <div class="date">27 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">kampafbraak <br>slotmoment<br>vertrek</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content js--fadeInLeft">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 8: ochtend</h2>
+                </div>
+                <div class="date">27 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">busrit</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-img"></div>
+            <div class="timeline-content timeline-card js--fadeInRight">
+                <div class="timeline-img-header">
+                    <h2 class="text-camping">Dag 8: voormiddag</h2>
+                </div>
+                <div class="date">28 AUGUSTUS 2020</div>
+                <p class="fontsize1-black">Aankomst in eigen bond (in de vroege voormiddag)</p>
+                <a class="bnt-more" href="javascript:void(0)">More</a>
+            </div>
+        </div>
+
+
+    </section>
+</div>
