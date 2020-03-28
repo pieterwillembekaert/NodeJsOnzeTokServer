@@ -123,9 +123,9 @@ var activiteitenObj = {
     }
 }
 
-var IN_dataGroepen, IN_dataWeide,IN_keuzeprogramma,IN_vastprogramma;
-var idKeuze; 
-var keuzeBezoeken= "";
+var IN_dataGroepen, IN_dataWeide, IN_keuzeprogramma, IN_vastprogramma;
+var idKeuze;
+var keuzeBezoeken = "";
 
 var app = angular.module('Timeline', ['ngRoute']);
 app
@@ -146,7 +146,11 @@ app
                 templateUrl: 'views/timeline.html',
                 controller: 'timeline'
             })
-            .otherwise('/');
+            .otherwise('/',{
+                templateUrl: 'views/kiesbond.html',
+                controller: 'Kiesbond'
+            }
+            );
     })
     .controller('Kiesbond', function ($scope, $http) {
         $http({
@@ -155,77 +159,77 @@ app
         }).then(function (response) {
             console.log(response.data);
             console.log(response.data.Groepen);
-           console.log(response.data.vastProgramma.vast_programma);
-           console.log(response.data.keuzeProgramma.keuze_programma);
+            console.log(response.data.vastProgramma.vast_programma);
+            console.log(response.data.keuzeProgramma.keuze_programma);
             IN_dataGroepen = response.data.Groepen.bonden;
-            IN_dataWeide = response.data.weide.weides; 
-            IN_vastprogramma= response.data.vastProgramma.vast_programma;
-            IN_keuzeprogramma= response.data.keuzeProgramma.keuze_programma;
+            IN_dataWeide = response.data.weide.weides;
+            IN_vastprogramma = response.data.vastProgramma.vast_programma;
+            IN_keuzeprogramma = response.data.keuzeProgramma.keuze_programma;
             $scope.selectBond = response.data.Groepen.bonden;
         })
 
-        
+
         $scope.bevestig = function () {
             let bond = $scope.selectedBond.bond;
             idKeuze = $scope.selectedBond.id;
-            keuzeBezoeken=bond;
+            keuzeBezoeken = bond;
         }
 
     })
     .controller('timeline', function ($scope, $http) {
-       /* $http({
-            method: 'get',
-            url: '/dataLourdes'
-        }).then(function (response) {
-            console.log(response.data.Groepen);
-            IN_dataGroepen = response.data.Groepen.bonden;
-            IN_dataWeide = response.data.weide;
-            IN_vastprogramma= response.data.vastProgramma;
-            IN_keuzeprogramma= response.data.keuzeProgramma;
+        /* $http({
+             method: 'get',
+             url: '/dataLourdes'
+         }).then(function (response) {
+             console.log(response.data.Groepen);
+             IN_dataGroepen = response.data.Groepen.bonden;
+             IN_dataWeide = response.data.weide;
+             IN_vastprogramma= response.data.vastProgramma;
+             IN_keuzeprogramma= response.data.keuzeProgramma;
 
-            $scope.selectBond = response.data.Groepen.bonden;
-            console.log(response.data)
+             $scope.selectBond = response.data.Groepen.bonden;
+             console.log(response.data)
 
 
-        })*/
+         })*/
 
         console.log(keuzeBezoeken)
         console.log(idKeuze)
         console.log(IN_dataGroepen[idKeuze].bond)
-        var idWeide= zoekIDweide(IN_dataWeide,IN_dataGroepen[idKeuze].weide)
+        var idWeide = zoekIDweide(IN_dataWeide, IN_dataGroepen[idKeuze].weide)
         console.log(idWeide)
         $scope.bond = IN_dataGroepen[idKeuze].bond;
         $scope.weide = IN_dataGroepen[idKeuze].weide;
         console.log(IN_vastprogramma)
-        $scope.weideProgramma= IN_dataWeide[idWeide];
-        $scope.activiteit_NM_2108= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
-        $scope.activiteit_VM_2208= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
-        $scope.activiteit_NM_2208= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2208); 
-        $scope.activiteit_VM_2308= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2308);
-        $scope.activiteit_NM_2308= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2308);
-        $scope.activiteit_VM_2508= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2508);
-        $scope.activiteit_NM_2508= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2508);
-        $scope.activiteit_VM_2608= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2608);
-        $scope.activiteit_NM_2608= zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2608);
+        $scope.weideProgramma = IN_dataWeide[idWeide];
+        $scope.activiteit_NM_2108 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
+        $scope.activiteit_VM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
+        $scope.activiteit_NM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2208);
+        $scope.activiteit_VM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2308);
+        $scope.activiteit_NM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2308);
+        $scope.activiteit_VM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2508);
+        $scope.activiteit_NM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2508);
+        $scope.activiteit_VM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2608);
+        $scope.activiteit_NM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2608);
 
-       
+
 
     });
 
-    //Functions
+//Functions
 
-  function zoekIDweide(DataIn,keuze) {
+function zoekIDweide(DataIn, keuze) {
     for (let i = 0; i < DataIn.length; i++) {
-      if(DataIn[i].weide == keuze){
-          return  DataIn[i].id;
-      }
-    } 
-  } 
+        if (DataIn[i].weide == keuze) {
+            return DataIn[i].id;
+        }
+    }
+}
 
-  function zoekIDvastProgramma(DataIn,keuze) {
+function zoekIDvastProgramma(DataIn, keuze) {
     for (let i = 0; i < DataIn.length; i++) {
-      if(DataIn[i].wat == keuze){
-          return  DataIn[i];
-      }
-    } 
-  } 
+        if (DataIn[i].wat == keuze) {
+            return DataIn[i];
+        }
+    }
+}
