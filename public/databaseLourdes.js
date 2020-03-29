@@ -127,7 +127,15 @@ app
         $scope.dataGroepen = dataGroepen;
         $scope.weides = SelectWeides;
         $scope.selectKeuzeprogramma=selectKeuzeProgramma; 
+        
+        for (let i = 0; i < dataVastprogramma.length; i++) {
+          selectVastProgramma[i] = dataVastprogramma[i].wat;
+        }
 
+        for (let i = 0; i < dataKeuzeprogramma.length; i++) {
+          selectKeuzeProgramma[i] = dataKeuzeprogramma[i].wat;
+        }
+     
       }, function (error) {
         console.log(error, 'can not get data.');
 
