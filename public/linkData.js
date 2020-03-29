@@ -211,9 +211,6 @@ app
         $scope.activiteit_NM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2508);
         $scope.activiteit_VM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2608);
         $scope.activiteit_NM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2608);
-
-
-
     });
 
 //Functions

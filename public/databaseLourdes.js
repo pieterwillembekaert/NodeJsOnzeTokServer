@@ -99,8 +99,6 @@ app
        
           console.log(selectKeuzeProgramma)
        
-
-
       }, function (error) {
         console.log(error, 'can not get data.');
 
@@ -143,15 +141,17 @@ app
         $scope.selectedWeide = dataGroepen[id].weide;
         $scope.id = dataGroepen[id].id;
         $scope.keuzeprogramma= dataGroepen[id].keuzeprogramma; 
+        $scope.vertrekplaast= dataGroepen[id].vertrekplaast; 
 
       }
 
       $scope.removeData = function () {
         var data = {
+          "id": 0, 
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "id": 0
+          "vertrekplaast": ""
         }
 
         data.id = $scope.id;
@@ -167,14 +167,17 @@ app
 
       $scope.addData = function () {
         var data = {
+          "id": 0, 
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "id": 0
+          "vertrekplaast": ""
         }
+
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
         data.keuzeprogramma = $scope.keuzeprogramma;
+        data.vertrekplaast= $scope.vertrekplaast; 
 
     
         $http({
@@ -196,16 +199,17 @@ app
 
       $scope.changeData = function () {
         var data = {
+          "id": 0, 
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "id": 0
+          "vertrekplaast": ""
         }
-
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
         data.id = $scope.id;
         data.keuzeprogramma= $scope.keuzeprogramma; 
+        data.vertrekplaast= $scope.vertrekplaast; 
         console.log(data)
         $http({
           method: 'post',

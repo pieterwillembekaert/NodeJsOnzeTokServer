@@ -21,7 +21,7 @@
       <br><br>
       Opmerking: als de data bij het inladen niet onmiddellijk zichtbaar is refresh de pagina.
       <br><br>
-      download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup. 
+      download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup.
     </p>
   </div>
 
@@ -33,6 +33,7 @@
         <th>bond</th>
         <th>weide</th>
         <th>keuzeprogramma</th>
+        <th>vertrekplaast</th>
       </tr>
       <tr ng-repeat="x in dataGroepen">
         <td> <a href="#!/databaseBonden#controlpanel" ng-click="editUser(x.id)"
@@ -41,6 +42,7 @@
         <td>{{ x.bond }}</td>
         <td>{{ x.weide }}</td>
         <td>{{ x.keuzeprogramma }}</td>
+        <td>{{ x.vertrekplaast }}</td>
 
       </tr>
     </table>
@@ -66,6 +68,10 @@
       <div class="row">
         <div class="input-field col s6">
           index: <input type="number" ng-model="id">
+        </div>
+
+        <div class="input-field col s6">
+          vertrekplaast: <input type="text" ng-model="vertrekplaast">
         </div>
         <div class="input-field col s6">
           keuzeprogramma: <select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select>
