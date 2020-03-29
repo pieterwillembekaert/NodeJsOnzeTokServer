@@ -4,9 +4,15 @@
     src: url(fonts/CampingHolidayDEMO.otf);
 }
 
+.ng-hide {
+    visibility: hidden;
+  }
 
+  .ng-show {
+    visibility: visible;
+  }
 /*class */
-.text-camping{
+.text-camping {
     font-family: campingholiday;
 }
 
@@ -32,8 +38,8 @@ p.fontsize1-black {
     font-family: campingholiday;
     font-size: 20px !important;
     color: black;
-    
-}  
+
+}
 
 .fontsize1-black {
     font-family: campingholiday;
@@ -47,6 +53,19 @@ p.fontsize1-black {
     font-size: 20px !important;
     color: black;
     letter-spacing: 0.5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 80px  auto 80px;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.grid-container>div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
 }
 
 section {
@@ -72,17 +91,21 @@ h1 {
 }
 
 header {
-    background: #3F51B5;
-    color: #FFFFFF;
-    padding: 150px 0;
+   
+    color: rgb(255, 99, 71);
+    padding: 10px;
+    font-size: 30px;
+    font-family: 'campingholiday';
+    text-align: center;
 }
 
 header p {
-    font-family: 'Allura';
-    color: rgba(255, 255, 255, 0.2);
+    font-family: 'campingholiday';
+    color: rgb(255, 99, 71);
     margin-bottom: 0;
     font-size: 60px;
     margin-top: -30px;
+    padding: 5px;
 }
 
 .timeline {
@@ -100,7 +123,7 @@ header p {
 }
 
 .timeline-item {
-    width: 100%;
+    width: 95%;
     margin-bottom: 70px;
 }
 
@@ -164,8 +187,15 @@ header p {
     margin-left: -15px;
 }
 
+select {
+    font-family: 'campingholiday' !important;
+    letter-spacing: 0.5px;
+
+}
+
 a {
-    background: #3F51B5;
+    background: #105fac;
+    font-family: 'campingholiday';
     color: #FFFFFF;
     padding: 8px 20px;
     text-transform: uppercase;
@@ -174,13 +204,14 @@ a {
     margin-top: 10px;
     display: inline-block;
     border-radius: 2px;
+    text-decoration: none;
     box-shadow: 0 1px 3px -1px rgba(0, 0, 0, 0.6);
 }
 
 a:hover,
 a:active,
 a:focus {
-    background: #32408f;
+    background: rgb(255, 99, 71);
     color: #FFFFFF;
     text-decoration: none;
 }
@@ -223,7 +254,7 @@ blockquote {
 }
 
 .date {
-    background:  #FF6347;
+    background: #FF6347;
     display: inline-block;
     color: white;
     padding: 10px;

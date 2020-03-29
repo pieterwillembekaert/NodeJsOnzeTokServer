@@ -127,7 +127,7 @@ var IN_dataGroepen, IN_dataWeide, IN_keuzeprogramma, IN_vastprogramma;
 var idKeuze;
 var keuzeBezoeken = "";
 
-var app = angular.module('Timeline', ['ngRoute']);
+var app = angular.module('Timeline', ['ngRoute', 'ngAnimate', 'ngCookies']);
 app
     .config(function ($locationProvider) {
         $locationProvider
@@ -146,13 +146,12 @@ app
                 templateUrl: 'views/timeline.html',
                 controller: 'timeline'
             })
-            .otherwise('/',{
+            .otherwise('/', {
                 templateUrl: 'views/kiesbond.html',
                 controller: 'Kiesbond'
-            }
-            );
+            });
     })
-    .controller('Kiesbond', function ($scope, $http) {
+    .controller('Kiesbond', function ($scope, $http, $cookies) {
         $http({
             method: 'get',
             url: '/dataLourdes'
@@ -161,59 +160,103 @@ app
             console.log(response.data.Groepen);
             console.log(response.data.vastProgramma.vast_programma);
             console.log(response.data.keuzeProgramma.keuze_programma);
+
             IN_dataGroepen = response.data.Groepen.bonden;
             IN_dataWeide = response.data.weide.weides;
             IN_vastprogramma = response.data.vastProgramma.vast_programma;
             IN_keuzeprogramma = response.data.keuzeProgramma.keuze_programma;
             $scope.selectBond = response.data.Groepen.bonden;
+            var voorkeur = $cookies.get('keuze bond');
+            var voorkeurID = $cookies.get('keuze bond_id');
+            var voorkeurAll = $cookies.get('keuze bond_comp');
+
+            console.log("cookie: " + voorkeur)
+            $scope.selectedBond=JSON.parse(voorkeurAll);
+            
         })
-
-
+        
+        
         $scope.bevestig = function () {
             let bond = $scope.selectedBond.bond;
+            console.log($scope.selectedBond)
+            let compleet=$scope.selectedBond;
             idKeuze = $scope.selectedBond.id;
             keuzeBezoeken = bond;
+            $cookies.put("keuze bond", bond);
+            $cookies.put("keuze bond_id", idKeuze);
+            $cookies.put("keuze bond_comp", JSON.stringify(compleet));
         }
 
+        
+
     })
-    .controller('timeline', function ($scope, $http) {
-        /* $http({
-             method: 'get',
-             url: '/dataLourdes'
-         }).then(function (response) {
-             console.log(response.data.Groepen);
-             IN_dataGroepen = response.data.Groepen.bonden;
-             IN_dataWeide = response.data.weide;
-             IN_vastprogramma= response.data.vastProgramma;
-             IN_keuzeprogramma= response.data.keuzeProgramma;
+    .controller('timeline', function ($scope, $http, $cookies) {
+        console.log("keuze: " + keuzeBezoeken)
+        $scope.keuzeBezoeken = keuzeBezoeken;
+        
 
-             $scope.selectBond = response.data.Groepen.bonden;
-             console.log(response.data)
+        var voorkeur = $cookies.get('keuze bond');
+        var voorkeurID = $cookies.get('keuze bond_id');
+        console.log("cookie: " + voorkeur)
 
 
-         })*/
+        if (keuzeBezoeken == "") {
+            $http({
+                method: 'get',
+                url: '/dataLourdes'
+            }).then(function (response) {
+                console.log(response.data);
+                console.log(response.data.Groepen);
+                console.log(response.data.vastProgramma.vast_programma);
+                console.log(response.data.keuzeProgramma.keuze_programma);
 
-        console.log(keuzeBezoeken)
-        console.log(idKeuze)
-        console.log(IN_dataGroepen[idKeuze].bond)
-        var idWeide = zoekIDweide(IN_dataWeide, IN_dataGroepen[idKeuze].weide)
-        console.log(idWeide)
-        $scope.bond = IN_dataGroepen[idKeuze].bond;
-        $scope.weide = IN_dataGroepen[idKeuze].weide;
-        console.log(IN_vastprogramma)
-        $scope.weideProgramma = IN_dataWeide[idWeide];
-        $scope.activiteit_NM_2108 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
-        $scope.activiteit_VM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
-        $scope.activiteit_NM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2208);
-        $scope.activiteit_VM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2308);
-        $scope.activiteit_NM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2308);
-        $scope.activiteit_VM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2508);
-        $scope.activiteit_NM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2508);
-        $scope.activiteit_VM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2608);
-        $scope.activiteit_NM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2608);
+                IN_dataGroepen = response.data.Groepen.bonden;
+                IN_dataWeide = response.data.weide.weides;
+                IN_vastprogramma = response.data.vastProgramma.vast_programma;
+                IN_keuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+
+
+
+                if (voorkeur != undefined) {
+                    keuzeBezoeken = voorkeur;
+                    $scope.keuzeBezoeken = keuzeBezoeken;
+                    idKeuze=voorkeurID;
+                    toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide);
+
+
+                } else {
+                    $scope.bond = "Geen bond geselecteerd!";
+                    $scope.weide = "?";
+
+                }
+
+
+
+            })
+        } else {
+            toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide);
+
+
+        }
     });
 
 //Functions
+function toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide) {
+    var idWeide = zoekIDweide(IN_dataWeide, IN_dataGroepen[idKeuze].weide)
+    $scope.bond = IN_dataGroepen[idKeuze].bond;
+    $scope.weide = IN_dataGroepen[idKeuze].weide;
+
+    $scope.weideProgramma = IN_dataWeide[idWeide];
+    $scope.activiteit_NM_2108 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
+    $scope.activiteit_VM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
+    $scope.activiteit_NM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2208);
+    $scope.activiteit_VM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2308);
+    $scope.activiteit_NM_2308 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2308);
+    $scope.activiteit_VM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2508);
+    $scope.activiteit_NM_2508 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2508);
+    $scope.activiteit_VM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2608);
+    $scope.activiteit_NM_2608 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2608);
+}
 
 function zoekIDweide(DataIn, keuze) {
     for (let i = 0; i < DataIn.length; i++) {

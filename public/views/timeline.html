@@ -1,9 +1,12 @@
 <div ng-controller="timeline">
     <header>
         <div class="container text-center">
-            <h1>Welkome</h1>
+            <h1>WELKOM</h1>
             <p>{{bond}}</p>
             <p>Weide: {{weide}}</p>
+
+            <a href="#!/kiesbond" ng-show="keuzeBezoeken==''" class="btn waves-effect waves-light col s12">Kies bond</a>
+            <a href="#!/kiesbond" ng-show="keuzeBezoeken!=''" class="btn waves-effect waves-light col s12">kies een andere bond</a>
         </div>
     </header>
 
@@ -51,9 +54,10 @@
                 </div>
             </div>
 
+
             <div class="timeline-item">
                 <div class="timeline-img"></div>
-                <div class="timeline-content js--fadeInRight">
+                <div class="timeline-content timeline-card js--fadeInRight">
                     <div class="timeline-img-header">
                         <h2 class="fontsize1-black">Dag 2: avond</h2>
                     </div>
@@ -63,9 +67,11 @@
                 </div>
             </div>
 
+
+
             <div class="timeline-item">
                 <div class="timeline-img"></div>
-                <div class="timeline-content timeline-card js--fadeInLeft">
+                <div class="timeline-content  js--fadeInLeft">
                     <div class="timeline-img-header">
                         <h2 class="fontsize1-black">Dag 3: voormiddag</h2>
                     </div>
@@ -77,7 +83,6 @@
                     <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2208.benodigdheden}}</p>
                     <p class="fontsize1-black">duur: {{activiteit_VM_2208.duur}}</p>
                     <p class="fontsize1-black">wat: {{activiteit_VM_2208.beschrijving}}</p>
-                    
                     <a class="bnt-more" href="javascript:void(0)">More</a>
                 </div>
             </div>
@@ -139,7 +144,7 @@
                 <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2308.benodigdheden}}</p>
                 <p class="fontsize1-black">duur: {{activiteit_VM_2308.duur}}</p>
                 <p class="fontsize1-black">wat: {{activiteit_VM_2308.beschrijving}}</p>
-                
+
                 <a class="bnt-more" href="javascript:void(0)">More</a>
             </div>
         </div>
