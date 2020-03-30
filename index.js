@@ -87,7 +87,8 @@ app
     .use(express.static('public'),
         function (req, res, next) {
             res
-                .header("Acces-Control-Allow-Origin", "*");
+                .header("Acces-Control-Allow-Origin", "*")
+                .header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
         }
 
