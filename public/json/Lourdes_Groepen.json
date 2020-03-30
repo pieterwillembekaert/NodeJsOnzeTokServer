@@ -1,1 +1,81 @@
-{"bonden":[{"id":0,"bond":"KSA Moorslede","weide":"A","keuzeprogramma":"Lopen","vertrekplaast":""},{"id":1,"bond":"KSA Roeselare","weide":"B","keuzeprogramma":"Lachen","vertrekplaast":""},{"id":2,"bond":" KSA Brugge","weide":"C","keuzeprogramma":"","vertrekplaast":""},{"id":3,"bond":"KSA Izegem","weide":"D","keuzeprogramma":"Lachen","vertrekplaast":""},{"id":4,"bond":"KSA Gullegem","weide":"A","keuzeprogramma":"","vertrekplaast":""},{"id":5,"bond":"KSA Ieper","weide":"B","keuzeprogramma":"Zwemmen","vertrekplaast":"Ieper"},{"id":6,"bond":"KSA Menen","weide":"C","keuzeprogramma":"","vertrekplaast":""},{"id":7,"bond":"KSA Knokke","weide":"C","keuzeprogramma":"","vertrekplaast":""},{"id":8,"bond":"KSA Diksmuide","weide":"A","keuzeprogramma":"","vertrekplaast":""},{"id":9,"bond":"KSA Oostende","weide":"C","keuzeprogramma":"","vertrekplaast":""},{"id":10,"bond":"KSA Oostrozebeke","weide":"A","keuzeprogramma":"Lachen","vertrekplaast":"Kerk"},{"id":11,"bond":"KSA varsenare","weide":"B","keuzeprogramma":"Lopen","vertrekplaast":"kerk"},{"id":12,"bond":"KSA Veurne","weide":"B","keuzeprogramma":"Lachen","vertrekplaast":"Veurne"}]}
+{
+    "bonden": [{
+        "id": 0,
+        "bond": "KSA Moorslede",
+        "weide": "A",
+        "keuzeprogramma": "Lopen",
+        "vertrekplaats": ""
+    }, {
+        "id": 1,
+        "bond": "KSA Roeselare",
+        "weide": "B",
+        "keuzeprogramma": "Lachen",
+        "vertrekplaats": ""
+    }, {
+        "id": 2,
+        "bond": " KSA Brugge",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 3,
+        "bond": "KSA Izegem",
+        "weide": "D",
+        "keuzeprogramma": "Lachen",
+        "vertrekplaats": ""
+    }, {
+        "id": 4,
+        "bond": "KSA Gullegem",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 5,
+        "bond": "KSA Ieper",
+        "weide": "B",
+        "keuzeprogramma": "Zwemmen",
+        "vertrekplaats": "Ieper"
+    }, {
+        "id": 6,
+        "bond": "KSA Menen",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 7,
+        "bond": "KSA Knokke",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 8,
+        "bond": "KSA Diksmuide",
+        "weide": "A",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 9,
+        "bond": "KSA Oostende",
+        "weide": "C",
+        "keuzeprogramma": "",
+        "vertrekplaats": ""
+    }, {
+        "id": 10,
+        "bond": "KSA Oostrozebeke",
+        "weide": "A",
+        "keuzeprogramma": "Lachen",
+        "vertrekplaats": "Kerk"
+    }, {
+        "id": 11,
+        "bond": "KSA varsenare",
+        "weide": "B",
+        "keuzeprogramma": "Lopen",
+        "vertrekplaats": "kerk"
+    }, {
+        "id": 12,
+        "bond": "KSA Veurne",
+        "weide": "B",
+        "keuzeprogramma": "Lachen",
+        "vertrekplaats": "Veurne"
+    }]
+}

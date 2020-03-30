@@ -264,7 +264,7 @@ app
         dataGet.bonden[i].weide = DataFromPage.weide;
         dataGet.bonden[i].id = DataFromPage.id;
         dataGet.bonden[i].keuzeprogramma = DataFromPage.keuzeprogramma;
-        dataGet.bonden[i].vertrekplaast = DataFromPage.vertrekplaast;
+        dataGet.bonden[i].vertrekplaats = DataFromPage.vertrekplaats;
 
         //id opnieuw bepalen
         for (let i = 0; i < dataGet.bonden.length; i++) {

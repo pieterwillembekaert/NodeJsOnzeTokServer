@@ -166,6 +166,7 @@ app
             IN_vastprogramma = response.data.vastProgramma.vast_programma;
             IN_keuzeprogramma = response.data.keuzeProgramma.keuze_programma;
             $scope.selectBond = response.data.Groepen.bonden;
+
             var voorkeur = $cookies.get('keuze bond');
             var voorkeurID = $cookies.get('keuze bond_id');
             var voorkeurAll = $cookies.get('keuze bond_comp');
@@ -215,13 +216,11 @@ app
                 IN_vastprogramma = response.data.vastProgramma.vast_programma;
                 IN_keuzeprogramma = response.data.keuzeProgramma.keuze_programma;
 
-
-
                 if (voorkeur != undefined) {
                     keuzeBezoeken = voorkeur;
                     $scope.keuzeBezoeken = keuzeBezoeken;
                     idKeuze=voorkeurID;
-                    toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide);
+                    toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma, IN_keuzeprogramma,IN_dataWeide);
 
 
                 } else {
@@ -230,22 +229,24 @@ app
 
                 }
 
-
-
             })
         } else {
-            toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide);
+            toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma, IN_keuzeprogramma,IN_dataWeide);
 
 
         }
     });
 
 //Functions
-function toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma,IN_dataWeide) {
+function toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma, IN_keuzeprogramma,IN_dataWeide) {
     var idWeide = zoekIDweide(IN_dataWeide, IN_dataGroepen[idKeuze].weide)
+    var idKeuzeProgramma= zoekIDkeuzeProgramma(IN_keuzeprogramma, IN_dataGroepen[idKeuze].keuzeprogramma); 
+    
     $scope.bond = IN_dataGroepen[idKeuze].bond;
     $scope.weide = IN_dataGroepen[idKeuze].weide;
+    $scope.vertrekplaatsBond= IN_dataGroepen[idKeuze].vertrekplaats; 
 
+    $scope.keuzeprogrammaBond= IN_keuzeprogramma[idKeuzeProgramma]; 
     $scope.weideProgramma = IN_dataWeide[idWeide];
     $scope.activiteit_NM_2108 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
     $scope.activiteit_VM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
@@ -270,6 +271,14 @@ function zoekIDvastProgramma(DataIn, keuze) {
     for (let i = 0; i < DataIn.length; i++) {
         if (DataIn[i].wat == keuze) {
             return DataIn[i];
+        }
+    }
+}
+
+function zoekIDkeuzeProgramma(DataIn, keuze) {
+    for (let i = 0; i < DataIn.length; i++) {
+        if (DataIn[i].wat == keuze) {
+            return DataIn[i].id;
         }
     }
 }

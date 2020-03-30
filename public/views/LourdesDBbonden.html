@@ -33,7 +33,7 @@
         <th>bond</th>
         <th>weide</th>
         <th>keuzeprogramma</th>
-        <th>vertrekplaast</th>
+        <th>vertrekplaats</th>
       </tr>
       <tr ng-repeat="x in dataGroepen">
         <td> <a href="#!/databaseBonden#controlpanel" ng-click="editUser(x.id)"
@@ -42,7 +42,7 @@
         <td>{{ x.bond }}</td>
         <td>{{ x.weide }}</td>
         <td>{{ x.keuzeprogramma }}</td>
-        <td>{{ x.vertrekplaast }}</td>
+        <td>{{ x.vertrekplaats }}</td>
 
       </tr>
     </table>
@@ -71,7 +71,7 @@
         </div>
 
         <div class="input-field col s6">
-          vertrekplaast: <input type="text" ng-model="vertrekplaast">
+          vertrekplaats: <input type="text" ng-model="vertrekplaats">
         </div>
         <div class="input-field col s6">
           keuzeprogramma: <select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select>

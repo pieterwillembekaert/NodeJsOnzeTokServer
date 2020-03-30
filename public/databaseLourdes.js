@@ -149,7 +149,7 @@ app
         $scope.selectedWeide = dataGroepen[id].weide;
         $scope.id = dataGroepen[id].id;
         $scope.keuzeprogramma= dataGroepen[id].keuzeprogramma; 
-        $scope.vertrekplaast= dataGroepen[id].vertrekplaast; 
+        $scope.vertrekplaats= dataGroepen[id].vertrekplaats; 
 
       }
 
@@ -159,7 +159,7 @@ app
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "vertrekplaast": ""
+          "vertrekplaats": ""
         }
 
         data.id = $scope.id;
@@ -179,13 +179,13 @@ app
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "vertrekplaast": ""
+          "vertrekplaats": ""
         }
 
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
         data.keuzeprogramma = $scope.keuzeprogramma;
-        data.vertrekplaast= $scope.vertrekplaast; 
+        data.vertrekplaats= $scope.vertrekplaats; 
 
     
         $http({
@@ -211,13 +211,13 @@ app
           "bond": "",
           "weide": "",
           "keuzeprogramma": "",
-          "vertrekplaast": ""
+          "vertrekplaats": ""
         }
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
         data.id = $scope.id;
         data.keuzeprogramma= $scope.keuzeprogramma; 
-        data.vertrekplaast= $scope.vertrekplaast; 
+        data.vertrekplaats= $scope.vertrekplaats; 
         console.log(data)
         $http({
           method: 'post',

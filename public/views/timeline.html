@@ -17,7 +17,10 @@
                 <div class="timeline-content js--fadeInLeft">
                     <h2 class="fontsize1-black">Dag 1</h2>
                     <div class="date">20 augustus 2020</div>
-                    <p class="fontsize1-black">Vertrek uit eigen bond<br>Startmoment<br>Busreis naar Lourdes</p>
+                    <p class="fontsize1-black">
+                        Vertrek uit eigen bond: {{vertrekplaatsBond}} <br>
+                        <br>Startmoment
+                        <br>Busreis naar Lourdes</p>
                     <a class="bnt-more" href="javascript:void(0)">More</a>
                 </div>
             </div>
@@ -43,7 +46,7 @@
                         <h2 class="fontsize1-black">Dag 2: namiddag</h2>
                     </div>
                     <div class="date">21 augustus 2020</div>
-                    <p class="fontsize1-black">keuzeprogramma per weide <br>
+                    <p class="fontsize1-black">keuzeprogramma per weide: <br>
                         {{weideProgramma.NM_2108}}
                     </p>
                     <p class="fontsize1-black">waar: {{activiteit_NM_2108.waar}}</p>
@@ -76,7 +79,7 @@
                         <h2 class="fontsize1-black">Dag 3: voormiddag</h2>
                     </div>
                     <div class="date">22 AUGUSTUS 2020</div>
-                    <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    <p class="fontsize1-black">Activiteiten per weide: <br>
                         {{weideProgramma.VM_2208}}
                     </p>
                     <p class="fontsize1-black">waar: {{activiteit_VM_2208.waar}}</p>
@@ -94,7 +97,7 @@
                         <h2 class="fontsize1-black">Dag 3: namiddag</h2>
                     </div>
                     <div class="date">22 AUGUSTUS 2020</div>
-                    <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                    <p class="fontsize1-black">Activiteiten per weide: <br>
                         {{weideProgramma.NM_2208}}
                     </p>
                     <p class="fontsize1-black">waar: {{activiteit_NM_2208.waar}}</p>
@@ -137,7 +140,7 @@
                     <h2 class="fontsize1-black">Dag 4: voormiddag</h2>
                 </div>
                 <div class="date">23 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.VM_2308}}
                 </p>
                 <p class="fontsize1-black">waar: {{activiteit_VM_2308.waar}}</p>
@@ -156,7 +159,7 @@
                     <h2 class="fontsize1-black">Dag 4: namiddag</h2>
                 </div>
                 <div class="date">23 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.NM_2308}}
                 </p>
                 <p class="fontsize1-black">waar: {{activiteit_NM_2308.waar}}</p>
@@ -183,10 +186,15 @@
             <div class="timeline-img"></div>
             <div class="timeline-content timeline-card js--fadeInRight">
                 <div class="timeline-img-header">
-                    <h2 class="fontsize1-black">Dag 5: ochtend</h2>
+                    <h2 class="fontsize1-black">Dag 5: voormiddag</h2>
                 </div>
                 <div class="date">24 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Keuzeprogramma</p>
+                <p class="fontsize1-black">KEUZEPROGRAMMA: {{keuzeprogrammaBond.wat}}</p>
+
+                <p class="fontsize1-black">WAAR: {{keuzeprogrammaBond.waar}}</p>
+                <p class="fontsize1-black">BENODIGDHEDEN: {{keuzeprogrammaBond.benodigdheden}}</p>
+                <p class="fontsize1-black">DUUR: {{keuzeprogrammaBond.duur}}</p>
+                <p class="fontsize1-black">BESCHRIJVING: {{keuzeprogrammaBond.beschrijving}}</p>
                 <a class="bnt-more" href="javascript:void(0)">More</a>
             </div>
         </div>
@@ -198,7 +206,12 @@
                     <h2 class="fontsize1-black">Dag 5: namiddag</h2>
                 </div>
                 <div class="date">24 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Keuzeprogramma</p>
+                <p class="fontsize1-black">KEUZEPROGRAMMA: {{keuzeprogrammaBond.wat}}</p>
+
+                <p class="fontsize1-black">WAAR: {{keuzeprogrammaBond.waar}}</p>
+                <p class="fontsize1-black">BENODIGDHEDEN: {{keuzeprogrammaBond.benodigdheden}}</p>
+                <p class="fontsize1-black">DUUR: {{keuzeprogrammaBond.duur}}</p>
+                <p class="fontsize1-black">BESCHRIJVING: {{keuzeprogrammaBond.beschrijving}}</p>
                 <a class="bnt-more" href="javascript:void(0)">More</a>
             </div>
         </div>
@@ -222,7 +235,7 @@
                     <h2 class="text-camping">Dag 6: voormiddag</h2>
                 </div>
                 <div class="date">25 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.VM_2508}}
                 </p>
                 <p class="fontsize1-black">waar: {{activiteit_VM_2508.waar}}</p>
@@ -237,10 +250,10 @@
             <div class="timeline-img"></div>
             <div class="timeline-content timeline-card js--fadeInRight">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 6: avond</h2>
+                    <h2 class="text-camping">Dag 6: namiddag</h2>
                 </div>
                 <div class="date">25 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.NM_2508}}
                 </p>
                 <p class="fontsize1-black">waar: {{activiteit_NM_2508.waar}}</p>
@@ -270,10 +283,9 @@
                     <h2 class="text-camping">Dag 7: voormiddag</h2>
                 </div>
                 <div class="date">26 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.VM_2608}}
                 </p>
-
                 <p class="fontsize1-black">waar: {{activiteit_VM_2608.waar}}</p>
                 <p class="fontsize1-black">benodigdheden: {{activiteit_VM_2608.benodigdheden}}</p>
                 <p class="fontsize1-black">duur: {{activiteit_VM_2608.duur}}</p>
@@ -289,7 +301,7 @@
                     <h2 class="text-camping">Dag 7: namiddag</h2>
                 </div>
                 <div class="date">26 AUGUSTUS 2020</div>
-                <p class="fontsize1-black">Activiteiten op de weide Activiteit per weide. <br>
+                <p class="fontsize1-black">Activiteiten per weide: <br>
                     {{weideProgramma.NM_2608}}
                 </p>
                 <p class="fontsize1-black">waar: {{activiteit_NM_2608.waar}}</p>
@@ -304,9 +316,9 @@
             <div class="timeline-img"></div>
             <div class="timeline-content timeline-card js--fadeInRight">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 7: voormiddag</h2>
+                    <h2 class="text-camping">Dag 7: avond</h2>
                 </div>
-                <div class="date">25 AUGUSTUS 2020</div>
+                <div class="date">26 AUGUSTUS 2020</div>
                 <p class="fontsize1-black">slotviering en feestavond</p>
                 <a class="bnt-more" href="javascript:void(0)">More</a>
             </div>
@@ -316,7 +328,7 @@
             <div class="timeline-img"></div>
             <div class="timeline-content js--fadeInLeft">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 8: ochtend</h2>
+                    <h2 class="text-camping">Dag 8: voormiddag</h2>
                 </div>
                 <div class="date">27 AUGUSTUS 2020</div>
                 <p class="fontsize1-black">kampafbraak</p>
@@ -328,7 +340,7 @@
             <div class="timeline-img"></div>
             <div class="timeline-content timeline-card js--fadeInRight">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 8: voormiddag</h2>
+                    <h2 class="text-camping">Dag 8: namiddag</h2>
                 </div>
                 <div class="date">27 AUGUSTUS 2020</div>
                 <p class="fontsize1-black">kampafbraak <br>slotmoment<br>vertrek</p>
@@ -340,7 +352,7 @@
             <div class="timeline-img"></div>
             <div class="timeline-content js--fadeInLeft">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 8: ochtend</h2>
+                    <h2 class="text-camping">Dag 8: avond</h2>
                 </div>
                 <div class="date">27 AUGUSTUS 2020</div>
                 <p class="fontsize1-black">busrit</p>
@@ -352,14 +364,13 @@
             <div class="timeline-img"></div>
             <div class="timeline-content timeline-card js--fadeInRight">
                 <div class="timeline-img-header">
-                    <h2 class="text-camping">Dag 8: voormiddag</h2>
+                    <h2 class="text-camping">Dag 9: voormiddag</h2>
                 </div>
                 <div class="date">28 AUGUSTUS 2020</div>
                 <p class="fontsize1-black">Aankomst in eigen bond (in de vroege voormiddag)</p>
                 <a class="bnt-more" href="javascript:void(0)">More</a>
             </div>
         </div>
-
-
     </section>
+    <script type="text/javascript" src="/js/animation.js"></script>
 </div>
