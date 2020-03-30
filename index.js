@@ -13,7 +13,7 @@ var LourdesData = {
     },
     get GdataGroepen() {
         return this.Groepen;
-    }, 
+    },
     set SdataWeide(dataSet) {
         this.weide = dataSet;
     },
@@ -112,151 +112,34 @@ app
 
     })
     .post('/newdata', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(dataObj.Gdata)
+        //data van pagina
         let newData = req.body;
+
+        //data opslaan naar de tussen var
         let dataGet = dataObj.Gdata;
         let length = dataGet.members.length;
-        console.log(length)
         dataGet.members[length] = newData;
+
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.members.length; i++) {
             dataGet.members[i].id = i;
         }
+
+        //data terug opslaan naar de globale var
         dataObj.Sdata = dataGet;
-        console.log(dataObj.Gdata);
-        console.log("save data");
-        console.log(dataObj.members)
-        var newdata1 = dataObj.Gdata;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+     
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(dataObj.Gdata);
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/newdataBondenLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(LourdesData.GdataGroepen)
-        let newData = req.body;
-        let dataGet = LourdesData.GdataGroepen;
-        console.log(dataGet)
-        let length = dataGet.bonden.length;
-        console.log(length)
-        dataGet.bonden[length] = newData;
-        for (let i = 0; i < dataGet.bonden.length; i++) {
-            dataGet.bonden[i].id = i;
-        }
-        LourdesData.SdataGroepen = dataGet;
-        console.log(LourdesData.GdataGroepen);
-        console.log("save data");
-        
-        var newdata1 = LourdesData.GdataGroepen;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
-        SaveDataToFile(dataGroepen, jsonContent)
-    })
-    .post('/newDataWeideLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(LourdesData.GdataWeide)
-        let newData = req.body;
-        let dataGet = LourdesData.GdataWeide;
-        console.log(dataGet)
-        let length = dataGet.weides.length;
-        console.log(length)
-        dataGet.weides[length] = newData;
-        for (let i = 0; i < dataGet.weides.length; i++) {
-            dataGet.weides[i].id = i;
-        }
-        LourdesData.GdataWeide = dataGet;
-        console.log(LourdesData.GdataWeide);
-        console.log("save data");
-        
-        var newdata1 = LourdesData.GdataWeide;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
-        SaveDataToFile(dataWeide, jsonContent)
-    })
-    .post('/newDataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(LourdesData.GdataVastProgramma)
-        let newData = req.body;
-        let dataGet = LourdesData.GdataVastProgramma;
-        console.log(dataGet)
-        let length = dataGet.vast_programma.length;
-        console.log(length)
-        dataGet.vast_programma[length] = newData;
-        for (let i = 0; i < dataGet.vast_programma.length; i++) {
-            dataGet.vast_programma[i].id = i;
-        }
-        LourdesData.GdataVastProgramma = dataGet;
-        console.log(LourdesData.GdataVastProgramma);
-        console.log("save data");
-        
-        var newdata1 = LourdesData.GdataVastProgramma;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
-        SaveDataToFile(dataPathVastProgramma, jsonContent)
-    })
-    .post('/newDataKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(LourdesData.GdatakeuzeProgramma)
-        let newData = req.body;
-        let dataGet = LourdesData.GdatakeuzeProgramma;
-        console.log(dataGet)
-        let adataGet=dataGet.keuze_programma;
-        console.log(adataGet)
-        let length = adataGet.length;
-        console.log(length)
-        adataGet[length] = newData;
-        for (let i = 0; i < adataGet.length; i++) {
-            adataGet[i].id = i;
-        }
-        dataGet.keuze_programma=adataGet;
-        LourdesData.GdataKeuzeProgramma = dataGet;
-        console.log(LourdesData.GdataKeuzeProgramma);
-        console.log("save data");
-        
-        var newdata1 = LourdesData.GdataKeuzeProgramma;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
-        SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
-    })
-    .post('/changedata', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(dataObj.Gdata)
-        let DataFromPage = req.body;
-        let dataGet = dataObj.Gdata;
-        let i = DataFromPage.index;
-        console.log(i)
-        dataGet.members[i].name = DataFromPage.name;
-        dataGet.members[i].country = DataFromPage.country;
-        dataGet.members[i].distance = DataFromPage.distance;
-        dataGet.members[i].imgScr = DataFromPage.imgScr;
-        dataGet.members[i].date = DataFromPage.date;
-
-        for (let i = 0; i < dataGet.members.length; i++) {
-            dataGet.members[i].id = i;
-        }
-        dataObj.Sdata = dataGet;
-        console.log(dataObj.Gdata);
-        console.log("save data");
-        console.log(dataObj.members)
-        var newdata1 = dataObj.Gdata;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
-        SaveDataToFile(dataPath, jsonContent)
-    })
-    .post('/changedataBondenLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let DataFromPage = req.body; 
+        let newData = req.body;
 
-        //reeds opgeslagen data openen 
-        let dataGet = LourdesData.GdataGroepen;
-        
         //data opslaan naar de tussen var
-        let i = DataFromPage.id;
-        dataGet.bonden[i].bond = DataFromPage.bond;
-        dataGet.bonden[i].weide = DataFromPage.weide;
-        dataGet.bonden[i].id = DataFromPage.id;
-        dataGet.bonden[i].keuzeprogramma = DataFromPage.keuzeprogramma;
-        dataGet.bonden[i].vertrekplaast= DataFromPage.vertrekplaast;
+        let dataGet = LourdesData.GdataGroepen;
+        let length = dataGet.bonden.length;
+        dataGet.bonden[length] = newData;
 
         //id opnieuw bepalen
         for (let i = 0; i < dataGet.bonden.length; i++) {
@@ -265,7 +148,132 @@ app
 
         //data terug opslaan naar de globale var
         LourdesData.SdataGroepen = dataGet;
-        
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
+        SaveDataToFile(dataGroepen, jsonContent)
+    })
+    .post('/newDataWeideLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+
+        //data opslaan naar de tussen var
+        let dataGet = LourdesData.GdataWeide;
+
+        //data opslaan naar de tussen var
+        let length = dataGet.weides.length;
+        dataGet.weides[length] = newData;
+
+        //id opnieuw bepalen
+        for (let i = 0; i < dataGet.weides.length; i++) {
+            dataGet.weides[i].id = i;
+        }
+
+        //data terug opslaan naar de globale var
+        LourdesData.GdataWeide = dataGet;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataWeide);
+        SaveDataToFile(dataWeide, jsonContent)
+    })
+    .post('/newDataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+
+        //data opslaan naar de tussen var
+        let dataGet = LourdesData.GdataVastProgramma;
+
+        //data opslaan naar de tussen var
+        let length = dataGet.vast_programma.length;
+        dataGet.vast_programma[length] = newData;
+
+        //id opnieuw bepalen
+        for (let i = 0; i < dataGet.vast_programma.length; i++) {
+            dataGet.vast_programma[i].id = i;
+        }
+
+        //data terug opslaan naar de globale var
+        LourdesData.GdataVastProgramma = dataGet;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
+        SaveDataToFile(dataPathVastProgramma, jsonContent)
+    })
+    .post('/newDataKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+
+        //reeds opgeslagen data openen 
+        let dataGet = LourdesData.GdatakeuzeProgramma;
+
+        //data opslaan naar de tussen var
+        let adataGet = dataGet.keuze_programma;
+        let length = adataGet.length;
+        adataGet[length] = newData;
+
+        //id opnieuw bepalen
+        for (let i = 0; i < adataGet.length; i++) {
+            adataGet[i].id = i;
+        }
+
+        //data terug opslaan naar de globale var
+        dataGet.keuze_programma = adataGet;
+        LourdesData.GdataKeuzeProgramma = dataGet;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataKeuzeProgramma);
+        SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
+    })
+    .post('/changedata', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
+        let dataGet = dataObj.Gdata;
+
+        //data opslaan naar de tussen var
+        let i = DataFromPage.index;
+        dataGet.members[i].name = DataFromPage.name;
+        dataGet.members[i].country = DataFromPage.country;
+        dataGet.members[i].distance = DataFromPage.distance;
+        dataGet.members[i].imgScr = DataFromPage.imgScr;
+        dataGet.members[i].date = DataFromPage.date;
+
+        //id opnieuw bepalen
+        for (let i = 0; i < dataGet.members.length; i++) {
+            dataGet.members[i].id = i;
+        }
+
+        //data terug opslaan naar de globale var
+        dataObj.Sdata = dataGet;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(dataObj.Gdata);
+        SaveDataToFile(dataPath, jsonContent)
+    })
+    .post('/changedataBondenLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
+        let dataGet = LourdesData.GdataGroepen;
+
+        //data opslaan naar de tussen var
+        let i = DataFromPage.id;
+        dataGet.bonden[i].bond = DataFromPage.bond;
+        dataGet.bonden[i].weide = DataFromPage.weide;
+        dataGet.bonden[i].id = DataFromPage.id;
+        dataGet.bonden[i].keuzeprogramma = DataFromPage.keuzeprogramma;
+        dataGet.bonden[i].vertrekplaast = DataFromPage.vertrekplaast;
+
+        //id opnieuw bepalen
+        for (let i = 0; i < dataGet.bonden.length; i++) {
+            dataGet.bonden[i].id = i;
+        }
+
+        //data terug opslaan naar de globale var
+        LourdesData.SdataGroepen = dataGet;
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
         SaveDataToFile(dataGroepen, jsonContent)
@@ -298,18 +306,18 @@ app
 
         //data terug opslaan naar de globale var
         LourdesData.SdataWeide = dataGet;
-        
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataWeide);
         SaveDataToFile(dataWeide, jsonContent)
     })
     .post('/changedataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
-         //data van pagina
+        //data van pagina
         let DataFromPage = req.body;
 
         //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataVastProgramma;
-        let adataGet= dataGet.vast_programma; 
+        let adataGet = dataGet.vast_programma;
 
         //data opslaan naar de tussen var
         let i = DataFromPage.id;
@@ -328,21 +336,23 @@ app
         }
 
         //data terug opslaan naar de globale var
-        dataGet.vast_programma= adataGet;
+        dataGet.vast_programma = adataGet;
         LourdesData.SdataVastProgramma = dataGet;
-        
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
         SaveDataToFile(dataPathVastProgramma, jsonContent)
     })
     .post('/changedatakeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
+        //data van pagina
         let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdatakeuzeProgramma;
-        console.log(dataGet)
-        let adataGet= dataGet.keuze_programma; 
+        let adataGet = dataGet.keuze_programma;
+
+        //data opslaan naar de tussen var
         let i = DataFromPage.id;
-        console.log(i)
         adataGet[i].id = DataFromPage.bond;
         adataGet[i].wat = DataFromPage.wat;
         adataGet[i].waar = DataFromPage.waar;
@@ -351,129 +361,152 @@ app
         adataGet[i].stop = DataFromPage.stop;
         adataGet[i].benodigdheden = DataFromPage.benodigdheden;
         adataGet[i].beschrijving = DataFromPage.beschrijving;
-        
+
+        //id opnieuw bepalen
         for (let i = 0; i < adataGet.length; i++) {
             adataGet[i].id = i;
         }
-        dataGet.keuze_programma= adataGet;
+
+        //data terug opslaan naar de globale var
+        dataGet.keuze_programma = adataGet;
         LourdesData.SdatakeuzeProgramma = dataGet;
-        console.log(LourdesData.SdatakeuzeProgramma);
-        console.log("save data");
-       
-        var newdata1 = LourdesData.GdatakeuzeProgramma;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+        
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
         SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
     })
     .post('/deletdata', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        console.log(dataObj.Gdata)
+        //data van pagina
         let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
         let dataGet = dataObj.Gdata;
+
+        //open te wissen id
         let i = DataFromPage.index;
-        console.log(i)
+       
+        //object wissen en herschikken array
         dataGet.members[i] = null;
         dataGet.members.sort();
         dataGet.members.pop();
 
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.members.length; i++) {
             dataGet.members[i].id = i;
         }
+
+        //data terug opslaan naar de globale var
         dataObj.Sdata = dataGet;
-        console.log(dataObj.Gdata);
-        console.log("save data");
-        console.log(dataObj.members)
-        var newdata1 = dataObj.Gdata;
-        console.log(newdata1)
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+        
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(dataObj.Gdata);
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/deletdataBondenLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
+        //data van pagina
         let DataFromPage = req.body;
+        
+        //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataGroepen;
+
+        //open te wissen id
         let i = DataFromPage.id;
-        console.log(i)
+        
+        //object wissen en herschikken array
         dataGet.bonden[i] = null;
         dataGet.bonden.sort();
         dataGet.bonden.pop();
 
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.bonden.length; i++) {
             dataGet.bonden[i].id = i;
         }
+
+        //data terug opslaan naar de globale var
         LourdesData.SdataGroepen = dataGet;
-        console.log("save data");
-    
-        var newdata1 = LourdesData.GdataGroepen;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
         SaveDataToFile(dataGroepen, jsonContent)
     })
     .post('/deletdataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
+        //data van pagina
         let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataVastProgramma;
+
+        //open te wissen id
         let i = DataFromPage.id;
-        console.log(i)
+    
+        //object wissen en herschikken array
         dataGet.vast_programma[i] = null;
         dataGet.vast_programma.sort();
         dataGet.vast_programma.pop();
 
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.vast_programma.length; i++) {
             dataGet.vast_programma[i].id = i;
         }
+
+        //data terug opslaan naar de globale var
         LourdesData.SdataVastProgramma = dataGet;
-        console.log("save data");
-    
-        var newdata1 = LourdesData.GdataVastProgramma;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+        
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
         SaveDataToFile(dataPathVastProgramma, jsonContent)
     })
     .post('/deletdataKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
+        //data van pagina
         let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdatakeuzeProgramma;
-        console.log(dataGet)
+        
+        //open te wissen id
         let i = DataFromPage.id;
-        console.log(i)
+
+        //object wissen en herschikken array
         dataGet.keuze_programma[i] = null;
         dataGet.keuze_programma.sort();
         dataGet.keuze_programma.pop();
-
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.keuze_programma.length; i++) {
             dataGet.keuze_programma[i].id = i;
         }
-        LourdesData.SdataKeuzeProgramma = dataGet;
-        console.log("save data");
-    
-        var newdata1 = LourdesData.GdatakeuzeProgramma;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+
+        //data terug opslaan naar de globale var
+        LourdesData.SdataKeuzeProgramma = dataGet; 
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
         SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
     })
     .post('/deletdataWeideLourdes', bodyParser.json(), (req, res) => {
-        console.log(req.body)
+        //data van pagina
         let DataFromPage = req.body;
+
+        //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataWeide;
-        console.log(dataGet)
-        console.log(dataGet.weides)
+        
+        //open te wissen id
         let i = DataFromPage.id;
-        console.log(i)
+        
+        //object wissen en herschikken array
         dataGet.weides[i] = null;
         dataGet.weides.sort();
         dataGet.weides.pop();
 
+        //id opnieuw bepalen
         for (let i = 0; i < dataGet.weides.length; i++) {
             dataGet.weides[i].id = i;
         }
+
+        //data terug opslaan naar de globale var
         LourdesData.SdataWeide = dataGet;
-        console.log("save data");
-    
-        var newdata1 = LourdesData.GdataWeide;
-        var jsonContent = JSON.stringify(newdata1);
-        console.log(jsonContent);
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataWeide);
         SaveDataToFile(dataWeide, jsonContent)
     })
     .post('/logout', bodyParser.json(), (req, res) => {
@@ -596,41 +629,41 @@ app
     })
     .get('/dataLourdes', function (req, res) {
 
-    
-            fs.readFile(dataGroepen, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                LourdesData.SdataGroepen=JSON.parse(data);
-               
-               
-            });
 
-            fs.readFile(dataWeide, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                LourdesData.SdataWeide=JSON.parse(data);
-            });
+        fs.readFile(dataGroepen, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            LourdesData.SdataGroepen = JSON.parse(data);
 
-            fs.readFile(dataPathVastProgramma, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                LourdesData.SdataVastProgramma=JSON.parse(data);
-            });
-            fs.readFile(dataPathKeuzeProgramma, (err, data) => {
-                if (err) {
-                    throw err;
-                }
-                LourdesData.SdatakeuzeProgramma=JSON.parse(data);
-            });
 
-            console.log(LourdesData)
-            res.json(LourdesData);
+        });
+
+        fs.readFile(dataWeide, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            LourdesData.SdataWeide = JSON.parse(data);
+        });
+
+        fs.readFile(dataPathVastProgramma, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            LourdesData.SdataVastProgramma = JSON.parse(data);
+        });
+        fs.readFile(dataPathKeuzeProgramma, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            LourdesData.SdatakeuzeProgramma = JSON.parse(data);
+        });
+
+        console.log(LourdesData)
+        res.json(LourdesData);
     })
 
-.get('/TotalDist', function (req, res) {
+    .get('/TotalDist', function (req, res) {
 
         if (dataObj == null || dataObj == undefined) {
             console.log("data not load")
