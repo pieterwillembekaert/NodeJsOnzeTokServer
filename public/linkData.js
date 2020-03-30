@@ -248,6 +248,7 @@ function toonData($scope,IN_dataWeide,IN_dataGroepen,IN_vastprogramma, IN_keuzep
 
     $scope.keuzeprogrammaBond= IN_keuzeprogramma[idKeuzeProgramma]; 
     $scope.weideProgramma = IN_dataWeide[idWeide];
+    
     $scope.activiteit_NM_2108 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2108);
     $scope.activiteit_VM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].VM_2208);
     $scope.activiteit_NM_2208 = zoekIDvastProgramma(IN_vastprogramma, IN_dataWeide[idWeide].NM_2208);

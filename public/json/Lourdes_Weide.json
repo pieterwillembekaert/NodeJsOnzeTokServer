@@ -2,7 +2,7 @@
     "weides": [{
         "id": 0,
         "weide": "A",
-        "NM_2108": "IN_IN_keuzeprogramma per weide",
+        "NM_2108": "Keuzeprogramma per weide",
         "VM_2208": "Quest",
         "NM_2208": "Quest",
         "VM_2308": "Daguitstap",
@@ -14,7 +14,7 @@
     }, {
         "id": 1,
         "weide": "B",
-        "NM_2108": "IN_IN_keuzeprogramma per weide",
+        "NM_2108": "Keuzeprogramma per weide",
         "VM_2208": "Sport",
         "NM_2208": "Sport",
         "VM_2308": "Quest",
@@ -26,7 +26,7 @@
     }, {
         "id": 2,
         "weide": "C",
-        "NM_2108": "IN_IN_keuzeprogramma per weide",
+        "NM_2108": "Keuzeprogramma per weide",
         "VM_2208": "Bergtocht",
         "NM_2208": "Bergtocht",
         "VM_2308": "Sport",
@@ -38,7 +38,7 @@
     }, {
         "id": 3,
         "weide": "D",
-        "NM_2108": "IN_IN_keuzeprogramma per weide",
+        "NM_2108": "Keuzeprogramma per weide",
         "VM_2208": "Daguitstap",
         "NM_2208": "Daguitstap",
         "VM_2308": "Bergtocht",
