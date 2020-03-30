@@ -87,8 +87,12 @@ app
     .use(express.static('public'),
         function (req, res, next) {
             res
-                .header("Acces-Control-Allow-Origin", "*")
-                .header("Acces-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            .setHeader("Access-Control-Allow-Origin", "*")
+            // Request headers you wish to allow
+            .setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+            // Set to true if you need the website to include cookies in the requests sent
+            .setHeader('Access-Control-Allow-Credentials', true)
+            // Pass to next layer of middleware
             next();
         }
 

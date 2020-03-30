@@ -7,7 +7,7 @@ var selectKeuzeProgramma = [];
 
 function DataIn() {
   var state;
-  var jqxhr = $.getJSON("http://onzetokdewereldrond.herokuapp.com/data", function (json) {
+  var jqxhr = $.getJSON("https://onzetokdewereldrond.herokuapp.com/data", function (json) {
           // console.log("success");
       })
       .done(function (json) {
