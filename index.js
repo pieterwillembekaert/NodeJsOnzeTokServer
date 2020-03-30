@@ -84,7 +84,17 @@ const dataPathKeuzeProgramma = "./public/json/Lourdes_KeuzeProgramma.json";
  * Routes Definitions
  */
 app
-    .use(express.static('public'))
+    .use(express.static('public'),
+        function (req, res, next) {
+            res
+                .header("Acces-Control-Allow-Origin", "*");
+            next();
+        }
+
+
+    )
+
+
     .get('/home/login', function (req, res) {
         console.log('Login request');
         res.status(200).send('Login from server.');
@@ -127,7 +137,7 @@ app
 
         //data terug opslaan naar de globale var
         dataObj.Sdata = dataGet;
-     
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(dataObj.Gdata);
         SaveDataToFile(dataPath, jsonContent)
@@ -370,7 +380,7 @@ app
         //data terug opslaan naar de globale var
         dataGet.keuze_programma = adataGet;
         LourdesData.SdatakeuzeProgramma = dataGet;
-        
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
         SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
@@ -384,7 +394,7 @@ app
 
         //open te wissen id
         let i = DataFromPage.index;
-       
+
         //object wissen en herschikken array
         dataGet.members[i] = null;
         dataGet.members.sort();
@@ -397,7 +407,7 @@ app
 
         //data terug opslaan naar de globale var
         dataObj.Sdata = dataGet;
-        
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(dataObj.Gdata);
         SaveDataToFile(dataPath, jsonContent)
@@ -405,13 +415,13 @@ app
     .post('/deletdataBondenLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let DataFromPage = req.body;
-        
+
         //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataGroepen;
 
         //open te wissen id
         let i = DataFromPage.id;
-        
+
         //object wissen en herschikken array
         dataGet.bonden[i] = null;
         dataGet.bonden.sort();
@@ -438,7 +448,7 @@ app
 
         //open te wissen id
         let i = DataFromPage.id;
-    
+
         //object wissen en herschikken array
         dataGet.vast_programma[i] = null;
         dataGet.vast_programma.sort();
@@ -451,7 +461,7 @@ app
 
         //data terug opslaan naar de globale var
         LourdesData.SdataVastProgramma = dataGet;
-        
+
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
         SaveDataToFile(dataPathVastProgramma, jsonContent)
@@ -462,7 +472,7 @@ app
 
         //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdatakeuzeProgramma;
-        
+
         //open te wissen id
         let i = DataFromPage.id;
 
@@ -476,7 +486,7 @@ app
         }
 
         //data terug opslaan naar de globale var
-        LourdesData.SdataKeuzeProgramma = dataGet; 
+        LourdesData.SdataKeuzeProgramma = dataGet;
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
@@ -488,10 +498,10 @@ app
 
         //reeds opgeslagen data openen 
         let dataGet = LourdesData.GdataWeide;
-        
+
         //open te wissen id
         let i = DataFromPage.id;
-        
+
         //object wissen en herschikken array
         dataGet.weides[i] = null;
         dataGet.weides.sort();
