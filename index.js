@@ -91,8 +91,7 @@ app
             // Request headers you wish to allow
             .setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
             // Set to true if you need the website to include cookies in the requests sent
-            .setHeader('Access-Control-Allow-Credentials', true)
-            // Pass to next layer of middleware
+            
             next();
         }
 
