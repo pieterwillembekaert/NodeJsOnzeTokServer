@@ -6,44 +6,54 @@
   <div class="container">
     <p>
       Op deze pagina kan een bond toegevoed worden aan de database. <br>
-      Onderaan de pagina is een formulier terug te vinden.
+      In de laatste tabel kunnen volgende velden ingevuld worden:
       <ul>
         <li>bond: voer de naam in van de bond</li>
         <li>weide: kies de weide van de bond</li>
         <li>keuzeprogramma: kies het keuzeprogramma</li>
         <li>index: niet invullen, dit is informatief</li>
       </ul>
-
       <br><br>
-      Als de weide niet zichtbaar is, dan kan een weide aangemaakt worden op de pagina "Database weide".
-      <br><br>
-      De keuze programma's dienen eerst aangemaakt te worden binnen de pagina "Database keuze programma".
-      <br><br>
-      Opmerking: als de data bij het inladen niet onmiddellijk zichtbaar is refresh de pagina.
-      <br><br>
-      download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup.
+      <a href="#!/info" ng-click="" class="btn waves-effect waves-light col s12">lees meer</a>
     </p>
   </div>
+  
 
   <div id="table" class="container">
-    <table>
+    <table class="striped responsive-table">
       <tr>
-        <th>wijzig</th>
-        <th>id</th>
-        <th>bond</th>
-        <th>weide</th>
-        <th>keuzeprogramma</th>
-        <th>vertrekplaats</th>
+        <th>ACTIE</th>
+        <th>ID</th>
+        <th>BOND</th>
+        <th>WEIDE</th>
+        <th>KEUZEPROGRAMMA</th>
+        <th>VERTREKPLAATS</th>
       </tr>
       <tr ng-repeat="x in dataGroepen">
-        <td> <a href="#!/databaseBonden#controlpanel" ng-click="editUser(x.id)"
-            class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td> <a ng-click="editUser(x.id)" class="waves-effect waves-light col s12 material-icons">edit</a>
+
+          <a ng-click="removeData1(x.id)"
+            class="materialize-red-text waves-effect waves-light col s12 material-icons">delete</a>
+        </td>
         <td>{{ x.id }}</td>
         <td>{{ x.bond }}</td>
         <td>{{ x.weide }}</td>
         <td>{{ x.keuzeprogramma }}</td>
         <td>{{ x.vertrekplaats }}</td>
-
+      </tr>
+      <tr class="inputTR">
+        <td><a ng-click="addData()" ng-show="done=='nShow'" ng-hide="done=='Show'"
+            class="waves-effect waves-light col s12 material-icons">group_add</a>
+          <a ng-click="changeData()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+            class="green-text waves-effect waves-light col s12 material-icons">done</a>
+          <a ng-click="verwerp()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+            class="orange-text waves-effect waves-light col s12 material-icons">refresh</a>
+        </td>
+        <td class="grey-text text-lighten-1">{{id}}</td>
+        <td><input type="text" ng-init="Bond" ng-model="bond"></td>
+        <td><select ng-model="selectedWeide" ng-options="x for x in weides"></select></td>
+        <td><select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select></td>
+        <td><input type="text" ng-model="vertrekplaats"></td>
       </tr>
     </table>
   </div>
@@ -52,11 +62,11 @@
 
 
   <div class="container" id="controlpanel">
-    <form>
+    <!--<form>
 
       <div class="row">
         <div class="input-field col s6">
-          bond: <input type="text" ng-model="bond">
+          bond: <input type="text" ng-init="Bond" ng-model="bond">
         </div>
 
         <div class="input-field col s6">
@@ -77,13 +87,17 @@
           keuzeprogramma: <select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select>
         </div>
       </div>
-      <br>
-      <br>
-      <br>
-      <a href="#!/databaseBonden" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
-      <a href="#!/databaseBonden" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
-      <a href="#!/databaseBonden" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
-      <a href="/downloadBondenLourdes" class="btn waves-effect waves-light col s12">download</a>
-
+      -->
+    <br>
+    <br>
+    <br>
+    <!--<a  ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>-->
+    <!-- <a ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>-->
+    <!-- <a  ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a> -->
     </form>
+    <a href="#!/databaseBonden" ng-click="saveToDB()" class="btn waves-effect waves-light col s12 material-icons">save
+      OPSLAAN NAAR DATABASE</a>
+    <a href="/downloadBondenLourdes" class="btn waves-effect waves-light col s12 material-icons">file_download DOWNLOAD
+      BESTAND</a>
+
   </div>

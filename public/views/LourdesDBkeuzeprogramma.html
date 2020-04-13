@@ -4,44 +4,44 @@
     </div>
     <div class="container">
         <p>
-          Op deze pagina worden alle keuze activiteit aangemaakt. Deze activiteit worden gekoppeld aan de database van de bonden <br>
-          Onderaan de pagina is een formulier terug te vinden.
-          <ul>
-            <li>id: niet invullen, dit is informatief</li>
-            <li>wat: naam van de activiteit</li>
-            <li>waar: locatie</li>
-            <li>duur: hoelang de activiteit start</li>
-            <li>start: tijdstip wanneer de activiteit start</li>
-            <li>stop: tijdstip wanneer de activiteit stopt</li>
-            <li>benodigdheden</li>
-            <li>beschrijving: korte omschrijving van de activiteit</li>
-          </ul>
-    
-          <br><br>
-          <br><br>
-          Opmerking: als de data bij het inladen niet onmiddellijk zichtbaar is refresh de pagina.
-          <br><br>
-          download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup. 
+            Op deze pagina worden alle keuze activiteit aangemaakt. Deze activiteit worden gekoppeld aan de database van
+            de bonden <br>
+            In de laatste tabel kunnen volgende velden ingevuld worden:
+            <ul>
+                <li>id: niet invullen, dit is informatief</li>
+                <li>wat: naam van de activiteit</li>
+                <li>waar: locatie</li>
+                <li>duur: hoelang de activiteit start</li>
+                <li>start: tijdstip wanneer de activiteit start</li>
+                <li>stop: tijdstip wanneer de activiteit stopt</li>
+                <li>benodigdheden</li>
+                <li>beschrijving: korte omschrijving van de activiteit</li>
+            </ul>
+            <br><br>
+            <a href="#!/info" ng-click="" class="btn waves-effect waves-light col s12">lees meer</a>
         </p>
-      </div>
+
+
+    </div>
     <div id="table" class="container">
-        <table>
+        <table class="striped responsive-table">
             <tr>
-                <th>wijzig</th>
-                <th>id</th>
-                <th>wat</th>
-                <th>waar</th>
-                <th>duur</th>
-                <th>start</th>
-                <th>stop</th>
+                <th>ACTIE</th>
+                <th>ID</th>
+                <th>WAT</th>
+                <th>WAAR</th>
+                <th>DUUR</th>
+                <th>START</th>
+                <th>STOP</th>
                 <th>benodigdheden</th>
                 <th>beschrijving</th>
-            
-
             </tr>
             <tr ng-repeat="x in dataKeuzeprogramma">
-                <td> <a href="#!/databaseKeuzeProgramma#controlpanel" ng-click="editUser(x.id)"
-                        class="btn waves-effect waves-light col s12">wijzig</a></td>
+                <td> <a ng-click="editUser(x.id)" class="waves-effect waves-light col s12 material-icons">edit</a>
+
+                    <a ng-click="removeData1(x.id)"
+                        class="materialize-red-text waves-effect waves-light col s12 material-icons">delete</a>
+                </td>
                 <td>{{ x.id }}</td>
                 <td>{{ x.wat }}</td>
                 <td>{{ x.waar }}</td>
@@ -51,13 +51,30 @@
                 <td>{{ x.benodigdheden }}</td>
                 <td>{{ x.beschrijving }}</td>
             </tr>
+            <tr class="inputTR">
+                <td><a ng-click="addData()" ng-show="done=='nShow'" ng-hide="done=='Show'"
+                        class="waves-effect waves-light col s12 material-icons">group_add</a>
+                    <a ng-click="changeData()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+                        class="green-text waves-effect waves-light col s12 material-icons">done</a>
+                    <a ng-click="verwerp()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+                        class="orange-text waves-effect waves-light col s12 material-icons">refresh</a>
+                </td>
+                <td class="grey-text text-lighten-1">{{id}}</td>
+                <td><input type="text" ng-model="wat"></td>
+                <td><input type="text" ng-model="waar"></td>
+                <td><input type="text" ng-model="duur"></td>
+                <td><input type="text" ng-model="start"></td>
+                <td> <input type="text" ng-model="stop"></td>
+                <td><input type="text" ng-model="benodigdheden"></td>
+                <td><input type="text" ng-model="beschrijving"></td>
+            </tr>
         </table>
     </div>
     <br>
     <br>
 
     <div class="container" id="controlpanel">
-        <form>
+        <!--   <form>
 
             <div class="row">
                 <div class="input-field col s6">
@@ -96,11 +113,20 @@
                     beschrijving: <input type="text" ng-model="beschrijving">
                 </div>
             </div>
-           
-            <a href="#!/databaseKeuzeProgramma" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
-            <a href="#!/databaseKeuzeProgramma" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
-            <a href="#!/databaseKeuzeProgramma" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
-            <a href="/downloadKeuzeProgrammaLourdes" class="btn waves-effect waves-light col s12">download</a>
 
-        </form>
+            <a href="#!/databaseKeuzeProgramma" ng-click="addData()"
+                class="btn waves-effect waves-light col s12">nieuw</a>
+            <a href="#!/databaseKeuzeProgramma" ng-click="changeData()"
+                class="btn waves-effect waves-light col s12">wijzig</a>
+            <a href="#!/databaseKeuzeProgramma" ng-click="removeData()"
+                class="btn waves-effect waves-light col s12">wis</a>
+
+
+            
+
+        </form>-->
+        <a href="#!/databaseBonden" ng-click="saveToDB()"
+            class="btn waves-effect waves-light col s12 material-icons">save OPSLAAN NAAR DATABASE</a>
+        <a href="/downloadKeuzeProgrammaLourdes"
+            class="btn waves-effect waves-light col s12 material-icons">file_download DOWNLOAD BESTAND</a>
     </div>

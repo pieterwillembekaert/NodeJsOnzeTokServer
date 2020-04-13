@@ -76,8 +76,8 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));
 const dataPath = "./public/json/bezocht.json";
 const dataCountry = "./public/json/country.json";
-const dataGroepen = "./public/json/Lourdes_Groepen.json";
-const dataWeide = "./public/json/Lourdes_Weide.json";
+const dataPathGroepen = "./public/json/Lourdes_Groepen.json";
+const dataPathWeide = "./public/json/Lourdes_Weide.json";
 const dataPathVastProgramma = "./public/json/Lourdes_VastProgramma.json";
 const dataPathKeuzeProgramma = "./public/json/Lourdes_KeuzeProgramma.json";
 /**
@@ -91,14 +91,9 @@ app
             // Request headers you wish to allow
             .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
             // Set to true if you need the website to include cookies in the requests sent
-            
             next();
         }
-
-
     )
-
-
     .get('/home/login', function (req, res) {
         console.log('Login request');
         res.status(200).send('Login from server.');
@@ -165,7 +160,75 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
-        SaveDataToFile(dataGroepen, jsonContent)
+        SaveDataToFile(dataPathGroepen, jsonContent)
+    })
+    .post('/saveToDBBondenLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+        console.log(newData)
+
+        var objnewdata= {
+            bonden: []
+        }
+
+        objnewdata.bonden=newData
+        //data terug opslaan naar de globale var
+        LourdesData.SdataGroepen = objnewdata;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
+        SaveDataToFile(dataPathGroepen, jsonContent)
+    })
+    .post('/saveToDBWeidesLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+        console.log(newData)
+
+        var objnewdata= {
+            weides: []
+        }
+
+        objnewdata.weides=newData
+        //data terug opslaan naar de globale var
+        LourdesData.SdataWeide = objnewdata;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataWeide);
+        SaveDataToFile(dataPathWeide, jsonContent)
+    })
+    .post('/saveToDBVastProgrammaLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+        console.log(newData)
+
+        var objnewdata= {
+            vast_programma: []
+        }
+
+        objnewdata.vast_programma=newData
+        //data terug opslaan naar de globale var
+        LourdesData.SdataVastProgramma = objnewdata;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
+        SaveDataToFile(dataPathVastProgramma, jsonContent)
+    })
+    .post('/saveToDBKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newData = req.body;
+        console.log(newData)
+
+        var objnewdata= {
+            keuze_programma: []
+        }
+
+        objnewdata.keuze_programma=newData
+        //data terug opslaan naar de globale var
+        LourdesData.SdatakeuzeProgramma = objnewdata;
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
+        SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
     })
     .post('/newDataWeideLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -188,7 +251,7 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataWeide);
-        SaveDataToFile(dataWeide, jsonContent)
+        SaveDataToFile(dataPathWeide, jsonContent)
     })
     .post('/newDataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -290,7 +353,7 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
-        SaveDataToFile(dataGroepen, jsonContent)
+        SaveDataToFile(dataPathGroepen, jsonContent)
     })
     .post('/changedataWeidesLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -323,7 +386,7 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataWeide);
-        SaveDataToFile(dataWeide, jsonContent)
+        SaveDataToFile(dataPathWeide, jsonContent)
     })
     .post('/changedataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -441,7 +504,7 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
-        SaveDataToFile(dataGroepen, jsonContent)
+        SaveDataToFile(dataPathGroepen, jsonContent)
     })
     .post('/deletdataVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -521,7 +584,7 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataWeide);
-        SaveDataToFile(dataWeide, jsonContent)
+        SaveDataToFile(dataPathWeide, jsonContent)
     })
     .post('/logout', bodyParser.json(), (req, res) => {
         login.actief = false;
@@ -590,14 +653,14 @@ app
 
         res
             .status(200)
-            .download(dataGroepen)
+            .download(dataPathGroepen)
 
     })
     .get('/downloadWeidesLourdes', bodyParser.json(), function (req, res) {
 
         res
             .status(200)
-            .download(dataWeide)
+            .download(dataPathWeide)
 
     })
     .get('/downloadVastProgrammaLourdes', bodyParser.json(), function (req, res) {
@@ -644,7 +707,7 @@ app
     .get('/dataLourdes', function (req, res) {
 
 
-        fs.readFile(dataGroepen, (err, data) => {
+        fs.readFile(dataPathGroepen, (err, data) => {
             if (err) {
                 throw err;
             }
@@ -653,7 +716,7 @@ app
 
         });
 
-        fs.readFile(dataWeide, (err, data) => {
+        fs.readFile(dataPathWeide, (err, data) => {
             if (err) {
                 throw err;
             }

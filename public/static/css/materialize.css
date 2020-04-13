@@ -37,6 +37,11 @@
     src: url(fonts/MinionPro-Regular.otf);
 }
 
+/*table */
+.inputTR {
+    border: 2px dashed #e0e0e0;
+
+}
 
 div.polaroid {
     width: 80%;

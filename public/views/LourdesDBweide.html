@@ -5,32 +5,30 @@
 
     <div class="container">
         <p>
-          Op deze pagina kan een activiteit gekozen worden per weide. <br>
-          Onderaan de pagina is een formulier terug te vinden.
-          <ul>
-            
-            <li>weide: kies de weide van de bond</li>
-            <li>id: niet invullen, dit is informatief</li>
-            <li>datum: kies de activiteit.</li>
-          </ul>
-    
-          <br><br>
-          Als de activiteiten niet zichtbaar zijn, dan kan een activiteit aangemaakt worden op de pagina "Database vast programma".
-          <br><br>
-          De vaste programma's dienen eerst aangemaakt te worden binnen de pagina "Database vast programma".
-          <br><br>
-          Opmerking: als de data bij het inladen niet onmiddellijk zichtbaar is refresh de pagina.
-          <br><br>
-          download: klik op de knop download om de huidige database te downloaden. Dit bestand kan dienen als backup. 
-        </p>
-      </div>
+            Op deze pagina kan een activiteit gekozen worden per weide. <br>
+            In de laatste tabel kunnen volgende velden ingevuld worden:
+            <ul>
 
+                <li>weide: kies de weide van de bond</li>
+                <li>id: niet invullen, dit is informatief</li>
+                <li>datum: kies de activiteit.</li>
+            </ul>
+            <br><br>
+            <a href="#!/info" ng-click="" class="btn waves-effect waves-light col s12">info</a>
+            
+
+        </p>
+            
+       
+    </div>
+
+   
     <div id="table" class="container">
-        <table>
+        <table class="striped responsive-table">
             <tr>
-                <th>wijzig</th>
-                <th>id</th>
-                <th>weide</th>
+                <th>ACTIE</th>
+                <th>ID</th>
+                <th>WEIDE</th>
                 <th>NM_2108</th>
                 <th>VM_2208</th>
                 <th>NM_2208</th>
@@ -43,8 +41,10 @@
 
             </tr>
             <tr ng-repeat="x in dataWeide">
-                <td> <a href="#!/databaseWeide#controlpanel" ng-click="editUser(x.id)"
-                        class="btn waves-effect waves-light col s12">wijzig</a></td>
+                <td> <a ng-click="editUser(x.id)" class=" waves-effect waves-light col s12 material-icons">edit</a>
+
+                    <a ng-click="removeData1(x.id)" class="materialize-red-text waves-effect waves-light col s12 material-icons">delete</a>
+                </td>
                 <td>{{ x.id }}</td>
                 <td>{{ x.weide }}</td>
                 <td>{{ x.NM_2108 }}</td>
@@ -57,13 +57,30 @@
                 <td>{{ x.VM_2608 }}</td>
                 <td>{{ x.NM_2608 }}</td>
             </tr>
+            <tr class="inputTR">
+                <td><a ng-click="addData()" ng-show="done=='nShow'" ng-hide="done=='Show'" class="waves-effect waves-light col s12 material-icons">group_add</a> 
+                    <a ng-click="changeData()" ng-show="done=='Show'" ng-hide="done=='nShow'" class="green-text waves-effect waves-light col s12 material-icons">done</a>
+                    <a ng-click="verwerp()" ng-show="done=='Show'" ng-hide="done=='nShow'" class="orange-text waves-effect waves-light col s12 material-icons">refresh</a>
+                </td>
+                <td class="grey-text text-lighten-1">{{id}}</td>
+                <td><select ng-model="weide" ng-options="x for x in weides"></select></td>
+                <td><select ng-model="NM_2108" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td> <select ng-model="VM_2208" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="NM_2208" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="VM_2308" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="NM_2308" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="VM_2508" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="NM_2508" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="VM_2608" ng-options="x for x in VastProgrammaSelect"></select></td>
+                <td><select ng-model="NM_2608" ng-options="x for x in VastProgrammaSelect"></select></td>
+            </tr>
         </table>
     </div>
     <br>
     <br>
 
     <div class="container" id="controlpanel">
-        <form>
+        <!--<form>
 
             <div class="row">
                 <div class="input-field col s6">
@@ -77,7 +94,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    NM_2108: 
+                    NM_2108:
                     <select ng-model="NM_2108" ng-options="x for x in VastProgrammaSelect"></select>
                 </div>
 
@@ -124,5 +141,10 @@
             <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
             <a href="/downloadWeidesLourdes" class="btn waves-effect waves-light col s12">download</a>
 
-        </form>
+        </form>-->
+
+        <a href="#!/databaseBonden" ng-click="saveToDB()"
+            class="btn waves-effect waves-light col s12 material-icons">save OPSLAAN NAAR DATABASE</a>
+        <a href="/downloadWeidesLourdes" class="btn waves-effect waves-light col s12 material-icons">file_download
+            DOWNLOAD BESTAND</a>
     </div>

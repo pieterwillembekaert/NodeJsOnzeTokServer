@@ -146,9 +146,8 @@ app
                 templateUrl: 'views/timeline.html',
                 controller: 'timeline'
             })
-            .otherwise('/', {
-                templateUrl: 'views/kiesbond.html',
-                controller: 'Kiesbond'
+            .otherwise('/kiesbond', {
+                
             });
     })
     .controller('Kiesbond', function ($scope, $http, $cookies) {

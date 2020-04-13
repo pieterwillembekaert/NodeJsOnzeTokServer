@@ -166,9 +166,6 @@ app
         })
         window.open("/login", "_self");
 
-
-
-
       }
 
     });
