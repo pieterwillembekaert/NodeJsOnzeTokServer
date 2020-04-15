@@ -1,35 +1,9 @@
 var DataFromJs, DataFromJsCountrys;
 var dataGroepen, dataWeide, dataVastprogramma, dataKeuzeprogramma;
+var lastUpdateDataGroepen, lastUpdateDataWeide, lastUpdateDataVastprogramma, lastUpdateDataKeuzeprogramma;
 var SelectWeides = ["A", "B", "C", "D"];
 var selectVastProgramma = [];
 var selectKeuzeProgramma = [];
-
-
-function DataIn() {
-  var state;
-  var jqxhr = $.getJSON("https://onzetokdewereldrond.herokuapp.com/data", function (json) {
-      // console.log("success");
-    })
-    .done(function (json) {
-      console.log("second success" + json);
-      state = "second success";
-    })
-    .fail(function () {
-      // console.log("error");
-      state = "error";
-
-    })
-    .always(function (json) {
-      // console.log("complete");
-      state = "complete";
-      var dataIN = json;
-      console.log(dataIN)
-
-    });
-}
-
-
-
 
 
 var app = angular.module('databaseLourdes', ['ngRoute']);
@@ -61,36 +35,36 @@ app
       })
       .when('/info', {
         templateUrl: 'views/LourdesDBInfo.html',
-        
-      })
 
+      })
       .otherwise('/databaseBonden');
   })
-
   .controller('database',
-
     function ($scope, $http, $window) {
-
       $http({
         method: 'get',
         url: '/dataLourdes'
       }).then(function (response) {
         console.log(response, 'res');
+
         dataGroepen = response.data.Groepen.bonden;
-        dataWeide = response.data.weide;
+        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+
+        dataWeide = response.data.weide.weides;
+        lastUpdateDataWeide= response.data.weide.lastUpdate;
+
         dataVastprogramma = response.data.vastProgramma.vast_programma;
+        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
 
-        console.log(dataGroepen);
-        console.log(dataWeide);
-        console.log(dataVastprogramma);
-        console.log(dataKeuzeprogramma);
+        $scope.dataVastprogramma = dataVastprogramma;
 
-
+      
         $scope.dataGroepen = dataGroepen;
         $scope.selectWeide = ["A", "B", "C", "D"];
 
-        DataIn();
 
         for (let i = 0; i < dataVastprogramma.length; i++) {
           selectVastProgramma[i] = dataVastprogramma[i].wat;
@@ -106,30 +80,33 @@ app
         console.log(error, 'can not get the data.');
 
       });
-
     })
   .controller('LourdesDBbonden',
 
     function ($scope, $http, $window) {
-
       $http({
         method: 'get',
         url: '/dataLourdes'
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        dataWeide = response.data.weide;
+        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+
+        dataWeide = response.data.weide.weides;
+        lastUpdateDataWeide= response.data.weide.lastUpdate;
+
         dataVastprogramma = response.data.vastProgramma.vast_programma;
+        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
 
-        console.log(dataGroepen);
-        console.log(dataWeide);
-        console.log(dataVastprogramma);
-        console.log(dataKeuzeprogramma);
-
+        $scope.dataVastprogramma = dataVastprogramma;
         $scope.dataGroepen = dataGroepen;
         $scope.weides = SelectWeides;
         $scope.selectKeuzeprogramma = selectKeuzeProgramma;
+
+        $scope.lastUpdate= lastUpdateDataGroepen;
 
         for (let i = 0; i < dataVastprogramma.length; i++) {
           selectVastProgramma[i] = dataVastprogramma[i].wat;
@@ -142,8 +119,8 @@ app
       }, function (error) {
         console.log(error, 'can not get data.');
       });
-      $scope.done= "nShow";
-      
+      $scope.done = "nShow";
+
       //edit data in form
       $scope.editUser = function (id) {
         $scope.bond = dataGroepen[id].bond;
@@ -151,7 +128,7 @@ app
         $scope.id = dataGroepen[id].id;
         $scope.keuzeprogramma = dataGroepen[id].keuzeprogramma;
         $scope.vertrekplaats = dataGroepen[id].vertrekplaats;
-        $scope.done= "Show";
+        $scope.done = "Show";
       }
 
       //verwerpen
@@ -161,7 +138,7 @@ app
         $scope.id = "";
         $scope.keuzeprogramma = "";
         $scope.vertrekplaats = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
       }
 
       //Add data
@@ -173,7 +150,7 @@ app
           "keuzeprogramma": "",
           "vertrekplaats": ""
         }
-        
+
         data.id = $scope.dataGroepen.length;
         data.bond = $scope.bond;
         data.weide = $scope.selectedWeide;
@@ -182,11 +159,17 @@ app
 
         $scope.dataGroepen.push(data);
 
-        $scope.id="";
-        $scope.bond="";
-        $scope.selectedWeide="";
-        $scope.keuzeprogramma="";
-        $scope.vertrekplaats="";
+        $scope.id = "";
+        $scope.bond = "";
+        $scope.selectedWeide = "";
+        $scope.keuzeprogramma = "";
+        $scope.vertrekplaats = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataGroepen.full= String(full);
+        lastUpdateDataGroepen.time= time;
       }
 
       //Aanpassen database
@@ -224,12 +207,18 @@ app
           };
         });
 
-        $scope.id="";
-        $scope.bond="";
-        $scope.selectedWeide="";
-        $scope.keuzeprogramma="";
-        $scope.vertrekplaats="";
-        $scope.done= "nShow"
+        $scope.id = "";
+        $scope.bond = "";
+        $scope.selectedWeide = "";
+        $scope.keuzeprogramma = "";
+        $scope.vertrekplaats = "";
+        $scope.done = "nShow"
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataGroepen.full= String(full);
+        lastUpdateDataGroepen.time= time;
       }
 
       //Remove data
@@ -261,11 +250,17 @@ app
         console.log(dataGroepen)
         dataGroepen = $scope.dataGroepen;
 
-        $scope.id="";
-        $scope.bond="";
-        $scope.selectedWeide="";
-        $scope.keuzeprogramma="";
-        $scope.vertrekplaats="";
+        $scope.id = "";
+        $scope.bond = "";
+        $scope.selectedWeide = "";
+        $scope.keuzeprogramma = "";
+        $scope.vertrekplaats = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataGroepen.full= String(full);
+        lastUpdateDataGroepen.time= time;
       }
 
       //Remove data new
@@ -297,19 +292,34 @@ app
         console.log(dataGroepen)
         dataGroepen = $scope.dataGroepen;
 
-        $scope.id="";
-        $scope.bond="";
-        $scope.selectedWeide="";
-        $scope.keuzeprogramma="";
-        $scope.vertrekplaats="";
+        $scope.id = "";
+        $scope.bond = "";
+        $scope.selectedWeide = "";
+        $scope.keuzeprogramma = "";
+        $scope.vertrekplaats = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataGroepen.full= String(full);
+        lastUpdateDataGroepen.time= time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
+        var postData={
+          dataGroepen: {},
+          lastUpdate: {}
+        }; 
+
+        postData.dataGroepen= dataGroepen; 
+        postData.lastUpdate= lastUpdateDataGroepen;
+
         $http({
           method: "POST",
           url: "/saveToDBBondenLourdes",
-          data: dataGroepen
+          data: postData
+          
         })
         $window.location.reload();
       }
@@ -331,30 +341,36 @@ app
         url: '/dataLourdes'
       }).then(function (response) {
         console.log(response, 'res');
-        dataGroepen = response.data.Groepen.bonden;
-        dataWeide = response.data.weide.weides;
-        dataVastprogramma = response.data.vastProgramma.vast_programma;
-        dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
 
-        console.log(dataGroepen);
-        console.log(dataWeide);
-        console.log(dataVastprogramma);
-        console.log(dataKeuzeprogramma);
+        dataGroepen = response.data.Groepen.bonden;
+        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+
+        dataWeide = response.data.weide.weides;
+        lastUpdateDataWeide= response.data.weide.lastUpdate;
+
+        dataVastprogramma = response.data.vastProgramma.vast_programma;
+        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+
+        dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+
+        $scope.lastUpdate= lastUpdateDataWeide;
+
+        $scope.dataVastprogramma = dataVastprogramma;
 
         $scope.dataWeide = dataWeide;
         $scope.weides = SelectWeides;
 
-
-        console.log(selectVastProgramma)
         $scope.VastProgrammaSelect = selectVastProgramma;
         $scope.VastProgrammaSelect_VM_2208 = selectVastProgramma;
+
       }, function (error) {
         console.log(error, 'can not get data.');
 
 
       });
 
-      $scope.done= "nShow";
+      $scope.done = "nShow";
 
       //edit data in form
       $scope.editUser = function (id) {
@@ -369,7 +385,7 @@ app
         $scope.NM_2508 = dataWeide[id].NM_2508;
         $scope.VM_2608 = dataWeide[id].VM_2608;
         $scope.NM_2608 = dataWeide[id].NM_2608;
-        $scope.done= "Show";
+        $scope.done = "Show";
       }
 
       //verwerpen
@@ -385,7 +401,7 @@ app
         $scope.NM_2508 = "";
         $scope.VM_2608 = "";
         $scope.NM_2608 = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
       }
 
 
@@ -421,17 +437,23 @@ app
 
         $scope.dataWeide.push(data);
 
-        $scope.id="";
-        $scope.weide="";
-        $scope.NM_2108="";
-        $scope.VM_2208="";
-        $scope.NM_2208="";
-        $scope.VM_2308="";
-        $scope.NM_2308="";
-        $scope.VM_2508="";
-        $scope.NM_2508="";
-        $scope.VM_2608="";
-        $scope.NM_2608="";
+        $scope.id = "";
+        $scope.weide = "";
+        $scope.NM_2108 = "";
+        $scope.VM_2208 = "";
+        $scope.NM_2208 = "";
+        $scope.VM_2308 = "";
+        $scope.NM_2308 = "";
+        $scope.VM_2508 = "";
+        $scope.NM_2508 = "";
+        $scope.VM_2608 = "";
+        $scope.NM_2608 = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataWeide.full= String(full);
+        lastUpdateDataWeide.time= time;
       }
 
 
@@ -489,18 +511,24 @@ app
 
           };
         });
-        $scope.id="";
-        $scope.weide="";
-        $scope.NM_2108="";
-        $scope.VM_2208="";
-        $scope.NM_2208="";
-        $scope.VM_2308="";
-        $scope.NM_2308="";
-        $scope.VM_2508="";
-        $scope.NM_2508="";
-        $scope.VM_2608="";
-        $scope.NM_2608="";
-        $scope.done= "nShow";
+        $scope.id = "";
+        $scope.weide = "";
+        $scope.NM_2108 = "";
+        $scope.VM_2208 = "";
+        $scope.NM_2208 = "";
+        $scope.VM_2308 = "";
+        $scope.NM_2308 = "";
+        $scope.VM_2508 = "";
+        $scope.NM_2508 = "";
+        $scope.VM_2608 = "";
+        $scope.NM_2608 = "";
+        $scope.done = "nShow";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataWeide.full= String(full);
+        lastUpdateDataWeide.time= time;
       }
 
       //Remove data
@@ -563,25 +591,39 @@ app
         console.log(dataWeide)
         dataWeide = $scope.dataWeide;
 
-        $scope.id="";
-        $scope.weide="";
-        $scope.NM_2108="";
-        $scope.VM_2208="";
-        $scope.NM_2208="";
-        $scope.VM_2308="";
-        $scope.NM_2308="";
-        $scope.VM_2508="";
-        $scope.NM_2508="";
-        $scope.VM_2608="";
-        $scope.NM_2608="";
+        $scope.id = "";
+        $scope.weide = "";
+        $scope.NM_2108 = "";
+        $scope.VM_2208 = "";
+        $scope.NM_2208 = "";
+        $scope.VM_2308 = "";
+        $scope.NM_2308 = "";
+        $scope.VM_2508 = "";
+        $scope.NM_2508 = "";
+        $scope.VM_2608 = "";
+        $scope.NM_2608 = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataWeide.full= String(full);
+        lastUpdateDataWeide.time= time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
+        var postData={
+          dataWeide: {},
+          lastUpdate: {}
+        }; 
+
+        postData.dataWeide= dataWeide; 
+        postData.lastUpdate= lastUpdateDataWeide;
+
         $http({
           method: "POST",
           url: "/saveToDBWeidesLourdes",
-          data: dataWeide
+          data: postData
         })
 
         $window.location.reload();
@@ -604,14 +646,18 @@ app
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        dataWeide = response.data.weide;
-        dataVastprogramma = response.data.vastProgramma.vast_programma;
-        dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
 
-        console.log(dataGroepen);
-        console.log(dataWeide);
-        console.log(dataVastprogramma);
-        console.log(dataKeuzeprogramma);
+        dataWeide = response.data.weide.weides;
+        lastUpdateDataWeide= response.data.weide.lastUpdate;
+
+        dataVastprogramma = response.data.vastProgramma.vast_programma;
+        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+
+        dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+
+        $scope.lastUpdate= lastUpdateDataVastprogramma;
 
         $scope.dataVastprogramma = dataVastprogramma;
 
@@ -620,7 +666,7 @@ app
         console.log(error, 'can not get data.');
 
       });
-      $scope.done= "nShow";
+      $scope.done = "nShow";
 
 
       //edit data in form
@@ -633,7 +679,7 @@ app
         $scope.stop = dataVastprogramma[id].stop;
         $scope.benodigdheden = dataVastprogramma[id].benodigdheden;
         $scope.beschrijving = dataVastprogramma[id].beschrijving;
-        $scope.done= "Show";
+        $scope.done = "Show";
       }
 
       //verwerp
@@ -646,7 +692,7 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
       }
 
       //Add data
@@ -681,6 +727,12 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataVastprogramma.full= String(full);
+        lastUpdateDataVastprogramma.time= time;
 
       }
 
@@ -736,7 +788,13 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataVastprogramma.full= String(full);
+        lastUpdateDataVastprogramma.time= time;
       }
 
       //Remove data
@@ -800,14 +858,28 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataVastprogramma.full= String(full);
+        lastUpdateDataVastprogramma.time= time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
+        var postData={
+          dataVastprogramma: {},
+          lastUpdate: {}
+        }; 
+
+        postData.dataVastprogramma= dataVastprogramma; 
+        postData.lastUpdate= lastUpdateDataVastprogramma;
+
         $http({
           method: "POST",
           url: "/saveToDBVastProgrammaLourdes",
-          data: dataVastprogramma
+          data: postData
         })
         $window.location.reload();
       }
@@ -830,17 +902,20 @@ app
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        dataWeide = response.data.weide;
+        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+
+        dataWeide = response.data.weide.weides;
+        lastUpdateDataWeide= response.data.weide.lastUpdate;
+
         dataVastprogramma = response.data.vastProgramma.vast_programma;
+        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.keuze_programma;
 
-        console.log(dataGroepen);
-        console.log(dataWeide);
-        console.log(dataVastprogramma);
-        console.log(dataKeuzeprogramma);
+        $scope.lastUpdate= lastUpdateDataVastprogramma;
 
-        $scope.dataKeuzeprogramma = dataKeuzeprogramma;
-
+        $scope.dataKeuzeprogramma = lastUpdateDataKeuzeprogramma;
 
 
       }, function (error) {
@@ -849,7 +924,7 @@ app
 
       });
 
-      $scope.done= "nShow";
+      $scope.done = "nShow";
 
       //edit data in form
       $scope.editUser = function (id) {
@@ -861,19 +936,19 @@ app
         $scope.stop = dataKeuzeprogramma[id].stop;
         $scope.benodigdheden = dataKeuzeprogramma[id].benodigdheden;
         $scope.beschrijving = dataKeuzeprogramma[id].beschrijving;
-        $scope.done= "Show";
+        $scope.done = "Show";
       }
 
       $scope.verwerp = function () {
         $scope.id = "";
         $scope.wat = "";
         $scope.waar = "";
-        $scope.duur =  "";
+        $scope.duur = "";
         $scope.start = "";
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
       }
 
       //add data
@@ -910,6 +985,12 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataKeuzeprogramma.full= String(full);
+        lastUpdateDataKeuzeprogramma.time= time;
       }
 
       //Aanpassen database
@@ -963,7 +1044,13 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
-        $scope.done= "nShow";
+        $scope.done = "nShow";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataKeuzeprogramma.full= String(full);
+        lastUpdateDataKeuzeprogramma.time= time;
       }
 
       //Remove data
@@ -1020,7 +1107,7 @@ app
         console.log(dataKeuzeprogramma)
 
         dataKeuzeprogramma = $scope.dataKeuzeprogramma;
-        
+
         $scope.id = "";
         $scope.wat = "";
         $scope.waar = "";
@@ -1029,14 +1116,28 @@ app
         $scope.stop = "";
         $scope.benodigdheden = "";
         $scope.beschrijving = "";
+
+        let full = new Date();
+        let time = full.getTime();
+
+        lastUpdateDataKeuzeprogramma.full= String(full);
+        lastUpdateDataKeuzeprogramma.time= time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
+        var postData={
+          dataKeuzeprogramma: {},
+          lastUpdate: {}
+        }; 
+
+        postData.dataKeuzeprogramma= dataKeuzeprogramma; 
+        postData.lastUpdate= lastUpdateDataVastprogramma;
+
         $http({
           method: "POST",
           url: "/saveToDBKeuzeProgrammaLourdes",
-          data: dataKeuzeprogramma
+          data: postData
         })
 
         $window.location.reload();

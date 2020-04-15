@@ -87,17 +87,19 @@
           keuzeprogramma: <select ng-model="keuzeprogramma" ng-options="x for x in selectKeuzeprogramma"></select>
         </div>
       </div>
-      -->
-    <br>
-    <br>
-    <br>
+    -->
+    
     <!--<a  ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>-->
     <!-- <a ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>-->
     <!-- <a  ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a> -->
-    </form>
+    
+    <p>Laatst aangepast: {{lastUpdate.full}}</p>
+
     <a href="#!/databaseBonden" ng-click="saveToDB()" class="btn waves-effect waves-light col s12 material-icons">save
       OPSLAAN NAAR DATABASE</a>
     <a href="/downloadBondenLourdes" class="btn waves-effect waves-light col s12 material-icons">file_download DOWNLOAD
       BESTAND</a>
+
+       
 
   </div>

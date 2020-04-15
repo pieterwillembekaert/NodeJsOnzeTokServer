@@ -164,14 +164,17 @@ app
     })
     .post('/saveToDBBondenLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let newData = req.body;
-        console.log(newData)
+        let newDataDataGroepen = req.body.dataGroepen;
+        let newDatalastUpdate= req.body.lastUpdate;
+        console.log(newDataDataGroepen)
 
         var objnewdata= {
+            lastUpdate: {},
             bonden: []
         }
 
-        objnewdata.bonden=newData
+        objnewdata.bonden=newDataDataGroepen;
+        objnewdata.lastUpdate=newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdataGroepen = objnewdata;
 
@@ -181,14 +184,16 @@ app
     })
     .post('/saveToDBWeidesLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let newData = req.body;
-        console.log(newData)
+        let newDataDataGroepen = req.body.dataWeide;
+        let newDatalastUpdate= req.body.lastUpdate;
 
         var objnewdata= {
+            lastUpdate: {},
             weides: []
         }
 
-        objnewdata.weides=newData
+        objnewdata.weides=newDataDataGroepen; 
+        objnewdata.lastUpdate=newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdataWeide = objnewdata;
 
@@ -198,14 +203,17 @@ app
     })
     .post('/saveToDBVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let newData = req.body;
-        console.log(newData)
-
+        let newDatavast_programma = req.body.dataVastprogramma;
+        let newDatalastUpdate= req.body.lastUpdate;
+        
         var objnewdata= {
+            lastUpdate: {},
             vast_programma: []
         }
 
-        objnewdata.vast_programma=newData
+        objnewdata.vast_programma=newDatavast_programma;
+        objnewdata.lastUpdate=newDatalastUpdate;
+
         //data terug opslaan naar de globale var
         LourdesData.SdataVastProgramma = objnewdata;
 
@@ -215,14 +223,19 @@ app
     })
     .post('/saveToDBKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let newData = req.body;
-        console.log(newData)
+        let newDatakeuze_programma = req.body.dataKeuzeprogramma;
+        let newDatalastUpdate= req.body.lastUpdate;
+        
+        console.log("hier")
+        console.log(newDatakeuze_programma)
 
         var objnewdata= {
+            lastUpdate: {},
             keuze_programma: []
         }
 
-        objnewdata.keuze_programma=newData
+        objnewdata.keuze_programma=newDatakeuze_programma
+        objnewdata.lastUpdate=newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdatakeuzeProgramma = objnewdata;
 
