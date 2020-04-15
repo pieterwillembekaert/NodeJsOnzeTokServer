@@ -713,7 +713,6 @@ app
         }
 
     })
-    //aanpassen
     .post('/LourdesDBCreateExportFile', bodyParser.json(), (req, res) => {
         //data van pagina
         let IN_Date = req.body.lastUpdateDB;
@@ -728,7 +727,7 @@ app
             keuzeProgramma: {},
         }
 
-        newExportData.lastUpdateDB= IN_Date; 
+        newExportData.lastUpdateDB = IN_Date;
         newExportData.Groepen = LourdesData.GdataGroepen;
         newExportData.weide = LourdesData.GdataWeide;
         newExportData.vastProgramma = LourdesData.GdataVastProgramma;
@@ -743,10 +742,10 @@ app
         fs.writeFile(dataPathExportFileApp, jsonContent, function (err) {
             if (err) {
                 console.log("An error occured while writing JSON Object to File.");
-                
+
                 return console.log(err);
             }
-            
+
             console.log("JSON file has been saved.");
         });
 
@@ -759,7 +758,6 @@ app
                 throw err;
             }
             LourdesData.SdataGroepen = JSON.parse(data);
-
 
         });
 
@@ -787,21 +785,31 @@ app
         res.json(LourdesData);
     })
 
-    .get('/dataLourdesAPP', function (req, res) {
+    .get('/dataLourdesAPP/:lastUpdateUser', function (req, res) {
+        var lastUpdateUser = Number(req.params.lastUpdateUser);
 
+        if(lastUpdateUser== NaN ){
+            lastUpdateUser=0;
+        }
+
+        console.log(lastUpdateUser);
 
         fs.readFile(dataPathExportFileApp, (err, data) => {
             if (err) {
                 console.log("Mislukt:")
                 throw err;
-                
-            }
-            console.log("Gelukt"); 
-            res.json(JSON.parse(data));
 
+            }
+            var objData = JSON.parse(data)
+            
+            if (objData.lastUpdateDB.time !== lastUpdateUser) {
+                console.log("nieuwe update");
+                res.json(objData);
+            } else {
+                res.send("up to date");
+            }
         });
     })
-
     .get('/TotalDist', function (req, res) {
 
         if (dataObj == null || dataObj == undefined) {
