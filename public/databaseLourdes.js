@@ -80,6 +80,24 @@ app
         console.log(error, 'can not get the data.');
 
       });
+
+      $scope.CreateExportFile = function () {
+        $http({
+          method: 'get',
+          url: '/LourdesDBCreateExportFile'
+        }).then(function (response) {
+          console.log(response, 'res');
+
+          if(response.data="JSON file has been saved."){
+            alert("Gelukt");
+          }else{
+            alert("Mislukt");
+          }
+          
+        }, function (error) {
+          console.log(error, 'can not get data.');
+        });
+      }
     })
   .controller('LourdesDBbonden',
 

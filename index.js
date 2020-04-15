@@ -34,10 +34,8 @@ var LourdesData = {
     get GdatakeuzeProgramma() {
         return this.keuzeProgramma;
     }
-
-
-
 };
+
 var dataCountryG;
 var login = {
     email: String,
@@ -80,6 +78,7 @@ const dataPathGroepen = "./public/json/Lourdes_Groepen.json";
 const dataPathWeide = "./public/json/Lourdes_Weide.json";
 const dataPathVastProgramma = "./public/json/Lourdes_VastProgramma.json";
 const dataPathKeuzeProgramma = "./public/json/Lourdes_KeuzeProgramma.json";
+const dataPathExportFileApp = "./public/json/Lourdes_ExportFileApp.json";
 /**
  * Routes Definitions
  */
@@ -87,9 +86,9 @@ app
     .use(express.static('public'),
         function (req, res, next) {
             res
-            .header("Access-Control-Allow-Origin", "*")
-            // Request headers you wish to allow
-            .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+                .header("Access-Control-Allow-Origin", "*")
+                // Request headers you wish to allow
+                .header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
             // Set to true if you need the website to include cookies in the requests sent
             next();
         }
@@ -165,16 +164,16 @@ app
     .post('/saveToDBBondenLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDataDataGroepen = req.body.dataGroepen;
-        let newDatalastUpdate= req.body.lastUpdate;
+        let newDatalastUpdate = req.body.lastUpdate;
         console.log(newDataDataGroepen)
 
-        var objnewdata= {
+        var objnewdata = {
             lastUpdate: {},
             bonden: []
         }
 
-        objnewdata.bonden=newDataDataGroepen;
-        objnewdata.lastUpdate=newDatalastUpdate;
+        objnewdata.bonden = newDataDataGroepen;
+        objnewdata.lastUpdate = newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdataGroepen = objnewdata;
 
@@ -185,15 +184,15 @@ app
     .post('/saveToDBWeidesLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDataDataGroepen = req.body.dataWeide;
-        let newDatalastUpdate= req.body.lastUpdate;
+        let newDatalastUpdate = req.body.lastUpdate;
 
-        var objnewdata= {
+        var objnewdata = {
             lastUpdate: {},
             weides: []
         }
 
-        objnewdata.weides=newDataDataGroepen; 
-        objnewdata.lastUpdate=newDatalastUpdate;
+        objnewdata.weides = newDataDataGroepen;
+        objnewdata.lastUpdate = newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdataWeide = objnewdata;
 
@@ -204,15 +203,15 @@ app
     .post('/saveToDBVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDatavast_programma = req.body.dataVastprogramma;
-        let newDatalastUpdate= req.body.lastUpdate;
-        
-        var objnewdata= {
+        let newDatalastUpdate = req.body.lastUpdate;
+
+        var objnewdata = {
             lastUpdate: {},
             vast_programma: []
         }
 
-        objnewdata.vast_programma=newDatavast_programma;
-        objnewdata.lastUpdate=newDatalastUpdate;
+        objnewdata.vast_programma = newDatavast_programma;
+        objnewdata.lastUpdate = newDatalastUpdate;
 
         //data terug opslaan naar de globale var
         LourdesData.SdataVastProgramma = objnewdata;
@@ -224,18 +223,18 @@ app
     .post('/saveToDBKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDatakeuze_programma = req.body.dataKeuzeprogramma;
-        let newDatalastUpdate= req.body.lastUpdate;
-        
+        let newDatalastUpdate = req.body.lastUpdate;
+
         console.log("hier")
         console.log(newDatakeuze_programma)
 
-        var objnewdata= {
+        var objnewdata = {
             lastUpdate: {},
             keuze_programma: []
         }
 
-        objnewdata.keuze_programma=newDatakeuze_programma
-        objnewdata.lastUpdate=newDatalastUpdate;
+        objnewdata.keuze_programma = newDatakeuze_programma
+        objnewdata.lastUpdate = newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdatakeuzeProgramma = objnewdata;
 
@@ -700,13 +699,10 @@ app
         }
     })
 
-
-
     .on('error', function (error) {
         console.log("Error: \n" + error.message);
         console.log(error.stack);
     })
-
     .get('/data', function (req, res) {
         if (dataObj == null || dataObj == undefined) {
             console.log("data not load")
@@ -715,6 +711,37 @@ app
             console.log(dataObj.Gdata)
             res.json(dataObj.Gdata);
         }
+
+    })
+    .get('/LourdesDBCreateExportFile', function (req, res) {
+        var newExportData = {
+            Groepen: {},
+            weide: {},
+            vastProgramma: {},
+            keuzeProgramma: {},
+        }
+
+        newExportData.Groepen = LourdesData.GdataGroepen;
+        newExportData.weide = LourdesData.GdataWeide;
+        newExportData.vastProgramma = LourdesData.GdataVastProgramma;
+        newExportData.keuzeProgramma = LourdesData.GdatakeuzeProgramma;
+
+        console.log(newExportData)
+        let jsonContent = JSON.stringify(newExportData);
+        console.log(jsonContent)
+
+
+
+        fs.writeFile(dataPathExportFileApp, jsonContent, function (err) {
+            if (err) {
+                console.log("An error occured while writing JSON Object to File.");
+                res.send("An error occured while writing JSON Object to File.")
+                return console.log(err);
+            }
+            res.send("JSON file has been saved.")
+            console.log("JSON file has been saved.");
+        });
+
 
     })
     .get('/dataLourdes', function (req, res) {
@@ -751,6 +778,22 @@ app
 
         console.log(LourdesData)
         res.json(LourdesData);
+    })
+
+    .get('/dataLourdesAPP', function (req, res) {
+
+
+        fs.readFile(dataPathExportFileApp, (err, data) => {
+            if (err) {
+                console.log("Mislukt:")
+                throw err;
+                
+
+            }
+            console.log("Gelukt"); 
+            res.json(JSON.parse(data));
+
+        });
     })
 
     .get('/TotalDist', function (req, res) {
@@ -843,17 +886,12 @@ function OpenJsonDataFileCounrty(dataPath) {
         get Gdata() {
             return this.data;
         }
-
-
-
     };
     fs.readFile(dataPath, (err, data) => {
         if (err) {
             throw err;
         }
         dataOut.Sdata = JSON.parse(data);
-
-
     });
 
     return dataOut;
