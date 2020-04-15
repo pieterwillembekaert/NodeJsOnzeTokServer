@@ -713,39 +713,46 @@ app
         }
 
     })
-    .get('/LourdesDBCreateExportFile', function (req, res) {
+    //aanpassen
+    .post('/LourdesDBCreateExportFile', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let IN_Date = req.body.lastUpdateDB;
+        console.log(req.body)
+        console.log(IN_Date)
+
         var newExportData = {
+            lastUpdateDB: {},
             Groepen: {},
             weide: {},
             vastProgramma: {},
             keuzeProgramma: {},
         }
 
+        newExportData.lastUpdateDB= IN_Date; 
         newExportData.Groepen = LourdesData.GdataGroepen;
         newExportData.weide = LourdesData.GdataWeide;
         newExportData.vastProgramma = LourdesData.GdataVastProgramma;
         newExportData.keuzeProgramma = LourdesData.GdatakeuzeProgramma;
 
-        console.log(newExportData)
+        //console.log(newExportData)
         let jsonContent = JSON.stringify(newExportData);
-        console.log(jsonContent)
+        //console.log(jsonContent)
 
 
 
         fs.writeFile(dataPathExportFileApp, jsonContent, function (err) {
             if (err) {
                 console.log("An error occured while writing JSON Object to File.");
-                res.send("An error occured while writing JSON Object to File.")
+                
                 return console.log(err);
             }
-            res.send("JSON file has been saved.")
+            
             console.log("JSON file has been saved.");
         });
 
 
     })
     .get('/dataLourdes', function (req, res) {
-
 
         fs.readFile(dataPathGroepen, (err, data) => {
             if (err) {
@@ -788,7 +795,6 @@ app
                 console.log("Mislukt:")
                 throw err;
                 
-
             }
             console.log("Gelukt"); 
             res.json(JSON.parse(data));

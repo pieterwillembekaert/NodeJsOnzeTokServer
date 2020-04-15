@@ -48,20 +48,20 @@ app
         console.log(response, 'res');
 
         dataGroepen = response.data.Groepen.bonden;
-        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+        lastUpdateDataGroepen = response.data.Groepen.lastUpdate;
 
         dataWeide = response.data.weide.weides;
-        lastUpdateDataWeide= response.data.weide.lastUpdate;
+        lastUpdateDataWeide = response.data.weide.lastUpdate;
 
         dataVastprogramma = response.data.vastProgramma.vast_programma;
-        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+        lastUpdateDataVastprogramma = response.data.vastProgramma.lastUpdate;
 
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
-        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+        lastUpdateDataKeuzeprogramma = response.data.keuzeProgramma.lastUpdate;
 
         $scope.dataVastprogramma = dataVastprogramma;
 
-      
+
         $scope.dataGroepen = dataGroepen;
         $scope.selectWeide = ["A", "B", "C", "D"];
 
@@ -82,21 +82,23 @@ app
       });
 
       $scope.CreateExportFile = function () {
-        $http({
-          method: 'get',
-          url: '/LourdesDBCreateExportFile'
-        }).then(function (response) {
-          console.log(response, 'res');
-
-          if(response.data="JSON file has been saved."){
-            alert("Gelukt");
-          }else{
-            alert("Mislukt");
+        var postData = {
+          lastUpdateDB: {
+            full: "",
+            time: 0
           }
-          
-        }, function (error) {
-          console.log(error, 'can not get data.');
-        });
+        }
+
+        let full = new Date();
+        let time = full.getTime();
+
+        postData.lastUpdateDB.full= String(full);
+        postData.lastUpdateDB.time= time;
+        $http({
+          method: 'post',
+          url: '/LourdesDBCreateExportFile',
+          data: postData
+        })
       }
     })
   .controller('LourdesDBbonden',
@@ -108,23 +110,23 @@ app
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+        lastUpdateDataGroepen = response.data.Groepen.lastUpdate;
 
         dataWeide = response.data.weide.weides;
-        lastUpdateDataWeide= response.data.weide.lastUpdate;
+        lastUpdateDataWeide = response.data.weide.lastUpdate;
 
         dataVastprogramma = response.data.vastProgramma.vast_programma;
-        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+        lastUpdateDataVastprogramma = response.data.vastProgramma.lastUpdate;
 
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
-        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+        lastUpdateDataKeuzeprogramma = response.data.keuzeProgramma.lastUpdate;
 
         $scope.dataVastprogramma = dataVastprogramma;
         $scope.dataGroepen = dataGroepen;
         $scope.weides = SelectWeides;
         $scope.selectKeuzeprogramma = selectKeuzeProgramma;
 
-        $scope.lastUpdate= lastUpdateDataGroepen;
+        $scope.lastUpdate = lastUpdateDataGroepen;
 
         for (let i = 0; i < dataVastprogramma.length; i++) {
           selectVastProgramma[i] = dataVastprogramma[i].wat;
@@ -186,8 +188,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataGroepen.full= String(full);
-        lastUpdateDataGroepen.time= time;
+        lastUpdateDataGroepen.full = String(full);
+        lastUpdateDataGroepen.time = time;
       }
 
       //Aanpassen database
@@ -235,8 +237,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataGroepen.full= String(full);
-        lastUpdateDataGroepen.time= time;
+        lastUpdateDataGroepen.full = String(full);
+        lastUpdateDataGroepen.time = time;
       }
 
       //Remove data
@@ -277,8 +279,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataGroepen.full= String(full);
-        lastUpdateDataGroepen.time= time;
+        lastUpdateDataGroepen.full = String(full);
+        lastUpdateDataGroepen.time = time;
       }
 
       //Remove data new
@@ -319,25 +321,25 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataGroepen.full= String(full);
-        lastUpdateDataGroepen.time= time;
+        lastUpdateDataGroepen.full = String(full);
+        lastUpdateDataGroepen.time = time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
-        var postData={
+        var postData = {
           dataGroepen: {},
           lastUpdate: {}
-        }; 
+        };
 
-        postData.dataGroepen= dataGroepen; 
-        postData.lastUpdate= lastUpdateDataGroepen;
+        postData.dataGroepen = dataGroepen;
+        postData.lastUpdate = lastUpdateDataGroepen;
 
         $http({
           method: "POST",
           url: "/saveToDBBondenLourdes",
           data: postData
-          
+
         })
         $window.location.reload();
       }
@@ -361,18 +363,18 @@ app
         console.log(response, 'res');
 
         dataGroepen = response.data.Groepen.bonden;
-        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+        lastUpdateDataGroepen = response.data.Groepen.lastUpdate;
 
         dataWeide = response.data.weide.weides;
-        lastUpdateDataWeide= response.data.weide.lastUpdate;
+        lastUpdateDataWeide = response.data.weide.lastUpdate;
 
         dataVastprogramma = response.data.vastProgramma.vast_programma;
-        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+        lastUpdateDataVastprogramma = response.data.vastProgramma.lastUpdate;
 
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
-        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+        lastUpdateDataKeuzeprogramma = response.data.keuzeProgramma.lastUpdate;
 
-        $scope.lastUpdate= lastUpdateDataWeide;
+        $scope.lastUpdate = lastUpdateDataWeide;
 
         $scope.dataVastprogramma = dataVastprogramma;
 
@@ -470,8 +472,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataWeide.full= String(full);
-        lastUpdateDataWeide.time= time;
+        lastUpdateDataWeide.full = String(full);
+        lastUpdateDataWeide.time = time;
       }
 
 
@@ -545,8 +547,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataWeide.full= String(full);
-        lastUpdateDataWeide.time= time;
+        lastUpdateDataWeide.full = String(full);
+        lastUpdateDataWeide.time = time;
       }
 
       //Remove data
@@ -624,19 +626,19 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataWeide.full= String(full);
-        lastUpdateDataWeide.time= time;
+        lastUpdateDataWeide.full = String(full);
+        lastUpdateDataWeide.time = time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
-        var postData={
+        var postData = {
           dataWeide: {},
           lastUpdate: {}
-        }; 
+        };
 
-        postData.dataWeide= dataWeide; 
-        postData.lastUpdate= lastUpdateDataWeide;
+        postData.dataWeide = dataWeide;
+        postData.lastUpdate = lastUpdateDataWeide;
 
         $http({
           method: "POST",
@@ -664,18 +666,18 @@ app
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+        lastUpdateDataGroepen = response.data.Groepen.lastUpdate;
 
         dataWeide = response.data.weide.weides;
-        lastUpdateDataWeide= response.data.weide.lastUpdate;
+        lastUpdateDataWeide = response.data.weide.lastUpdate;
 
         dataVastprogramma = response.data.vastProgramma.vast_programma;
-        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+        lastUpdateDataVastprogramma = response.data.vastProgramma.lastUpdate;
 
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
-        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.lastUpdate;
+        lastUpdateDataKeuzeprogramma = response.data.keuzeProgramma.lastUpdate;
 
-        $scope.lastUpdate= lastUpdateDataVastprogramma;
+        $scope.lastUpdate = lastUpdateDataVastprogramma;
 
         $scope.dataVastprogramma = dataVastprogramma;
 
@@ -749,8 +751,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataVastprogramma.full= String(full);
-        lastUpdateDataVastprogramma.time= time;
+        lastUpdateDataVastprogramma.full = String(full);
+        lastUpdateDataVastprogramma.time = time;
 
       }
 
@@ -811,8 +813,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataVastprogramma.full= String(full);
-        lastUpdateDataVastprogramma.time= time;
+        lastUpdateDataVastprogramma.full = String(full);
+        lastUpdateDataVastprogramma.time = time;
       }
 
       //Remove data
@@ -880,19 +882,19 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataVastprogramma.full= String(full);
-        lastUpdateDataVastprogramma.time= time;
+        lastUpdateDataVastprogramma.full = String(full);
+        lastUpdateDataVastprogramma.time = time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
-        var postData={
+        var postData = {
           dataVastprogramma: {},
           lastUpdate: {}
-        }; 
+        };
 
-        postData.dataVastprogramma= dataVastprogramma; 
-        postData.lastUpdate= lastUpdateDataVastprogramma;
+        postData.dataVastprogramma = dataVastprogramma;
+        postData.lastUpdate = lastUpdateDataVastprogramma;
 
         $http({
           method: "POST",
@@ -920,18 +922,18 @@ app
       }).then(function (response) {
         console.log(response, 'res');
         dataGroepen = response.data.Groepen.bonden;
-        lastUpdateDataGroepen= response.data.Groepen.lastUpdate;
+        lastUpdateDataGroepen = response.data.Groepen.lastUpdate;
 
         dataWeide = response.data.weide.weides;
-        lastUpdateDataWeide= response.data.weide.lastUpdate;
+        lastUpdateDataWeide = response.data.weide.lastUpdate;
 
         dataVastprogramma = response.data.vastProgramma.vast_programma;
-        lastUpdateDataVastprogramma= response.data.vastProgramma.lastUpdate; 
+        lastUpdateDataVastprogramma = response.data.vastProgramma.lastUpdate;
 
         dataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
-        lastUpdateDataKeuzeprogramma= response.data.keuzeProgramma.keuze_programma;
+        lastUpdateDataKeuzeprogramma = response.data.keuzeProgramma.keuze_programma;
 
-        $scope.lastUpdate= lastUpdateDataVastprogramma;
+        $scope.lastUpdate = lastUpdateDataVastprogramma;
 
         $scope.dataKeuzeprogramma = lastUpdateDataKeuzeprogramma;
 
@@ -1007,8 +1009,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataKeuzeprogramma.full= String(full);
-        lastUpdateDataKeuzeprogramma.time= time;
+        lastUpdateDataKeuzeprogramma.full = String(full);
+        lastUpdateDataKeuzeprogramma.time = time;
       }
 
       //Aanpassen database
@@ -1067,8 +1069,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataKeuzeprogramma.full= String(full);
-        lastUpdateDataKeuzeprogramma.time= time;
+        lastUpdateDataKeuzeprogramma.full = String(full);
+        lastUpdateDataKeuzeprogramma.time = time;
       }
 
       //Remove data
@@ -1138,19 +1140,19 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        lastUpdateDataKeuzeprogramma.full= String(full);
-        lastUpdateDataKeuzeprogramma.time= time;
+        lastUpdateDataKeuzeprogramma.full = String(full);
+        lastUpdateDataKeuzeprogramma.time = time;
       }
 
       //save data to database
       $scope.saveToDB = function () {
-        var postData={
+        var postData = {
           dataKeuzeprogramma: {},
           lastUpdate: {}
-        }; 
+        };
 
-        postData.dataKeuzeprogramma= dataKeuzeprogramma; 
-        postData.lastUpdate= lastUpdateDataVastprogramma;
+        postData.dataKeuzeprogramma = dataKeuzeprogramma;
+        postData.lastUpdate = lastUpdateDataVastprogramma;
 
         $http({
           method: "POST",
