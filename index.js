@@ -261,7 +261,7 @@ app
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
         SaveDataToFile(dataPathKeuzeProgramma, jsonContent);
-        
+
         res.sendStatus(200);
     })
     .post('/newDataWeideLourdes', bodyParser.json(), (req, res) => {
@@ -738,6 +738,11 @@ app
     .post('/LourdesDBCreateExportFile', bodyParser.json(), (req, res) => {
         //data van pagina
         let IN_Date = req.body.lastUpdateDB;
+
+        if(!IN_Date){
+            res.send(404); 
+            return;
+        }
         console.log(req.body)
         console.log(IN_Date)
 
@@ -755,11 +760,9 @@ app
         newExportData.vastProgramma = LourdesData.GdataVastProgramma;
         newExportData.keuzeProgramma = LourdesData.GdatakeuzeProgramma;
 
-        //console.log(newExportData)
+        
         let jsonContent = JSON.stringify(newExportData);
-        //console.log(jsonContent)
-
-
+        
 
         fs.writeFile(dataPathExportFileApp, jsonContent, function (err) {
             if (err) {
@@ -769,6 +772,7 @@ app
             }
 
             console.log("JSON file has been saved.");
+            res.send(200);
         });
 
 

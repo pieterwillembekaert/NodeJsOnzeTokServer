@@ -94,11 +94,21 @@ app
 
         postData.lastUpdateDB.full = String(full);
         postData.lastUpdateDB.time = time;
-        $http({
-          method: 'post',
+
+        var req = {
+          method: 'POST',
           url: '/LourdesDBCreateExportFile',
+
           data: postData
-        })
+        }
+
+        $http(req).then(function (response) {
+          $window.alert("gelukt :-)");
+          $window.location.reload();
+
+        }, function () {
+          $window.alert("mislukt :-(");
+        });
       }
     })
   .controller('LourdesDBbonden',
@@ -342,17 +352,13 @@ app
           data: postData
         }
 
-        console.log(req)
-
         $http(req).then(function (response) {
           $window.alert("gelukt :-)");
           $window.location.reload();
 
         }, function () {
           $window.alert("mislukt :-(");
-
         });
-
       }
       //Download data to file
       $scope.downloadData = function () {
