@@ -165,8 +165,12 @@ app
         //data van pagina
         let newDataDataGroepen = req.body.dataGroepen;
         let newDatalastUpdate = req.body.lastUpdate;
-        console.log(newDataDataGroepen)
 
+        if(!newDataDataGroepen || !newDatalastUpdate){
+            res.sendStatus(404);
+            return;
+        }
+        
         var objnewdata = {
             lastUpdate: {},
             bonden: []
@@ -179,31 +183,43 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataGroepen);
-        SaveDataToFile(dataPathGroepen, jsonContent)
+        SaveDataToFile(dataPathGroepen, jsonContent);
+        res.sendStatus(200);
     })
     .post('/saveToDBWeidesLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
-        let newDataDataGroepen = req.body.dataWeide;
+        let newDataDataWeide = req.body.dataWeide;
         let newDatalastUpdate = req.body.lastUpdate;
+
+        if(!newDataDataWeide || !newDatalastUpdate){
+            res.sendStatus(404);
+            return;
+        }
 
         var objnewdata = {
             lastUpdate: {},
             weides: []
         }
 
-        objnewdata.weides = newDataDataGroepen;
+        objnewdata.weides = newDataDataWeide;
         objnewdata.lastUpdate = newDatalastUpdate;
         //data terug opslaan naar de globale var
         LourdesData.SdataWeide = objnewdata;
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataWeide);
-        SaveDataToFile(dataPathWeide, jsonContent)
+        SaveDataToFile(dataPathWeide, jsonContent);
+        res.sendStatus(200);
     })
     .post('/saveToDBVastProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDatavast_programma = req.body.dataVastprogramma;
         let newDatalastUpdate = req.body.lastUpdate;
+
+        if(!newDatavast_programma || !newDatalastUpdate){
+            res.sendStatus(404);
+            return;
+        }
 
         var objnewdata = {
             lastUpdate: {},
@@ -218,15 +234,19 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdataVastProgramma);
-        SaveDataToFile(dataPathVastProgramma, jsonContent)
+        SaveDataToFile(dataPathVastProgramma, jsonContent); 
+
+        res.sendStatus(200);
     })
     .post('/saveToDBKeuzeProgrammaLourdes', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDatakeuze_programma = req.body.dataKeuzeprogramma;
         let newDatalastUpdate = req.body.lastUpdate;
 
-        console.log("hier")
-        console.log(newDatakeuze_programma)
+        if(!newDatakeuze_programma || !newDatalastUpdate){
+            res.sendStatus(404);
+            return;
+        }
 
         var objnewdata = {
             lastUpdate: {},
@@ -240,7 +260,9 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(LourdesData.GdatakeuzeProgramma);
-        SaveDataToFile(dataPathKeuzeProgramma, jsonContent)
+        SaveDataToFile(dataPathKeuzeProgramma, jsonContent);
+        
+        res.sendStatus(200);
     })
     .post('/newDataWeideLourdes', bodyParser.json(), (req, res) => {
         //data van pagina

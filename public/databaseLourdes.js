@@ -92,8 +92,8 @@ app
         let full = new Date();
         let time = full.getTime();
 
-        postData.lastUpdateDB.full= String(full);
-        postData.lastUpdateDB.time= time;
+        postData.lastUpdateDB.full = String(full);
+        postData.lastUpdateDB.time = time;
         $http({
           method: 'post',
           url: '/LourdesDBCreateExportFile',
@@ -335,13 +335,24 @@ app
         postData.dataGroepen = dataGroepen;
         postData.lastUpdate = lastUpdateDataGroepen;
 
-        $http({
-          method: "POST",
-          url: "/saveToDBBondenLourdes",
-          data: postData
+        var req = {
+          method: 'POST',
+          url: '/saveToDBBondenLourdes',
 
-        })
-        $window.location.reload();
+          data: postData
+        }
+
+        console.log(req)
+
+        $http(req).then(function (response) {
+          $window.alert("gelukt :-)");
+          $window.location.reload();
+
+        }, function () {
+          $window.alert("mislukt :-(");
+
+        });
+
       }
       //Download data to file
       $scope.downloadData = function () {
@@ -475,8 +486,6 @@ app
         lastUpdateDataWeide.full = String(full);
         lastUpdateDataWeide.time = time;
       }
-
-
 
       //Aanpassen database
       $scope.changeData = function () {
@@ -640,13 +649,21 @@ app
         postData.dataWeide = dataWeide;
         postData.lastUpdate = lastUpdateDataWeide;
 
-        $http({
-          method: "POST",
-          url: "/saveToDBWeidesLourdes",
-          data: postData
-        })
+        var req = {
+          method: 'POST',
+          url: '/saveToDBWeidesLourdes',
 
-        $window.location.reload();
+          data: postData
+        }
+
+        $http(req).then(function (response) {
+          $window.alert("gelukt :-)");
+          $window.location.reload();
+
+        }, function () {
+          $window.alert("mislukt :-(");
+
+        });
       }
       //Download data to file
       $scope.downloadData = function () {
@@ -896,12 +913,21 @@ app
         postData.dataVastprogramma = dataVastprogramma;
         postData.lastUpdate = lastUpdateDataVastprogramma;
 
-        $http({
-          method: "POST",
-          url: "/saveToDBVastProgrammaLourdes",
+        var req = {
+          method: 'POST',
+          url: '/saveToDBVastProgrammaLourdes',
+
           data: postData
-        })
-        $window.location.reload();
+        }
+
+        $http(req).then(function (response) {
+          $window.alert("gelukt :-)");
+          $window.location.reload();
+
+        }, function () {
+          $window.alert("mislukt :-(");
+
+        });
       }
 
       //Download data to file
@@ -1154,13 +1180,22 @@ app
         postData.dataKeuzeprogramma = dataKeuzeprogramma;
         postData.lastUpdate = lastUpdateDataVastprogramma;
 
-        $http({
-          method: "POST",
-          url: "/saveToDBKeuzeProgrammaLourdes",
-          data: postData
-        })
+        var req = {
+          method: 'POST',
+          url: '/saveToDBKeuzeProgrammaLourdes',
 
-        $window.location.reload();
+          data: postData
+        }
+
+
+        $http(req).then(function (response) {
+          $window.alert("gelukt :-)");
+          $window.location.reload();
+
+        }, function () {
+          $window.alert("mislukt :-(");
+
+        });
       }
 
       //Download data to file
