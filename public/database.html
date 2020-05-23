@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" href="images/logotok.png">
 
   <title>database</title>
-
 
   <!-- CSS -->
   <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -53,7 +52,8 @@
       </tr>
       <tr ng-repeat="x in data">
 
-        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a></td>
+        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a>
+        </td>
         <td>{{ x.id }}</td>
         <td>{{ x.name }}</td>
         <td>{{ x.country }}</td>
@@ -67,7 +67,7 @@
   <br>
   <br>
   <style>
-    .kot{
+    .kot {
       height: 100px;
       width: 200px;
       overflow: scroll;
@@ -75,27 +75,25 @@
   </style>
   <div class="container" id="controlpanel">
     <form>
-    
+
       <div class="row">
         <div class="input-field col s6">
           Name: <input type="text" ng-model="name">
         </div>
-        
+
       </div>
       <div class="row">
         <div class="input-field col s12">
           <div class="input-field col s6">
             country: <input type="text" ng-model="country">
           </div>
-      <div class="kot">
-        <ul>
-          <li ng-repeat="x in countrys | filter: country">
-            {{ x }}
-          </li>
-  
-  
-        </ul>
-        </div>
+          <div class="kot">
+            <ul>
+              <li ng-repeat="x in countrys | filter: country">
+                {{ x }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -109,7 +107,6 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="input-field col s6">
           datum: <input type="number" ng-model="date">
@@ -118,15 +115,24 @@
           index: <input type="number" ng-model="edithIndex">
         </div>
       </div>
-  
-      
-      
+
+
+
       <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
       <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
       <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
-      <a href="/download"  class="btn waves-effect waves-light col s12">download</a>
+      <a href="/download" class="btn waves-effect waves-light col s12">download</a>
 
     </form>
+
+    <form ref='uploadForm' 
+			id='uploadForm' 
+			action='/upload' 
+			method='post' 
+			encType="multipart/form-data">
+				<input type="file" name="sampleFile" ng-model="distance" />
+				<input type='submit' value='Upload!' />
+		</form>		
 
     <br>
     <br>

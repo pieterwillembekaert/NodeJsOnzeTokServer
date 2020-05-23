@@ -28,8 +28,6 @@ app.controller('mainController', function ($scope, $http) { //o scope liga o js 
 
 
 
-
-
 $scope.reset = function () {
   $scope.nome = '';
 }
