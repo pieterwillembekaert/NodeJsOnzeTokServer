@@ -101,19 +101,6 @@ var ShowCountry = function (aAllCountry, DataJSON) {
     //variabelen
     var t, state;
 
-    //onzichtbaar maken van alle tokken
-    //for (let iii = 0; iii < aAllCountry.length; iii++) {
-    //t = svg().getElementById(aAllCountry[iii] + '-tok');
-
-    // if (t == null) {
-    //    console.log("not found: " + aAllCountry[iii] + '-tok')
-    //    return
-    // }
-    // state = t.getAttribute('display');
-    // state = 'none';
-    //t.setAttribute('display', state);
-    //}
-
     //tokken zoeken en weergeven op de kaart
     for (let i = 0; i < DataJSON.length; i++) {
 
@@ -125,6 +112,7 @@ var ShowCountry = function (aAllCountry, DataJSON) {
 
             if (aAllCountry[ii] === DataJSON[i].country) {
                 // console.log(aAllCountry[ii])
+                //Kleur van het bezochte land aanpassen
                 ColorVisitCountry(aAllCountry[ii])
                 state = 'block';
                 t.setAttribute('display', state);
@@ -214,7 +202,6 @@ var AnimationMap = function (country, DataFromJs) {
 
     ms.onclick = function (e) {
         var color = '#34642d';
-
 
         var style_valueV = '';
         var style_value = '';
@@ -814,7 +801,7 @@ var main = function () {
         "corsica",
         "france",
         "netherlands",
-        //"belgium",
+        "belgium",
         "germany",
         "denmark",
         "sjælland",
