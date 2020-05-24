@@ -24,6 +24,12 @@ angular.module('OnzeTokDeWereldRond', ['ngRoute'])
           console.log('sociale media');
         }
       })
+      .when('/tekenOnzeTok', {
+        templateUrl: 'views/tekenOnzeTok.html',
+        controller: function () {
+          console.log('sociale media');
+        }
+      })
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'dashboard'

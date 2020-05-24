@@ -277,6 +277,13 @@ app
             //res.send('File uploaded to ' + uploadPath);
         });
     })
+    .get('/downloadSjabloon', function (req, res) {
+
+        res
+            .status(200)
+            .sendfile('public/download/tok.pdf');
+
+    })
     .all('/*', function (req, res) {
         if (dataObj == null || dataObj == undefined) {
             console.log("data not load")
