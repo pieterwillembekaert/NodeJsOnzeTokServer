@@ -1,8 +1,63 @@
 /**
  * Global var
  */
-var dataObj;
-var dataCountryG;
+function convertDateFromPage(inputString) {
+    console.log(inputString)
+    let str = inputString;
+    let res = str.split("-");
+    let res1 = res[2].split("T");
+
+    let year = res[0];
+    let month = res[1];
+    let day = res1[0];
+
+    return day + "-" + month + "-" + year;
+}
+
+function convertDateFromPageYear(inputString) {
+    let str = inputString;
+    let res = str.split("-");
+    let res1 = res[2].split("T");
+
+    let year = res[0];
+    let month = res[1];
+    let day = res1[0];
+
+    return year;
+}
+
+var dataCountryTranslation = {
+    data: {},
+
+    set Sdata(dataSet) {
+        this.data = dataSet;
+    },
+    get Gdata() {
+        return this.data;
+    }
+};
+
+var dataCountry = {
+    data: {},
+
+    set Sdata(dataSet) {
+        this.data = dataSet;
+    },
+    get Gdata() {
+        return this.data;
+    }
+};
+
+var dataObjVisiters = {
+    data: {},
+
+    set Sdata(dataSet) {
+        this.data = dataSet;
+    },
+    get Gdata() {
+        return this.data;
+    }
+};
 
 var login = {
     email: String,
@@ -12,6 +67,11 @@ var login = {
 var CorrectLogin = {
     "email": "ksa@ksa.be",
     "password": "ksagroetu"
+};
+
+var CorrectMasterLogin = {
+    "email": "pwb@ksa.be",
+    "password": "123456"
 };
 /**
  * Init fuction 
@@ -40,8 +100,9 @@ const port = process.env.PORT || 3000;
  */
 
 app.use(express.static('public'));
-const dataPath = "./public/json/bezocht.json";
-const dataCountry = "./public/json/country.json";
+const dataPath = "./public/static/json/bezocht.json";
+const dataPathCountry = "./public/static/json/country.json";
+const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
 /**
  * Routes Definitions
  */
@@ -81,15 +142,48 @@ app
             login.actief = true;
             console.log("ok")
             res.redirect('/home')
+        } else if (login.email == CorrectMasterLogin.email && login.password == CorrectMasterLogin.password) {
+            login.actief = true;
+            console.log("ok")
+            res.redirect('/home')
         }
 
     })
+    .post('/saveToDB', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newDataToSave = req.body;
+
+        if(!newDataToSave){
+            res.sendStatus(404);
+            return;
+        }
+
+        //data klaarmaken om te bewaren
+        let jsonContent = JSON.stringify(newDataToSave);
+        SaveDataToFile(dataPath, jsonContent);
+        res.sendStatus(200);
+    })
+    
+
     .post('/newdata', bodyParser.json(), (req, res) => {
         //data van pagina
         let newData = req.body;
 
+        let listCountrysTranslation = dataCountryTranslation.Gdata;
+        let listCountrys = dataCountry.Gdata;
+
+        //land vertalen nl -> en
+        for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
+            if (newData.countryTanslation == listCountrysTranslation.countrys[i]) {
+                newData.country = listCountrys.countrys[i];
+            }
+        }
+
+        newData.dateConvert = convertDateFromPage(newData.date);
+        newData.year = convertDateFromPageYear(newData.date)
+
         //data opslaan naar de tussen var
-        let dataGet = dataObj.Gdata;
+        let dataGet = dataObjVisiters.Gdata;
         let length = dataGet.members.length;
         dataGet.members[length] = newData;
 
@@ -99,10 +193,10 @@ app
         }
 
         //data terug opslaan naar de globale var
-        dataObj.Sdata = dataGet;
+        dataObjVisiters.Sdata = dataGet;
 
         //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObj.Gdata);
+        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/changedata', bodyParser.json(), (req, res) => {
@@ -110,15 +204,32 @@ app
         let DataFromPage = req.body;
 
         //reeds opgeslagen data openen 
-        let dataGet = dataObj.Gdata;
+        let dataGet = dataObjVisiters.Gdata;
+        let listCountrysTranslation = dataCountryTranslation.Gdata;
+        let listCountrys = dataCountry.Gdata;
+
+        var country;
+
+        //land vertalen nl -> en
+        for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
+            if (DataFromPage.countryTanslation == listCountrysTranslation.countrys[i]) {
+                country = listCountrys.countrys[i];
+            }
+        }
+
+        var convertDate = convertDateFromPage(DataFromPage.date);
+        var convertYear = convertDateFromPageYear(DataFromPage.date);
 
         //data opslaan naar de tussen var
         let i = DataFromPage.index;
         dataGet.members[i].name = DataFromPage.name;
-        dataGet.members[i].country = DataFromPage.country;
+        dataGet.members[i].country = country;
+        dataGet.members[i].countryTanslation = DataFromPage.countryTanslation;
+        dataGet.members[i].date = DataFromPage.date;
+        dataGet.members[i].dateConvert = convertDate;
         dataGet.members[i].distance = DataFromPage.distance;
         dataGet.members[i].imgScr = DataFromPage.imgScr;
-        dataGet.members[i].date = DataFromPage.date;
+        dataGet.members[i].year = convertYear;
 
         //id opnieuw bepalen
         for (let i = 0; i < dataGet.members.length; i++) {
@@ -126,10 +237,10 @@ app
         }
 
         //data terug opslaan naar de globale var
-        dataObj.Sdata = dataGet;
+        dataObjVisiters.Sdata = dataGet;
 
         //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObj.Gdata);
+        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/deletdata', bodyParser.json(), (req, res) => {
@@ -137,7 +248,7 @@ app
         let DataFromPage = req.body;
 
         //reeds opgeslagen data openen 
-        let dataGet = dataObj.Gdata;
+        let dataGet = dataObjVisiters.Gdata;
 
         //open te wissen id
         let i = DataFromPage.index;
@@ -153,10 +264,10 @@ app
         }
 
         //data terug opslaan naar de globale var
-        dataObj.Sdata = dataGet;
+        dataObjVisiters.Sdata = dataGet;
 
         //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObj.Gdata);
+        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/logout', bodyParser.json(), (req, res) => {
@@ -164,7 +275,7 @@ app
 
     })
     .get('/home', function (req, res) {
-        console.log("test")
+        //console.log("test")
         var a = {
             user: "",
             actief: false
@@ -211,14 +322,27 @@ app
             .download(dataPath)
 
     })
-    .get('/county', function (req, res) {
-        if (dataCountryG == null || dataCountryG == undefined) {
-            console.log("data not load dataCountryG")
-            dataCountryG = OpenJsonDataFile(dataCountry);
-        } else {
-            console.log(dataCountryG.Gdata)
-            res.json(dataCountryG.Gdata);
-        }
+    .get('/country', function (req, res) {
+        fs.readFile(dataPathCountry, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            dataCountry.Sdata = JSON.parse(data);
+            res.json(dataCountry.Gdata);
+        });
+
+    })
+
+    .get('/countryTranslation', function (req, res) {
+        fs.readFile(dataPathCountrytranslation, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            dataCountryTranslation.Sdata = JSON.parse(data);
+            res.json(dataCountryTranslation.Gdata);
+        });
+
+
     })
 
     .on('error', function (error) {
@@ -226,24 +350,36 @@ app
         console.log(error.stack);
     })
     .get('/data', function (req, res) {
-        if (dataObj == null || dataObj == undefined) {
-            console.log("data not load")
-            dataObj = OpenJsonDataFile(dataPath);
-        } else {
-            console.log(dataObj.Gdata)
-            res.json(dataObj.Gdata);
-        }
+        fs.readFile(dataPath, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            dataObjVisiters.Sdata = JSON.parse(data);
+            res.json(dataObjVisiters.Gdata);
+        });
+
+
+
 
     })
     .get('/TotalDist', function (req, res) {
-
-        if (dataObj == null || dataObj == undefined) {
-            console.log("data not load")
-            dataObj = OpenJsonDataFile(dataPath);
+        var out;
+        if (dataObjVisiters.Gdata.members == null || undefined) {
+            fs.readFile(dataPath, (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                dataObjVisiters.Sdata = JSON.parse(data);
+                out = completeTotalDist(dataObjVisiters.Gdata.members);
+                res.json(out);
+            });
         } else {
-            let out = completeTotalDist(dataObj.Gdata.members);
+
+            out = completeTotalDist(dataObjVisiters.Gdata.members);
             res.json(out);
         }
+
+
     })
     .get('/folder', function (req, res) {
         res
@@ -285,9 +421,14 @@ app
 
     })
     .all('/*', function (req, res) {
-        if (dataObj == null || dataObj == undefined) {
-            console.log("data not load")
-            dataObj = OpenJsonDataFile(dataPath);
+        if (dataObjVisiters == null || undefined) {
+            fs.readFile(dataPath, (err, data) => {
+                if (err) {
+                    throw err;
+                }
+                dataObjVisiters.Sdata = JSON.parse(data);
+                res.json(dataObjVisiters.Gdata);
+            });
         }
 
         res
@@ -329,6 +470,9 @@ function SaveDataToFile(dataPath, newdata) {
 
 //Open json file 
 function OpenJsonDataFile(dataPath) {
+    //console.log(test.lang);
+
+    //test.lang = "nl"
     var dataObj = {
         data: {},
 
@@ -338,20 +482,17 @@ function OpenJsonDataFile(dataPath) {
         get Gdata() {
             return this.data;
         }
-
-
-
     };
     fs.readFile(dataPath, (err, data) => {
         if (err) {
             throw err;
         }
         dataObj.Sdata = JSON.parse(data);
-
-
+        //console.log(dataObj.data)
+        //console.log(dataObj.Gdata)
+        return dataObj.Gdata;
     });
-    console.log(dataObj)
-    return dataObj;
+    //console.log(dataObj)   
 }
 
 function OpenJsonDataFileCounrty(dataPath) {
@@ -388,6 +529,11 @@ function completeTotalDist(inputdata) {
         z5: 0
     }
 
+    if (inputdata == null || undefined) {
+        console.log("completeTotalDist: error inputdata")
+        return
+    }
+
     for (i = 0; i < inputdata.length; i++) {
         totaal = totaal + inputdata[i].distance;
     }
@@ -402,3 +548,5 @@ function completeTotalDist(inputdata) {
 
     return out;
 }
+
+

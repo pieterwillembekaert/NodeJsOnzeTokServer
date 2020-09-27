@@ -42,25 +42,46 @@
   <div id="table" class="container">
     <table>
       <tr>
-        <th>wijzig</th>
+        <th>Wijzig</th>
         <th>id</th>
-        <th>naam</th>
-        <th>land</th>
-        <th>afstand</th>
-        <th>datum</th>
-        <th>afbeelding</th>
+        <th>Naam</th>
+        <th>Land</th>
+        <th>Land vertaling</th>
+        <th>Afstand</th>
+        <th>Datum</th>
+        <th>Afbeelding</th>
       </tr>
       <tr ng-repeat="x in data">
 
-        <td> <a href="#controlpanel" ng-click="editUser(x.id)" class="btn waves-effect waves-light col s12">wijzig</a>
+
+        <td> <a ng-click="editUser(x.id)" class="waves-effect waves-light col s12 material-icons">edit</a>
+
+          <a ng-click="removeData1(x.id)"
+            class="materialize-red-text waves-effect waves-light col s12 material-icons">delete</a>
         </td>
         <td>{{ x.id }}</td>
         <td>{{ x.name }}</td>
         <td>{{ x.country }}</td>
+        <td>{{ x.countryTanslation }}</td>
         <td>{{ x.distance }}</td>
-        <td>{{ x.date }}</td>
+        <td>{{ x.dateConvert }}</td>
         <td><img src="{{ x.imgScr }}" alt="{{ x.name }}" width="100px"></td>
-
+      </tr>
+      <tr class="inputTR">
+        <td><a ng-click="addData()" ng-show="done=='nShow'" ng-hide="done=='Show'"
+            class="waves-effect waves-light col s12 material-icons">group_add</a>
+          <a ng-click="changeData()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+            class="green-text waves-effect waves-light col s12 material-icons">done</a>
+          <a ng-click="verwerp()" ng-show="done=='Show'" ng-hide="done=='nShow'"
+            class="orange-text waves-effect waves-light col s12 material-icons">refresh</a>
+        </td>
+        <td class="grey-text text-lighten-1">{{id}}</td>
+        <td><input type="text" ng-model="name"></td>
+        <td><input type="text" ng-model="country"></td>
+        <td><input type="text" ng-model="countryTanslation"></td>
+        <td><input type="text" ng-model="distance"></td>
+        <td><input type="date" ng-model="date"></td>
+        <td><input type="text" ng-model="imgScr"></td>
       </tr>
     </table>
   </div>
@@ -74,70 +95,34 @@
     }
   </style>
   <div class="container" id="controlpanel">
-    <form>
-
-      <div class="row">
-        <div class="input-field col s6">
-          Name: <input type="text" ng-model="name">
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <div class="input-field col s6">
-            country: <input type="text" ng-model="country">
-          </div>
-          <div class="kot">
-            <ul>
-              <li ng-repeat="x in countrys | filter: country">
-                {{ x }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="kot">
+      <ul>
+        <li ng-repeat="x in countrysTranslation | filter: countryTanslation">
+          {{ x }}
+        </li>
+      </ul>
+    </div>
 
 
-      <div class="row">
-        <div class="input-field col s6">
-          distance: <input type="number" ng-model="distance">
-        </div>
-        <div class="input-field col s6">
-          imgScr: <input type="text" ng-model="imgScr">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s6">
-          datum: <input type="number" ng-model="date">
-        </div>
-        <div class="input-field col s6">
-          index: <input type="number" ng-model="edithIndex">
-        </div>
-      </div>
-
-
-
-      <a href="#" ng-click="addData()" class="btn waves-effect waves-light col s12">nieuw</a>
-      <a href="#" ng-click="changeData()" class="btn waves-effect waves-light col s12">wijzig</a>
-      <a href="#" ng-click="removeData()" class="btn waves-effect waves-light col s12">wis</a>
-      <a href="/download" class="btn waves-effect waves-light col s12">download</a>
-
+    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+      <input type="file" name="sampleFile" ng-model="distance" />
+      <input type='submit' value='Upload!' />
     </form>
 
-    <form ref='uploadForm' 
-			id='uploadForm' 
-			action='/upload' 
-			method='post' 
-			encType="multipart/form-data">
-				<input type="file" name="sampleFile" ng-model="distance" />
-				<input type='submit' value='Upload!' />
-		</form>		
 
-    <br>
-    <br>
+
+    <a href="#!/databaseBonden" ng-click="saveToDB()" class="btn waves-effect waves-light col s12 material-icons">save
+      OPSLAAN NAAR DATABASE</a>
+    <a href="/downloadBondenLourdes" class="btn waves-effect waves-light col s12 material-icons">file_download DOWNLOAD
+      BESTAND</a>
 
   </div>
+
+
+
+
+
+
 
   <footer class="page-footer KSA-blue">
     <div class="footer-copyright">

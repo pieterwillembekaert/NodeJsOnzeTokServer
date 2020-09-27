@@ -104,7 +104,7 @@ div.polaroid:hover {
 /*KM van huis */
 .grid-container-home {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     padding: 10px;
 }
 
