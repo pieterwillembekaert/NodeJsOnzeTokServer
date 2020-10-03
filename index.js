@@ -275,7 +275,6 @@ app
 
     })
     .get('/home', function (req, res) {
-        //console.log("test")
         var a = {
             user: "",
             actief: false
@@ -305,16 +304,6 @@ app
 
         }
     })
-    .get('/timeline', bodyParser.json(), function (req, res) {
-
-        res
-            .status(200)
-            .set({
-                'content-type': 'text/html; charset=utf-8'
-            })
-
-            .sendfile('public/Timeline.html')
-    })
     .get('/download', bodyParser.json(), function (req, res) {
 
         res
@@ -332,7 +321,6 @@ app
         });
 
     })
-
     .get('/countryTranslation', function (req, res) {
         fs.readFile(dataPathCountrytranslation, (err, data) => {
             if (err) {
@@ -344,7 +332,6 @@ app
 
 
     })
-
     .on('error', function (error) {
         console.log("Error: \n" + error.message);
         console.log(error.stack);
@@ -357,10 +344,6 @@ app
             dataObjVisiters.Sdata = JSON.parse(data);
             res.json(dataObjVisiters.Gdata);
         });
-
-
-
-
     })
     .get('/TotalDist', function (req, res) {
         var out;
@@ -378,8 +361,22 @@ app
             out = completeTotalDist(dataObjVisiters.Gdata.members);
             res.json(out);
         }
-
-
+    })
+    .get('/TotalDist/:year', function (req, res) {
+        var year = Number(req.params.year);
+        var out;
+        if (dataObjVisiters.Gdata.members == null || undefined) {
+            fs.readFile(dataPath, (err, data) => {
+                if (err)  throw err;
+                   
+                dataObjVisiters.Sdata = JSON.parse(data);
+                out =completeTotalDistYear(dataObjVisiters.Gdata.members,year)
+                res.json(out);
+            });
+        } else {           
+            out =completeTotalDistYear(dataObjVisiters.Gdata.members,year)
+            res.json(out);
+        }
     })
     .get('/folder', function (req, res) {
         res
@@ -549,4 +546,58 @@ function completeTotalDist(inputdata) {
     return out;
 }
 
+//Totale afstand 
+function completeTotalDistYear(inputdata,inputYear) {
+  
+    console.log(inputYear)
+    console.log(inputdata)
+    
+    var totaal = 0;
+    var out = {
+        z: 0,
+        z1: 0,
+        z2: 0,
+        z3: 0,
+        z4: 0,
+        z5: 0,
+        z6: 0,
+        z7: 0,
+        z8: 0,
+        z9: 0, 
+        z10: 0
+    }
+
+    if (inputdata == null || undefined) {
+        console.log("completeTotalDist: error inputdata")
+        return
+    }
+
+    if (inputYear == null || undefined) {
+        console.log("completeTotalDist: error inputdata")
+        return
+    }
+
+    
+    for (i = 0; i < inputdata.length; i++) {
+        if(inputdata[i].year==inputYear){
+            totaal = totaal + inputdata[i].distance;
+        }    
+    }
+
+
+    var x = totaal;
+    out.z = Math.round(x % 10);
+    out.z1 = Math.round((x % 100) / 10 - (out.z / 10));
+    out.z2 = Math.round(((x % 1000) / 100) - (out.z1 / 10));
+    out.z3 = Math.round(((x % 10000) / 1000) - (out.z2 / 10 + (out.z1 / 100)));
+    out.z4 = Math.round(((x % 100000) / 10000) - (out.z3 / 10 + out.z2 / 100 + out.z1 / 1000));
+    out.z5 = Math.round(((x % 1000000) / 100000) - (out.z4 / 10 + out.z3 / 100 + out.z2 / 1000 + out.z1 / 10000));
+    out.z6 = Math.round(((x % 10000000) / 1000000) - (out.z5 / 10 + out.z4 / 100 + out.z3 / 1000 + out.z2 / 10000 + out.z1 / 100000));
+    out.z7 = Math.round(((x % 100000000) / 10000000) - (out.z6 / 10 + out.z5 / 100 + out.z4 / 1000 + out.z3 / 10000 + out.z2 / 100000 + out.z1 / 1000000));
+    out.z8 = Math.round(((x % 1000000000) / 100000000) - (out.z7 / 10 + out.z6 / 100 + out.z5 / 1000 + out.z4 / 10000 + out.z3 / 100000 + out.z2 / 1000000 + out.z1 / 10000000));
+    out.z9 = Math.round(((x % 100000000000) / 1000000000) - (out.z8 / 10 + out.z7 / 100 + out.z6 / 1000 + out.z5 / 10000 + out.z4 / 100000 + out.z3 / 1000000 + out.z2 / 10000000 + out.z1 / 100000000));
+    out.z10 = Math.round(((x % 1000000000000) / 100000000000) - (out.z9 / 10 + out.z8 / 100 + out.z7 / 1000 + out.z6 / 10000 + out.z5 / 100000 + out.z4 / 1000000 + out.z3 / 10000000 + out.z2 / 100000000+ out.z1 / 1000000000));
+
+    return out;
+}
 
