@@ -39,6 +39,51 @@ angular.module('OnzeTokDeWereldRond', ['ngRoute'])
 
   .controller('dashboard',
     function ($scope, $http, $window) {
+      $scope.SelectYear = ["alles", 2020, 2019, 2018];
+
+      console.log($scope.SelectYear)
+      console.log($scope.selectedYear);
+
+      $scope.changeYear = function () {
+        var urlYear; 
+        if($scope.selectedYear=="alles"){
+          urlYear=0; 
+
+        }else{
+          urlYear=$scope.selectedYear; 
+
+        }
+       
+        $http({
+          method: 'get',
+          url: '/TotalDist/'+ urlYear
+        }).then(function (response) {
+          console.log(response, 'res');
+          data = response.data;
+
+          $scope.km100000 = data.z5;
+          $scope.km10000 = data.z4;
+          $scope.km1000 = data.z3;
+          $scope.km100 = data.z2;
+          $scope.km10 = data.z1;
+          $scope.km1 = data.z;
+
+        }, function (error) {
+          console.log(error, 'can not get data.');
+          $scope.km100000 = "x";
+          $scope.km10000 = "x";
+          $scope.km1000 = "x";
+          $scope.km100 = "x";
+          $scope.km10 = "x";
+          $scope.km1 = "x";
+
+        });
+
+      }
+
+
+
+
       $http({
         method: 'get',
         url: '/TotalDist'
@@ -64,12 +109,8 @@ angular.module('OnzeTokDeWereldRond', ['ngRoute'])
 
       });
 
-    }
-
-  )
-
-
-  .controller('prikbord', 
+    })
+  .controller('prikbord',
     function ($scope, $http, $window) {
       $http({
         method: 'get',
@@ -88,3 +129,6 @@ angular.module('OnzeTokDeWereldRond', ['ngRoute'])
     }
 
   );
+
+
+  

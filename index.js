@@ -153,7 +153,7 @@ app
         //data van pagina
         let newDataToSave = req.body;
 
-        if(!newDataToSave){
+        if (!newDataToSave) {
             res.sendStatus(404);
             return;
         }
@@ -163,7 +163,7 @@ app
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
     })
-    
+
 
     .post('/newdata', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -353,12 +353,12 @@ app
                     throw err;
                 }
                 dataObjVisiters.Sdata = JSON.parse(data);
-                out = completeTotalDist(dataObjVisiters.Gdata.members);
+                out = completeTotalDistYear(dataObjVisiters.Gdata.members, 0);
                 res.json(out);
             });
         } else {
 
-            out = completeTotalDist(dataObjVisiters.Gdata.members);
+            out = completeTotalDistYear(dataObjVisiters.Gdata.members, 0);
             res.json(out);
         }
     })
@@ -367,14 +367,14 @@ app
         var out;
         if (dataObjVisiters.Gdata.members == null || undefined) {
             fs.readFile(dataPath, (err, data) => {
-                if (err)  throw err;
-                   
+                if (err) throw err;
+
                 dataObjVisiters.Sdata = JSON.parse(data);
-                out =completeTotalDistYear(dataObjVisiters.Gdata.members,year)
+                out = completeTotalDistYear(dataObjVisiters.Gdata.members, year)
                 res.json(out);
             });
-        } else {           
-            out =completeTotalDistYear(dataObjVisiters.Gdata.members,year)
+        } else {
+            out = completeTotalDistYear(dataObjVisiters.Gdata.members, year)
             res.json(out);
         }
     })
@@ -547,11 +547,8 @@ function completeTotalDist(inputdata) {
 }
 
 //Totale afstand 
-function completeTotalDistYear(inputdata,inputYear) {
-  
-    console.log(inputYear)
-    console.log(inputdata)
-    
+function completeTotalDistYear(inputdata, inputYear) {
+
     var totaal = 0;
     var out = {
         z: 0,
@@ -563,7 +560,7 @@ function completeTotalDistYear(inputdata,inputYear) {
         z6: 0,
         z7: 0,
         z8: 0,
-        z9: 0, 
+        z9: 0,
         z10: 0
     }
 
@@ -577,12 +574,19 @@ function completeTotalDistYear(inputdata,inputYear) {
         return
     }
 
-    
-    for (i = 0; i < inputdata.length; i++) {
-        if(inputdata[i].year==inputYear){
+    if (inputYear == 0) {
+        for (let i = 0; i < inputdata.length; i++) {
             totaal = totaal + inputdata[i].distance;
-        }    
+        }
+
+    } else {
+        for (let i = 0; i < inputdata.length; i++) {
+            if (inputdata[i].year == inputYear) {
+                totaal = totaal + inputdata[i].distance;
+            }
+        }
     }
+
 
 
     var x = totaal;
@@ -596,8 +600,7 @@ function completeTotalDistYear(inputdata,inputYear) {
     out.z7 = Math.round(((x % 100000000) / 10000000) - (out.z6 / 10 + out.z5 / 100 + out.z4 / 1000 + out.z3 / 10000 + out.z2 / 100000 + out.z1 / 1000000));
     out.z8 = Math.round(((x % 1000000000) / 100000000) - (out.z7 / 10 + out.z6 / 100 + out.z5 / 1000 + out.z4 / 10000 + out.z3 / 100000 + out.z2 / 1000000 + out.z1 / 10000000));
     out.z9 = Math.round(((x % 100000000000) / 1000000000) - (out.z8 / 10 + out.z7 / 100 + out.z6 / 1000 + out.z5 / 10000 + out.z4 / 100000 + out.z3 / 1000000 + out.z2 / 10000000 + out.z1 / 100000000));
-    out.z10 = Math.round(((x % 1000000000000) / 100000000000) - (out.z9 / 10 + out.z8 / 100 + out.z7 / 1000 + out.z6 / 10000 + out.z5 / 100000 + out.z4 / 1000000 + out.z3 / 10000000 + out.z2 / 100000000+ out.z1 / 1000000000));
+    out.z10 = Math.round(((x % 1000000000000) / 100000000000) - (out.z9 / 10 + out.z8 / 100 + out.z7 / 1000 + out.z6 / 10000 + out.z5 / 100000 + out.z4 / 1000000 + out.z3 / 10000000 + out.z2 / 100000000 + out.z1 / 1000000000));
 
     return out;
 }
-
