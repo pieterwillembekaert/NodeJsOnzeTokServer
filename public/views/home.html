@@ -40,11 +40,11 @@
 
 <!--Dashboard-->
 
-<div class="container" id="TotaleAfstand">
+<div class="container" ng-controller="dashboard" id="TotaleAfstand">
     <h1>Dashboard</h1>
     <div class="grid-container-home">
         <div class="grid-item-home"></div>
-        <div ng-controller="dashboard" class="grid-item-home">
+        <div class="grid-item-home">
             <!--Dashboard km teller-->
             <div class="grid-container-KM">
                 <div class="grid-item-KM">
@@ -74,21 +74,19 @@
         <div class="grid-item-home"></div>
     </div>
 
+    
+    <p>De tok legt jaarlijk heel wat kilometers af. Op de kilometerteler is te zien hoeveel kilometer de tok totaal
+        aflegde.</p>
 
+    <p>Wenst u de afstand te zien van een andere jaar? Maak een keuze:</p>
 
-    <div class="">
-        <p>De tok legt jaarlijk heel wat kilometers af. Op de kilometerteler is te zien hoeveel kilometer de tok totaal aflegde.</p>
+    <div class="row">
 
-       <!-- <p>Wenst u de afstand te zien van een andere jaar? Maak een keuze:</p>-->
+        <select class="col s6" ng-model="selectedYear" ng-options="x for x in SelectYear"></select>
 
-       <!-- <label for="cars">kies een jaartal:</label>
-        <select name="cars" id="cars">
-            <option value="audi">2021</option>
-            <option value="volvo">2020</option>
-            <option value="saab">2019</option>
-            <option value="opel">2018</option>
-        </select>-->
+        <a class="green-text waves-effect waves-light  col s6 material-icons" ng-click="changeYear()">done</a>
     </div>
 
-</div>
+
+
 </div>
