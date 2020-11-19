@@ -3475,7 +3475,7 @@ video.responsive-video {
     float: none;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1670px) {
     .pagination {
         width: 100%;
     }
@@ -3589,7 +3589,7 @@ ul.staggered-list li {
     }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1670px) {
     .hide-on-med-and-down {
         display: none !important;
     }
@@ -3601,25 +3601,25 @@ ul.staggered-list li {
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1670px) {
     .hide-on-med-only {
         display: none !important;
     }
 }
 
-@media only screen and (min-width: 993px) {
+@media only screen and (min-width: 1670px) {
     .hide-on-large-only {
         display: none !important;
     }
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1670px) {
     .hide-on-extra-large-only {
         display: none !important;
     }
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1670px) {
     .show-on-extra-large {
         display: block !important;
     }
@@ -3631,7 +3631,7 @@ ul.staggered-list li {
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 992px) {
+@media only screen and (min-width: 600px) and (max-width: 1670px) {
     .show-on-medium {
         display: block !important;
     }
@@ -3739,7 +3739,7 @@ th {
     border-radius: 2px;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1670px) {
     table.responsive-table {
         width: 100%;
         border-collapse: collapse;
@@ -5087,8 +5087,7 @@ nav .brand-logo.center {
 
 
 /* menu balk weg */
-
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1610px) {
     nav .brand-logo {
         left: 10%;
         font-size: 0rem;
@@ -5226,7 +5225,7 @@ nav .input-field label.active i {
 }
 
 .navbar-fixed {
-    position: relative;
+    position: a;
     height: 56px;
     z-index: 997;
 }
@@ -8618,7 +8617,7 @@ input[type=range]::-ms-thumb {
     left: auto;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1687px) {
     .sidenav.sidenav-fixed {
         -webkit-transform: translateX(-105%);
         transform: translateX(-105%);
