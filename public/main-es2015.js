@@ -2521,7 +2521,7 @@ class TotalDistService {
     }
     getDataAsyn(urlYear) {
         return new Promise(resolve => {
-            this.http.get("http://localhost:3000/TotalDist/" + urlYear)
+            this.http.get("/TotalDist/" + urlYear)
                 .subscribe(data => {
                 console.log(data);
                 this.dataYear = data;
@@ -2578,7 +2578,7 @@ class VisitorsService {
     }
     getDataAsyn() {
         return new Promise(resolve => {
-            this.http.get("http://localhost:3000/data/")
+            this.http.get("/data/")
                 .subscribe(data => {
                 console.log(data);
                 this.Visitors = data;
@@ -2740,7 +2740,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\p-wil\Desktop\CloneOnzeTok\onzetokdewereldrond\AngularOnzeTok\OnzeTokDeWereldRond\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\p-wil\Desktop\CloneOnzeTok\AngularOnzeTok\OnzeTokDeWereldRond\src\main.ts */"./src/main.ts");
 
 
 /***/ })

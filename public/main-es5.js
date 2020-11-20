@@ -2806,7 +2806,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           return new Promise(function (resolve) {
-            _this2.http.get("http://localhost:3000/TotalDist/" + urlYear).subscribe(function (data) {
+            _this2.http.get("/TotalDist/" + urlYear).subscribe(function (data) {
               console.log(data);
               _this2.dataYear = data;
               resolve(data); //return data; 
@@ -2926,7 +2926,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this3 = this;
 
           return new Promise(function (resolve) {
-            _this3.http.get("http://localhost:3000/data/").subscribe(function (data) {
+            _this3.http.get("/data/").subscribe(function (data) {
               console.log(data);
               _this3.Visitors = data;
               resolve(data); //return data; 
@@ -3228,7 +3228,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\p-wil\Desktop\CloneOnzeTok\onzetokdewereldrond\AngularOnzeTok\OnzeTokDeWereldRond\src\main.ts */
+    /*! C:\Users\p-wil\Desktop\CloneOnzeTok\AngularOnzeTok\OnzeTokDeWereldRond\src\main.ts */
     "./src/main.ts");
     /***/
   }
