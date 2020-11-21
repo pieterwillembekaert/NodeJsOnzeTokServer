@@ -26,7 +26,6 @@
 
         <div id="LeesMeer" class="container">
             <div class="section">
-
                 <div class="row">
                       <!-- post -->
                     <div class="col s12 m4 l4 card-item-Prikbord" ng-repeat="x in data">
@@ -59,6 +58,41 @@
             </div>
         </div>
     </div>
+
+    <div id="LeesMeer" class="container">
+        <div class="section">
+            <div class="row">
+                  <!-- post -->
+                <div class="col s12 m4 l4 card-item-Prikbord" ng-repeat="x in data">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator image-card" src="{{x.imgScr}}">
+                        </div>
+                        <div class="card-content">
+                            <span
+                                class="card-title title-card activator grey-text text-darken-4 tekstcamping">{{x.name}}<i
+                                    class="material-icons right">more_vert</i></span>
+                            <p>
+                                <!--<a href="praktisch.html" class="tekstcamping">Meer info nodig? Klik
+                            hier!</a>-->
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4 tekstcamping">{{x.name}}<i
+                                    class="material-icons right materialize-red-text  tekstcamping">X</i></span>
+                            <p class="fontsize1-black">
+                                LAND: {{x.countryTanslation}} <br>
+                                AFSTAND: {{x.distance}} <br>
+                                DATUM: {{x.dateConvert}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- einde -->
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
