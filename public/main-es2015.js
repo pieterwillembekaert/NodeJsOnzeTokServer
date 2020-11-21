@@ -2571,9 +2571,9 @@ class TotalDistService {
     }
     getDataAsyn(urlYear) {
         return new Promise(resolve => {
-            this.http.get("http://onzetokdewereldrond.herokuapp.com/TotalDist/" + urlYear)
+            this.http.get("/TotalDist/" + urlYear)
                 .subscribe(data => {
-                console.log(data);
+                //console.log(data);
                 this.dataYear = data;
                 resolve(data);
                 //return data; 
@@ -2628,7 +2628,7 @@ class VisitorsService {
     }
     getDataAsyn() {
         return new Promise(resolve => {
-            this.http.get("http://onzetokdewereldrond.herokuapp.com/data/")
+            this.http.get("/data/")
                 .subscribe(data => {
                 console.log(data);
                 this.Visitors = data;
