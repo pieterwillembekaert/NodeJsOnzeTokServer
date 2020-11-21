@@ -1919,9 +1919,9 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.slides);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
@@ -2017,6 +2017,14 @@ class KaartComponent {
             console.log("data not load: dataVisitor");
             return;
         }
+        if (objElm == null || undefined) {
+            console.log("data not load: objElm");
+            return;
+        }
+        if (objElm.contentDocument == null || undefined) {
+            console.log("data not load: objElm.contentDocument");
+            return;
+        }
         //console.log(country)
         //console.log(dataVisitor)
         this.ShowCountry(country, dataVisitor, objElm.contentDocument);
@@ -2025,8 +2033,24 @@ class KaartComponent {
         }
     }
     AnimationMap(country, DataFromJs, HTLM) {
+        if (country == null || undefined) {
+            console.log("data not load (AnimationMap): country");
+            return;
+        }
+        if (DataFromJs == null || undefined) {
+            console.log("data not load (AnimationMap): DataFromJs");
+            return;
+        }
+        if (HTLM == null || undefined) {
+            console.log("data not load (AnimationMap): HTLM");
+            return;
+        }
         //var ms = svg().getElementById(country);
         var ms = HTLM.getElementById(country);
+        if (ms == null || undefined) {
+            console.log("error: ", country);
+            return;
+        }
         if (this.GvCountryClick !== null || this.GvCountryClick !== undefined) {
             var msv = HTLM.getElementById(this.GvCountryClick);
         }
@@ -2101,6 +2125,18 @@ class KaartComponent {
         };
     }
     ShowCountry(aAllCountry, DataJSON, HTML) {
+        if (aAllCountry == null || undefined) {
+            console.log("data not load (ShowCountry): aAllCountry");
+            return;
+        }
+        if (DataJSON == null || undefined) {
+            console.log("data not load (ShowCountry): DataJSON");
+            return;
+        }
+        if (HTML == null || undefined) {
+            console.log("data not load (ShowCountry): HTML");
+            return;
+        }
         //variabelen
         var t, state, found;
         //tokken zoeken en weergeven op de kaart
@@ -2108,12 +2144,16 @@ class KaartComponent {
             found = false;
             for (let ii = 0; ii < aAllCountry.length; ii++) {
                 t = HTML.getElementById(aAllCountry[ii] + '-tok');
-                state = t.getAttribute('display');
+                if (t != null || undefined) {
+                    state = t.getAttribute('display');
+                }
                 if (aAllCountry[ii] === DataJSON[i].country) {
                     // console.log(aAllCountry[ii])
                     this.ColorVisitCountry(aAllCountry[ii], HTML);
                     state = 'block';
-                    t.setAttribute('display', state);
+                    if (t != null || undefined) {
+                        t.setAttribute('display', state);
+                    }
                     found = true;
                 }
             }
@@ -2121,7 +2161,19 @@ class KaartComponent {
     }
     //Color visit country
     ColorVisitCountry(country, HTML) {
+        if (country == null || undefined) {
+            console.log("data not load (ColorVisitCountry): country");
+            return;
+        }
+        if (HTML == null || undefined) {
+            console.log("data not load (ColorVisitCountry): HTML");
+            return;
+        }
         var ms = HTML.getElementById(country);
+        if (ms == null || undefined) {
+            console.log("Error: " + country);
+            return;
+        }
         var style_value = '';
         // parsing style attribute values
         var attrs = ms.getAttribute('style').split(' ').join('').split(';');
@@ -2142,6 +2194,14 @@ class KaartComponent {
         ms.setAttribute('style', style_value);
     }
     CreatDataPrikboardOnClick(dataInJSON, DataClickCountry) {
+        if (dataInJSON == null || undefined) {
+            console.log("data not load (CreatDataPrikboardOnClick): dataInJSON");
+            return;
+        }
+        if (DataClickCountry == null || undefined) {
+            console.log("data not load (CreatDataPrikboardOnClick): DataClickCountry");
+            return;
+        }
         var numberOfFound = 0;
         var lastID = 0;
         this.RemovePrikboardMap("dataPostMap");
@@ -2165,6 +2225,10 @@ class KaartComponent {
         return numberOfFound;
     }
     RemovePrikboardMap(parentID) {
+        if (parentID == null || undefined) {
+            console.log("data not load (RemovePrikboardMap): parentID");
+            return;
+        }
         var post = document.getElementById("dataPostMap");
         var child = document.getElementsByClassName("grid-item-map-data-PB");
         var childKopie = [];
@@ -2178,6 +2242,18 @@ class KaartComponent {
         }
     }
     CreatePrikboardMapEmty(dataInJSON, i, parentID) {
+        if (dataInJSON == null || undefined) {
+            console.log("data not load (CreatePrikboardMapEmty): dataInJSON");
+            return;
+        }
+        if (i == null || undefined) {
+            console.log("data not load (CreatePrikboardMapEmty): i");
+            return;
+        }
+        if (parentID == null || undefined) {
+            console.log("data not load (CreatePrikboardMapEmty): parentID");
+            return;
+        }
         var post = document.getElementById(parentID);
         //place to set new elements
         //creat elements
@@ -2202,6 +2278,18 @@ class KaartComponent {
         post.appendChild(griditemPB);
     }
     CreatePrikboardMap(dataInJSON, i, parentID) {
+        if (dataInJSON == null || undefined) {
+            console.log("data not load (CreatePrikboardMap): dataInJSON");
+            return;
+        }
+        if (i == null || undefined) {
+            console.log("data not load (CreatePrikboardMap): i");
+            return;
+        }
+        if (parentID == null || undefined) {
+            console.log("data not load (CreatePrikboardMap): parentID");
+            return;
+        }
         var post = document.getElementById(parentID);
         //place to set new elements
         //creat elements

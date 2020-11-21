@@ -1,4 +1,4 @@
-/**
+u/**
  * Global var
  */
 function convertDateFromPage(inputString) {
@@ -342,6 +342,7 @@ app
                 throw err;
             }
             dataObjVisiters.Sdata = JSON.parse(data);
+p            //console.log(data)
             res.json(dataObjVisiters.Gdata);
         });
     })
