@@ -101,13 +101,15 @@ class AppComponent {
     }
     ngOnInit() {
         //Get data
-        var $this = this;
-        this.__VisitorsService.getDataFromHttp().then(function (response) {
-            //$this.pompData=response; 
-            //$this.dataSource= response; 
-        }, function (error) {
-            console.log("error: ", error);
-        });
+        // var $this = this;
+        // this.__VisitorsService.getDataFromHttp().then(
+        //   function (response) {
+        //   console.log("data beschikbaar") 
+        //   },
+        //   function (error) {
+        //     console.log("error: ", error)
+        //   }
+        // )
     }
     ngOnDestroy() {
         this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -1694,7 +1696,7 @@ class GeneralService {
     getFullYear() {
         let full = new Date();
         var FullYear = full.getFullYear();
-        console.log(FullYear);
+        //console.log(FullYear)
         return FullYear;
     }
 }
@@ -1802,7 +1804,8 @@ class HomeComponent {
     }
     ngOnInit() {
         let currentYear = this.__GeneralService.getFullYear();
-        console.log(currentYear);
+        //debug
+        //console.log(currentYear)
         //Get data
         var $this = this;
         this.__TotalDistService.getDataFromHttp(currentYear).then(function (response) {
@@ -1970,40 +1973,48 @@ class KaartComponent {
         this.__CountriesService = __CountriesService;
     }
     ngOnInit() {
-        //Get data
+    }
+    ngAfterViewInit() {
+        this.getDataFromServer();
+        //var __objElm = (this.mySvg.nativeElement as HTMLObjectElement);
+        //console.log(__objElm.contentDocument)
+        //var $this = this;
+        //__objElm.onload = () => {
+        //const paths = __objElm.contentDocument.querySelectorAll('path');
+        //$this.objElm = __objElm;
+        //console.log("data objElm load")
+        //$this.getDataFromServer();
+        //console.log($this.__VisitorsService.getData())
+        //}
+    }
+    getDataFromServer() {
+        console.log("getDataFromServer");
         var $this = this;
         this.__VisitorsService.getDataFromHttp().then(function (response) {
-            //$this.pompData=response; 
-            //$this.dataSource= response; 
-            console.log("data beschikbaar");
-            $this.Main($this.objElm);
+            var __objElm = $this.mySvg.nativeElement;
+            console.log(__objElm);
+            //werk enkel voor firefox
+            if (__objElm) {
+                console.log("load");
+                $this.objElm = __objElm;
+                console.log("data objElm load");
+                $this.Main(__objElm);
+            }
+            //werk voor chrome en windows
+            // __objElm.onload = () => {
+            //   console.log("load")
+            //   $this.objElm = __objElm;
+            //   console.log("data objElm load")
+            //   $this.Main(__objElm);
+            //   //console.log($this.__VisitorsService.getData())
+            // }
+            //console.log("data")
+            //console.log($this)
+            //console.log("data beschikbaar")
+            //$this.Main($this.objElm); 
         }, function (error) {
             console.log("error: ", error);
         });
-    }
-    ngAfterViewInit() {
-        this.objElm = this.mySvg.nativeElement;
-        console.log(this.objElm.contentDocument);
-        var $this = this;
-        this.objElm.onload = () => {
-            const paths = this.objElm.contentDocument.querySelectorAll('path');
-            //let country= this.__CountriesService.getCountry();
-            //let dataVisitor= this.__VisitorsService.getData().members;
-            //console.log(country)
-            //console.log(dataVisitor)
-            //if(country == null || undefined){
-            //console.log("data not load: counrtry")
-            //return; 
-            //}
-            //if(dataVisitor == null || undefined){
-            //console.log("data not load: dataVisitor")
-            //return; 
-            //}
-            //this.ShowCountry(country,dataVisitor,this.objElm.contentDocument);
-            //for (let i = 0; i < country.length; i++) {
-            //$this.AnimationMap(country[i], dataVisitor,this.objElm.contentDocument);
-            //}
-        };
     }
     Main(objElm) {
         console.log("main");
@@ -2018,6 +2029,7 @@ class KaartComponent {
             return;
         }
         if (objElm == null || undefined) {
+            console.log(objElm);
             console.log("data not load: objElm");
             return;
         }
@@ -2326,7 +2338,7 @@ KaartComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.mySvg = _t.first);
-    } }, decls: 22, vars: 0, consts: [["id", "Kaart", 1, "container"], [1, "grid-container-map"], [1, "grid-item-map"], ["id", "map", "data", "./assets/img/map/World_map.svg", "type", "image/svg+xml", 1, "map-svg"], ["mySvg", ""], [1, "grid-item-map-data", "background-Prikbord"], ["onclick", "closePBdata()", "id", "close", 1, "btn", "red", "material-icons", 3, "click"], ["id", "PbLand"], ["id", "PbNumbersVisit"], ["id", "dataPostMap", 1, "grid-container-map-data-PB"]], template: function KaartComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 24, vars: 0, consts: [["id", "Kaart", 1, "container"], ["id", "close", 1, "btn", 3, "click"], [1, "grid-container-map"], [1, "grid-item-map"], ["id", "map", "data", "./assets/img/map/World_map.svg", "type", "image/svg+xml", 1, "map-svg"], ["mySvg", ""], [1, "grid-item-map-data", "background-Prikbord"], ["onclick", "closePBdata()", "id", "close", 1, "btn", "red", "material-icons", 3, "click"], ["id", "PbLand"], ["id", "PbNumbersVisit"], ["id", "dataPostMap", 1, "grid-container-map-data-PB"]], template: function KaartComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
@@ -2337,24 +2349,28 @@ KaartComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Welke landen bezocht de tok? Op de kaart is een overzicht te zien. Klik op een land en ontdek meer!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_8_listener() { return ctx.getDataFromServer(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "reload");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "object", 3, 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_13_listener() { return ctx.closePBdata(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "close");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "object", 4, 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Land: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "span", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](18, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "bezoekers: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_15_listener() { return ctx.closePBdata(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "close");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Land: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "bezoekers: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "span", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "div", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2thYXJ0L2thYXJ0LmNvbXBvbmVudC5jc3MifQ== */"] });
@@ -2482,6 +2498,7 @@ function PrikbordComponent_div_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const x_r1 = ctx.$implicit;
@@ -2531,7 +2548,7 @@ PrikbordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, PrikbordComponent_div_9_Template, 16, 5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, PrikbordComponent_div_9_Template, 17, 5, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2657,6 +2674,7 @@ class TotalDistService {
     constructor(http) {
         this.http = http;
     }
+    //http://localhost:3000/
     getDataAsyn(urlYear) {
         return new Promise(resolve => {
             this.http.get("/TotalDist/" + urlYear)
@@ -2714,6 +2732,7 @@ class VisitorsService {
     constructor(http) {
         this.http = http;
     }
+    //http://localhost:3000
     getDataAsyn() {
         return new Promise(resolve => {
             this.http.get("/data/")
