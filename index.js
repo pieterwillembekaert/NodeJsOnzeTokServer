@@ -364,6 +364,7 @@ app
     })
     .get('/TotalDist/:year', function (req, res) {
         var year = Number(req.params.year);
+        //console.log(year)
         var out;
         if (dataObjVisiters.Gdata.members == null || undefined) {
             fs.readFile(dataPath, (err, data) => {
