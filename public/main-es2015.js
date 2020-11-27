@@ -1794,7 +1794,7 @@ DashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_button_click_49_listener() { return ctx.changeData(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "mat-icon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51, "more_vert");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51, "done");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1816,7 +1816,7 @@ DashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.z);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx.selectedYear);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__["MatLabel"], _angular_material_select__WEBPACK_IMPORTED_MODULE_7__["MatSelect"], _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOption"], _angular_material_button__WEBPACK_IMPORTED_MODULE_9__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIcon"], _angular_router__WEBPACK_IMPORTED_MODULE_11__["RouterOutlet"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_12__["MatProgressBar"]], styles: [".grid-container-KM[_ngcontent-%COMP%] {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto auto auto auto;\r\n    background-color: #111;\r\n    padding: 10px;\r\n}\r\n.grid-item-KM[_ngcontent-%COMP%] {\r\n    background-color: rgba(75, 75, 79, 1);\r\n    border: 1px solid rgba(0, 0, 0, 0.8);\r\n    color: white;\r\n    font-family: digital7;\r\n    padding: 20px;\r\n    font-size: 30px;\r\n    text-align: center;\r\n}\r\n@media only screen and (max-width: 376px) {\r\n    .grid-item-KM[_ngcontent-%COMP%] {\r\n        padding: 10px;\r\n        font-size: 20px;\r\n    }\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsYUFBYTtBQUNiO0lBQ0ksYUFBYTtJQUNiLHlEQUF5RDtJQUN6RCxzQkFBc0I7SUFDdEIsYUFBYTtBQUNqQjtBQUVBO0lBQ0kscUNBQXFDO0lBQ3JDLG9DQUFvQztJQUNwQyxZQUFZO0lBQ1oscUJBQXFCO0lBQ3JCLGFBQWE7SUFDYixlQUFlO0lBQ2Ysa0JBQWtCO0FBQ3RCO0FBR0E7SUFDSTtRQUNJLGFBQWE7UUFDYixlQUFlO0lBQ25CO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qS00gdGVsbGVyICovXHJcbi5ncmlkLWNvbnRhaW5lci1LTSB7XHJcbiAgICBkaXNwbGF5OiBncmlkO1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG8gYXV0byBhdXRvIGF1dG8gYXV0byBhdXRvO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzExMTtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbn1cclxuXHJcbi5ncmlkLWl0ZW0tS00ge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSg3NSwgNzUsIDc5LCAxKTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgMC44KTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGZvbnQtZmFtaWx5OiBkaWdpdGFsNztcclxuICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICBmb250LXNpemU6IDMwcHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcblxyXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDM3NnB4KSB7XHJcbiAgICAuZ3JpZC1pdGVtLUtNIHtcclxuICAgICAgICBwYWRkaW5nOiAxMHB4O1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgIH1cclxufVxyXG5cclxuIl19 */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_6__["MatLabel"], _angular_material_select__WEBPACK_IMPORTED_MODULE_7__["MatSelect"], _angular_material_core__WEBPACK_IMPORTED_MODULE_8__["MatOption"], _angular_material_button__WEBPACK_IMPORTED_MODULE_9__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_10__["MatIcon"], _angular_router__WEBPACK_IMPORTED_MODULE_11__["RouterOutlet"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_12__["MatProgressBar"]], styles: [".grid-container-home[_ngcontent-%COMP%] {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto;\r\n    padding: 10px;\r\n  }\r\n.grid-item-home[_ngcontent-%COMP%] {\r\n    padding: 20px;\r\n    font-size: 30px;\r\n    text-align: center;\r\n  }\r\n@media only screen and (max-width: 900px) {\r\n    .grid-container-home[_ngcontent-%COMP%] {\r\n        grid-template-columns: auto;\r\n    }\r\n  }\r\n\r\n.grid-container-KM[_ngcontent-%COMP%] {\r\n    display: grid;\r\n    grid-template-columns: auto auto auto auto auto auto auto;\r\n    background-color: #111;\r\n    padding: 10px;\r\n}\r\n.grid-item-KM[_ngcontent-%COMP%] {\r\n    background-color: rgba(75, 75, 79, 1);\r\n    border: 1px solid rgba(0, 0, 0, 0.8);\r\n    color: white;\r\n    font-family: digital7;\r\n    padding: 20px;\r\n    font-size: 30px;\r\n    text-align: center;\r\n}\r\n@media only screen and (max-width: 376px) {\r\n    .grid-item-KM[_ngcontent-%COMP%] {\r\n        padding: 10px;\r\n        font-size: 20px;\r\n    }\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9kYXNoYm9hcmQvZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBR0EsZUFBZTtBQUNmO0lBQ0ksYUFBYTtJQUNiLHFDQUFxQztJQUNyQyxhQUFhO0VBQ2Y7QUFFQTtJQUNFLGFBQWE7SUFDYixlQUFlO0lBQ2Ysa0JBQWtCO0VBQ3BCO0FBR0E7SUFDRTtRQUNJLDJCQUEyQjtJQUMvQjtFQUNGO0FBR0YsYUFBYTtBQUNiO0lBQ0ksYUFBYTtJQUNiLHlEQUF5RDtJQUN6RCxzQkFBc0I7SUFDdEIsYUFBYTtBQUNqQjtBQUVBO0lBQ0kscUNBQXFDO0lBQ3JDLG9DQUFvQztJQUNwQyxZQUFZO0lBQ1oscUJBQXFCO0lBQ3JCLGFBQWE7SUFDYixlQUFlO0lBQ2Ysa0JBQWtCO0FBQ3RCO0FBR0E7SUFDSTtRQUNJLGFBQWE7UUFDYixlQUFlO0lBQ25CO0FBQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5cclxuXHJcbi8qS00gdmFuIGh1aXMgKi9cclxuLmdyaWQtY29udGFpbmVyLWhvbWUge1xyXG4gICAgZGlzcGxheTogZ3JpZDtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvIGF1dG87XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gIH1cclxuICBcclxuICAuZ3JpZC1pdGVtLWhvbWUge1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMzBweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgXHJcbiAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA5MDBweCkge1xyXG4gICAgLmdyaWQtY29udGFpbmVyLWhvbWUge1xyXG4gICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0bztcclxuICAgIH1cclxuICB9XHJcbiAgXHJcblxyXG4vKktNIHRlbGxlciAqL1xyXG4uZ3JpZC1jb250YWluZXItS00ge1xyXG4gICAgZGlzcGxheTogZ3JpZDtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvIGF1dG8gYXV0byBhdXRvIGF1dG8gYXV0bztcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMxMTE7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcblxyXG4uZ3JpZC1pdGVtLUtNIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoNzUsIDc1LCA3OSwgMSk7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCByZ2JhKDAsIDAsIDAsIDAuOCk7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBmb250LWZhbWlseTogZGlnaXRhbDc7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgZm9udC1zaXplOiAzMHB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcblxyXG5cclxuQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAzNzZweCkge1xyXG4gICAgLmdyaWQtaXRlbS1LTSB7XHJcbiAgICAgICAgcGFkZGluZzogMTBweDtcclxuICAgICAgICBmb250LXNpemU6IDIwcHg7XHJcbiAgICB9XHJcbn1cclxuXHJcbiJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DashboardComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -2063,13 +2063,15 @@ KaartResolverService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KaartComponent", function() { return KaartComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _visitors_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../visitors.service */ "./src/app/visitors.service.ts");
-/* harmony import */ var _countries_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../countries.service */ "./src/app/countries.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/progress-bar */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/progress-bar.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _visitors_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../visitors.service */ "./src/app/visitors.service.ts");
+/* harmony import */ var _countries_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../countries.service */ "./src/app/countries.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/progress-bar */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/progress-bar.js");
+
 
 
 
@@ -2080,9 +2082,83 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const _c0 = ["mySvg"];
-function KaartComponent_mat_progress_bar_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-progress-bar", 12);
+function KaartComponent_mat_progress_bar_25_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-progress-bar", 11);
 } }
+function KaartComponent_div_30_div_17_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "img", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const PB_Element_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", PB_Element_r4.ImageScr, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("alt", "Foto van ", PB_Element_r4.Name, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](PB_Element_r4.Name);
+} }
+function KaartComponent_div_30_div_17_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, KaartComponent_div_30_div_17_div_1_Template, 7, 3, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const PB_Element_r4 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", PB_Element_r4.Name);
+} }
+function KaartComponent_div_30_Template(rf, ctx) { if (rf & 1) {
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_div_30_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.zoomIn(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "zoom_in");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_div_30_Template_button_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.zoomOut(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "zoom_out");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_div_30_Template_button_click_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r11.resetZoom(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "replay");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_div_30_Template_button_click_7_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r12.closePBdata(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "close");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Land: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "bezoekers: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "span", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](17, KaartComponent_div_30_div_17_Template, 2, 1, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.PbLand);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.PbNumbersVisit);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.aPrikboardList);
+} }
+function clamp(n, min, max) {
+    return Math.min(max, Math.max(min, n));
+}
 class KaartComponent {
     constructor(elementRef, __VisitorsService, __CountriesService, __Router) {
         this.elementRef = elementRef;
@@ -2090,6 +2166,26 @@ class KaartComponent {
         this.__CountriesService = __CountriesService;
         this.__Router = __Router;
         this.ErrorActive = false;
+        this.OpenBrikboard = true;
+        //zoom
+        this.scale = 1;
+        this.translate = [0, 0];
+        this.translateOnPanStart = [0, 0];
+        this.transformAnimationState = {
+            value: null,
+            params: {
+                transform: 'scale(1)',
+                duration: '0s'
+            }
+        };
+        this.aPrikboardList = [
+            {
+                'Name': '',
+                'ImageScr': ''
+            }
+        ];
+        this.PbLand = "";
+        this.PbNumbersVisit = "0";
     }
     ngOnInit() {
         this.visitors = this.__VisitorsService.getData();
@@ -2098,7 +2194,7 @@ class KaartComponent {
         }
     }
     ngAfterViewInit() {
-        //this.getDataFromServer();
+        // initializing the function
         var $this = this;
         var __objElm = this.mySvg.nativeElement;
         __objElm.onload = () => {
@@ -2107,31 +2203,6 @@ class KaartComponent {
     }
     getDataFromServer() {
         console.log("getDataFromServer");
-        var $this = this;
-        this.__VisitorsService.getDataFromHttp().then(function (response) {
-            var __objElm = $this.mySvg.nativeElement;
-            console.log(__objElm);
-            $this.visitors = response;
-            //werk enkel voor firefox
-            if (__objElm && $this.browserType == 'Firefox') {
-                console.log("load");
-                $this.objElm = __objElm;
-                console.log("data objElm load");
-                $this.Main(__objElm);
-            }
-            else {
-                //werk voor chrome en windows
-                __objElm.onload = () => {
-                    console.log("load");
-                    $this.objElm = __objElm;
-                    console.log("data objElm load");
-                    $this.Main(__objElm);
-                    //console.log($this.__VisitorsService.getData())
-                };
-            }
-        }, function (error) {
-            console.log("error: ", error);
-        });
     }
     Main(objElm) {
         console.log("main");
@@ -2166,6 +2237,7 @@ class KaartComponent {
         }
     }
     AnimationMap(country, DataFromJs, HTLM) {
+        //Check input parameters
         if (country == null || undefined) {
             this.ErrorActive = true;
             console.log("data not load (AnimationMap): country");
@@ -2181,7 +2253,6 @@ class KaartComponent {
             console.log("data not load (AnimationMap): HTLM");
             return;
         }
-        //var ms = svg().getElementById(country);
         var ms = HTLM.getElementById(country);
         if (ms == null || undefined) {
             this.ErrorActive = true;
@@ -2194,17 +2265,20 @@ class KaartComponent {
         var $this = this;
         ms.onclick = function (e) {
             var color = '#34642d';
-            console.log($this.GvCountryClick);
+            //console.log($this.GvCountryClick)
             var style_valueV = '';
             var style_value = '';
-            var numbersVisitors = $this.CreatDataPrikboardOnClick(DataFromJs, country);
+            //Prikboard
+            $this.PbNumbersVisit = String($this.getDataFromCountry(DataFromJs, country));
+            $this.OpenBrikboard = true;
+            $this.PbLand = country;
+            //color country 
             if ($this.GvCountryClick !== null || undefined) {
-                //let LcountryV = DataFromJs.GvCountryClick;
                 let LcountryV = $this.GvCountryClick;
                 if (LcountryV === undefined) {
                     LcountryV = "france";
                 }
-                //knip
+                //cut
                 for (let i = 0; i < DataFromJs.length; i++) {
                     if (DataFromJs[i].country === LcountryV) {
                         color = '#d7731d';
@@ -2229,12 +2303,6 @@ class KaartComponent {
                 }
                 msv.setAttribute('style', style_valueV);
             }
-            var Prikbord = document.getElementsByClassName("grid-item-map-data");
-            Prikbord[0].style.visibility = "visible";
-            var PbLand = document.getElementById("PbLand");
-            var PbNumbersVisit = document.getElementById("PbNumbersVisit");
-            PbLand.innerHTML = country;
-            PbNumbersVisit.innerHTML = numbersVisitors;
             //Parsing style attribute values
             var attrs = ms.getAttribute('style').split(' ').join('').split(';');
             for (var i in attrs) {
@@ -2334,7 +2402,7 @@ class KaartComponent {
         }
         ms.setAttribute('style', style_value);
     }
-    CreatDataPrikboardOnClick(dataInJSON, DataClickCountry) {
+    getDataFromCountry(dataInJSON, DataClickCountry) {
         if (dataInJSON == null || undefined) {
             this.ErrorActive = true;
             console.log("data not load (CreatDataPrikboardOnClick): dataInJSON");
@@ -2345,137 +2413,149 @@ class KaartComponent {
             console.log("data not load (CreatDataPrikboardOnClick): DataClickCountry");
             return;
         }
+        const LenPrikboardList = this.aPrikboardList.length;
+        this.aPrikboardList.splice(1, LenPrikboardList);
         var numberOfFound = 0;
         var lastID = 0;
-        this.RemovePrikboardMap("dataPostMap");
         //Create new
         for (let i = 0; i < dataInJSON.length; i++) {
             if (dataInJSON[i].country === DataClickCountry) {
                 //Creat new
                 numberOfFound++;
-                this.CreatePrikboardMap(dataInJSON, i, "dataPostMap");
+                this.aPrikboardList.push({
+                    'Name': String(dataInJSON[i].name),
+                    'ImageScr': String(dataInJSON[i].imgScr)
+                });
                 lastID = i;
             }
         }
-        var modulo = numberOfFound % 2;
-        if (modulo > 0) {
-            this.CreatePrikboardMapEmty(dataInJSON, lastID, "dataPostMap");
-        }
-        if (numberOfFound == 0) {
-            this.CreatePrikboardMapEmty(dataInJSON, lastID, "dataPostMap");
-            this.CreatePrikboardMapEmty(dataInJSON, lastID, "dataPostMap");
-        }
         return numberOfFound;
     }
-    RemovePrikboardMap(parentID) {
-        if (parentID == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (RemovePrikboardMap): parentID");
-            return;
+    //zoom
+    onMouseWheel(e) {
+        const currentScale = this.scale;
+        const newScale = clamp(this.scale + Math.sign(e.deltaY) / 10.0, 1, 3.0);
+        if (currentScale !== newScale) {
+            this.translate = this.calculateTranslationToZoomPoint(currentScale, newScale, this.translate, e);
+            this.scale = newScale;
+            this.updateTransformAnimationState();
         }
-        var post = document.getElementById("dataPostMap");
-        var child = document.getElementsByClassName("grid-item-map-data-PB");
-        var childKopie = [];
-        var NumbersOffChild = 0;
-        NumbersOffChild = child.length;
-        for (let i = 0; i < NumbersOffChild; i++) {
-            childKopie[i] = child[i];
-        }
-        for (let i = 0; i < NumbersOffChild; i++) {
-            post.removeChild(childKopie[i]);
-        }
+        e.preventDefault();
     }
-    CreatePrikboardMapEmty(dataInJSON, i, parentID) {
-        if (dataInJSON == null || undefined) {
-            console.log("data not load (CreatePrikboardMapEmty): dataInJSON");
-            return;
-        }
-        if (i == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (CreatePrikboardMapEmty): i");
-            return;
-        }
-        if (parentID == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (CreatePrikboardMapEmty): parentID");
-            return;
-        }
-        var post = document.getElementById(parentID);
-        //place to set new elements
-        //creat elements
-        var griditemPB = document.createElement("div");
-        var gridContPbImage = document.createElement("div");
-        var gridItemPBImage = document.createElement("div");
-        var gridItemPBText = document.createElement("div");
-        var image = document.createElement("img");
-        //add css class
-        griditemPB.classList.add("grid-item-map-data-PB");
-        griditemPB.classList.add("PrikboardMapEmty");
-        gridContPbImage.classList.add("grid-container-map-data-Image-PB");
-        gridItemPBImage.classList.add("grid-item-map-data-Image-PB");
-        gridItemPBText.classList.add("grid-item-map-data-Text-PB");
-        image.classList.add("grid-item-map-data-Image-Style-PB");
-        //add to the webpage
-        griditemPB.appendChild(gridContPbImage);
-        gridContPbImage.appendChild(gridItemPBImage);
-        gridItemPBImage.appendChild(image);
-        gridContPbImage.appendChild(gridItemPBText);
-        //set the new elements
-        post.appendChild(griditemPB);
+    calculateTranslationToZoomPoint(currentScale, newScale, currentTranslation, e) {
+        // kudos to this awesome answer on stackoverflow:
+        // https://stackoverflow.com/a/27611642/1814576
+        const [eventLayerX, eventLayerY] = this.projectToLayer(e);
+        const xAtCurrentScale = (eventLayerX - currentTranslation[0]) / currentScale;
+        const yAtCurrentScale = (eventLayerY - currentTranslation[1]) / currentScale;
+        const xAtNewScale = xAtCurrentScale * newScale;
+        const yAtNewScale = yAtCurrentScale * newScale;
+        return [eventLayerX - xAtNewScale, eventLayerY - yAtNewScale];
     }
-    CreatePrikboardMap(dataInJSON, i, parentID) {
-        if (dataInJSON == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (CreatePrikboardMap): dataInJSON");
-            return;
-        }
-        if (i == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (CreatePrikboardMap): i");
-            return;
-        }
-        if (parentID == null || undefined) {
-            this.ErrorActive = true;
-            console.log("data not load (CreatePrikboardMap): parentID");
-            return;
-        }
-        var post = document.getElementById(parentID);
-        //place to set new elements
-        //creat elements
-        var griditemPB = document.createElement("div");
-        var gridContPbImage = document.createElement("div");
-        var gridItemPBImage = document.createElement("div");
-        var gridItemPBText = document.createElement("div");
-        var image = document.createElement("img");
-        //add css class
-        griditemPB.classList.add("grid-item-map-data-PB");
-        gridContPbImage.classList.add("grid-container-map-data-Image-PB");
-        gridItemPBImage.classList.add("grid-item-map-data-Image-PB");
-        gridItemPBText.classList.add("grid-item-map-data-Text-PB");
-        image.classList.add("grid-item-map-data-Image-Style-PB");
-        //add data from data Object
-        gridItemPBText.innerHTML = dataInJSON[i].name;
-        image.src = dataInJSON[i].imgScr;
-        //add to the webpage
-        griditemPB.appendChild(gridContPbImage);
-        gridContPbImage.appendChild(gridItemPBImage);
-        gridItemPBImage.appendChild(image);
-        gridContPbImage.appendChild(gridItemPBText);
-        //set the new elements
-        post.appendChild(griditemPB);
+    projectToLayer(eventClientXY) {
+        const layerX = Math.round(eventClientXY.clientX - this.clientX);
+        const layerY = Math.round(eventClientXY.clientY - this.clientY);
+        return [layerX, layerY];
+    }
+    get clientX() {
+        return this.elementRef.nativeElement.getBoundingClientRect().left;
+    }
+    get clientY() {
+        return this.elementRef.nativeElement.getBoundingClientRect().top;
+    }
+    updateTransformAnimationState(duration = '.5s') {
+        this.transformAnimationState = {
+            value: this.scale + this.translate[0] + this.translate[1],
+            params: {
+                transform: `translate3d(${this.translate[0]}px, ${this.translate[1]}px, 0px) scale(${this.scale})`,
+                duration
+            }
+        };
     }
     closePBdata() {
-        var Prikbord = document.getElementsByClassName("grid-item-map-data");
-        Prikbord[0].style.visibility = "hidden";
+        this.OpenBrikboard = false;
+    }
+    resetZoom() {
+        this.scale = 1;
+        this.translate = [0, 0];
+        this.updateTransformAnimationState();
+    }
+    zoomIn() {
+        console.log("zoom in");
+        this.scale = this.scale + 0.1;
+        this.translate = [0, 0];
+        this.updateTransformAnimationState();
+    }
+    zoomOut() {
+        console.log("zoom out");
+        this.scale = this.scale - 0.1;
+        this.translate = [0, 0];
+        this.updateTransformAnimationState();
+    }
+    moveUp() {
+        console.log("move up");
+        let y = this.translate[0];
+        console.log(y);
+        this.translate = [
+            this.translateOnPanStart[0],
+            this.translateOnPanStart[1] = this.translateOnPanStart[1] + 10
+        ];
+        this.updateTransformAnimationState("0s");
+    }
+    moveDown() {
+        console.log("move up");
+        let y = this.translate[0];
+        console.log(y);
+        this.translate = [
+            this.translateOnPanStart[0],
+            this.translateOnPanStart[1] = this.translateOnPanStart[1] - 10
+        ];
+        this.updateTransformAnimationState("0s");
+    }
+    moveLeft() {
+        console.log("move left");
+        let y = this.translate[0];
+        console.log(y);
+        this.translate = [
+            this.translateOnPanStart[0] = this.translateOnPanStart[0] - 10,
+            this.translateOnPanStart[1]
+        ];
+        this.updateTransformAnimationState("0s");
+    }
+    moveRight() {
+        console.log("move right");
+        let y = this.translate[0];
+        console.log(y);
+        this.translate = [
+            this.translateOnPanStart[0] = this.translateOnPanStart[0] + 10,
+            this.translateOnPanStart[1]
+        ];
+        this.updateTransformAnimationState("0s");
+    }
+    onPanStart(e) {
+        console.log('click');
+        this.translateOnPanStart = [...this.translate];
+        e.preventDefault();
+    }
+    onPan(e) {
+        console.log('click');
+        this.translate = [
+            this.translateOnPanStart[0] + e.deltaX,
+            this.translateOnPanStart[1] + e.deltaY
+        ];
+        this.updateTransformAnimationState("0s");
+        e.preventDefault();
     }
 }
-KaartComponent.ɵfac = function KaartComponent_Factory(t) { return new (t || KaartComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_visitors_service__WEBPACK_IMPORTED_MODULE_1__["VisitorsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_countries_service__WEBPACK_IMPORTED_MODULE_2__["CountriesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"])); };
+KaartComponent.ɵfac = function KaartComponent_Factory(t) { return new (t || KaartComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_visitors_service__WEBPACK_IMPORTED_MODULE_2__["VisitorsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_countries_service__WEBPACK_IMPORTED_MODULE_3__["CountriesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
 KaartComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: KaartComponent, selectors: [["app-kaart"]], viewQuery: function KaartComponent_Query(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c0, true);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.mySvg = _t.first);
-    } }, decls: 26, vars: 1, consts: [["id", "Kaart", 1, "container"], ["mat-icon-button", "", "color", "primary", "aria-label", "Example icon button with a refresh icon"], ["mode", "indeterminate", 4, "ngIf"], [1, "grid-container-map"], [1, "grid-item-map"], ["id", "map", "data", "./assets/img/map/World_map.svg", "type", "image/svg+xml", 1, "map-svg"], ["mySvg", ""], [1, "grid-item-map-data", "background-Prikbord"], ["onclick", "closePBdata()", "id", "close", 1, "btn", "red", "material-icons", 3, "click"], ["id", "PbLand"], ["id", "PbNumbersVisit"], ["id", "dataPostMap", 1, "grid-container-map-data-PB"], ["mode", "indeterminate"]], template: function KaartComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, hostBindings: function KaartComponent_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mousewheel", function KaartComponent_mousewheel_HostBindingHandler($event) { return ctx.onMouseWheel($event); })("panstart", function KaartComponent_panstart_HostBindingHandler($event) { return ctx.onPanStart($event); })("pan", function KaartComponent_pan_HostBindingHandler($event) { return ctx.onPan($event); });
+    } }, decls: 31, vars: 3, consts: [["id", "Kaart", 1, "container"], ["mat-icon-button", "", "color", "primary", "aria-label", "Example icon button with a refresh icon"], [1, "btn", "material-icons", 3, "click"], ["id", "zoom-out", 1, "btn", "material-icons", 3, "click"], ["id", "reset", 1, "btn", "material-icons", 3, "click"], ["mode", "indeterminate", 4, "ngIf"], [1, "grid-container-map"], [1, "grid-item-map"], ["id", "map", "data", "./assets/img/map/World_map.svg", "type", "image/svg+xml", 1, "map-svg"], ["mySvg", ""], ["class", "grid-item-map-data background-Prikbord", 4, "ngIf"], ["mode", "indeterminate"], [1, "grid-item-map-data", "background-Prikbord"], [1, "btn", "red", "material-icons", 3, "click"], ["id", "PbLand"], ["id", "PbNumbersVisit"], ["id", "dataPostMap", "class", "grid-container-map-data-PB", 4, "ngFor", "ngForOf"], ["id", "dataPostMap", 1, "grid-container-map-data-PB"], ["class", "grid-container-map-data-Image-PB", 4, "ngIf"], [1, "grid-container-map-data-Image-PB"], [1, "grid-item-map-data-PB"], [1, "grid-item-map-data-Image-PB"], [1, "grid-item-map-data-Image-Style-PB", 3, "src", "alt"], [1, "grid-item-map-data-Text-PB"]], template: function KaartComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
@@ -2491,41 +2571,76 @@ KaartComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "refresh");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_11_listener() { return ctx.zoomIn(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "zoom_in");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, KaartComponent_mat_progress_bar_11_Template, 1, 0, "mat-progress-bar", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "object", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_13_listener() { return ctx.zoomOut(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "zoom_out");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "button", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_17_listener() { return ctx.closePBdata(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "close");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_15_listener() { return ctx.resetZoom(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "replay");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Land: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "span", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "bezoekers: ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "span", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_17_listener() { return ctx.moveUp(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "arrow_drop_up");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_19_listener() { return ctx.moveDown(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "arrow_drop_down");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_21_listener() { return ctx.moveLeft(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "arrow_left");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KaartComponent_Template_button_click_23_listener() { return ctx.moveRight(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "arrow_right");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, KaartComponent_mat_progress_bar_25_Template, 1, 0, "mat-progress-bar", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "object", 8, 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](30, KaartComponent_div_30_Template, 18, 3, "div", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](25);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.visitors);
-    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_5__["MatIcon"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_7__["MatProgressBar"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2hvbWUva2FhcnQva2FhcnQuY29tcG9uZW50LmNzcyJ9 */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("@transformAnimation", ctx.transformAnimationState);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.OpenBrikboard);
+    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_5__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_6__["MatIcon"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_8__["MatProgressBar"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"]], styles: [".content-wrapper[_ngcontent-%COMP%] {\r\n  transform-origin: 0 0 0;\r\n  display: inline-block;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n}\r\n[_nghost-%COMP%] {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n.map-svg[_ngcontent-%COMP%] {\r\n  max-width: 100%;\r\n}\r\n.grid-container-map[_ngcontent-%COMP%] {\r\n  display: grid;\r\n  background-color: rgb(129, 169, 195);\r\n  grid-template-columns: auto auto;\r\n}\r\n.grid-item-map[_ngcontent-%COMP%] {\r\n  \r\n  \r\n  \r\n  transform-origin: 0 0 0;\r\n  display: inline-block;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n\r\n}\r\n.grid-item-map-data[_ngcontent-%COMP%] {\r\n  visibility: visible;\r\n  color: white;\r\n  padding: 5px;\r\n  font-size: 30px;\r\n  text-align: center;\r\n  max-width: 100%;\r\n}\r\n\r\n.grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n  display: grid;\r\n  grid-template-columns: auto auto;\r\n  grid-template-rows: auto auto;\r\n  grid-row-gap: 5px;\r\n  grid-column-gap: 5px;\r\n  padding: 10px;\r\n}\r\n.grid-item-map-data-PB[_ngcontent-%COMP%] {\r\n  background-color: white;\r\n  padding: 10px;\r\n  font-size: 30px;\r\n  border-radius: 5px;\r\n  width: 200px;\r\n}\r\n.grid-container-map-data-Image-PB[_ngcontent-%COMP%] {\r\n  display: grid;\r\n  grid-template-columns: auto;\r\n  grid-template-rows: auto auto;\r\n  padding: 10px;\r\n}\r\n.grid-item-map-data-Image-PB[_ngcontent-%COMP%] {\r\n  color: black;\r\n  padding: 5px;\r\n}\r\n.grid-item-map-data-Image-Style-PB[_ngcontent-%COMP%] {\r\n  width: 100%;\r\n}\r\n.grid-item-map-data-Text-PB[_ngcontent-%COMP%] {\r\n  color: black;\r\n  padding: 10px;\r\n  font-size: 20px;\r\n  text-align: center;\r\n  font-family: ChildWriting !important;\r\n  font-weight: bold;\r\n}\r\n.container-prikbord-image-text[_ngcontent-%COMP%] {\r\n  position: relative;\r\n  text-align: center;\r\n  color: white;\r\n}\r\n.centered-prikbord-image-text[_ngcontent-%COMP%] {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n@media screen and (min-width: 280px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n    grid-template-rows: auto;\r\n    max-width: 150px;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 400px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n\r\n}\r\n@media screen and (min-width: 528px) {\r\n  \r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    grid-template-rows: auto;\r\n    max-width: 150px;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    padding: 30px;\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 400px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n\r\n}\r\n@media screen and (min-width: 500px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: 70% 30%;\r\n    grid-template-rows: auto;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    grid-column-gap: 5px;\r\n\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 200px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n}\r\n@media screen and (min-width: 628px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto auto;\r\n    grid-template-rows: auto;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    grid-column-gap: 5px;\r\n\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 200px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n}\r\n@media screen and (min-width: 835px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto;\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto auto auto;\r\n    grid-template-rows: auto;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto auto;\r\n    grid-column-gap: 5px;\r\n\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 200px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n}\r\n@media screen and (min-width: 1252px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: 70% 30%;\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    grid-template-rows: auto;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto auto auto;\r\n    grid-column-gap: 5px;\r\n\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 200px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n}\r\n@media screen and (min-width: 1681px) {\r\n  .grid-container-map[_ngcontent-%COMP%] {\r\n    grid-template-columns: 70% 30%;\r\n  }\r\n\r\n  .grid-container-map-data-PB[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto;\r\n    grid-template-rows: auto;\r\n  }\r\n\r\n  .grid-container-Prikbord[_ngcontent-%COMP%] {\r\n    grid-template-columns: auto auto auto auto auto auto;\r\n    grid-column-gap: 5px;\r\n\r\n  }\r\n\r\n  .grid-item-Prikbord[_ngcontent-%COMP%] {\r\n    max-width: 200px;\r\n  }\r\n\r\n  .grid-item-PB-Image[_ngcontent-%COMP%] {\r\n    max-width: 180px;\r\n\r\n  }\r\n\r\n  .grid-item-PB-Image-Style[_ngcontent-%COMP%] {\r\n    max-width: 175px;\r\n  }\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaG9tZS9rYWFydC9rYWFydC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU07QUFDTjtFQUNFLHVCQUF1QjtFQUN2QixxQkFBcUI7RUFDckIsV0FBVztFQUNYLFlBQVk7RUFDWixnQkFBZ0I7QUFDbEI7QUFFQTtFQUNFLGNBQWM7RUFDZCxXQUFXO0VBQ1gsWUFBWTtFQUNaLGdCQUFnQjtFQUNoQixrQkFBa0I7QUFDcEI7QUFFQTtFQUNFLGVBQWU7QUFDakI7QUFFQTtFQUNFLGFBQWE7RUFDYixvQ0FBb0M7RUFDcEMsZ0NBQWdDO0FBQ2xDO0FBRUE7RUFDRSxpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLHNCQUFzQjtFQUN0Qix1QkFBdUI7RUFDdkIscUJBQXFCO0VBQ3JCLFdBQVc7RUFDWCxZQUFZO0VBQ1osZ0JBQWdCOztBQUVsQjtBQUVBO0VBQ0UsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixZQUFZO0VBQ1osZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixlQUFlO0FBQ2pCO0FBRUEsV0FBVztBQUNYO0VBQ0UsYUFBYTtFQUNiLGdDQUFnQztFQUNoQyw2QkFBNkI7RUFDN0IsaUJBQWlCO0VBQ2pCLG9CQUFvQjtFQUNwQixhQUFhO0FBQ2Y7QUFFQTtFQUNFLHVCQUF1QjtFQUN2QixhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixZQUFZO0FBQ2Q7QUFFQTtFQUNFLGFBQWE7RUFDYiwyQkFBMkI7RUFDM0IsNkJBQTZCO0VBQzdCLGFBQWE7QUFDZjtBQUVBO0VBQ0UsWUFBWTtFQUNaLFlBQVk7QUFDZDtBQUVBO0VBQ0UsV0FBVztBQUNiO0FBRUE7RUFDRSxZQUFZO0VBQ1osYUFBYTtFQUNiLGVBQWU7RUFDZixrQkFBa0I7RUFDbEIsb0NBQW9DO0VBQ3BDLGlCQUFpQjtBQUNuQjtBQUVBO0VBQ0Usa0JBQWtCO0VBQ2xCLGtCQUFrQjtFQUNsQixZQUFZO0FBQ2Q7QUFFQTtFQUNFLGtCQUFrQjtFQUNsQixRQUFRO0VBQ1IsU0FBUztFQUNULGdDQUFnQztBQUNsQztBQUtBO0VBQ0U7SUFDRSwyQkFBMkI7O0VBRTdCOztFQUVBO0lBQ0UsMkJBQTJCO0lBQzNCLHdCQUF3QjtJQUN4QixnQkFBZ0I7RUFDbEI7O0VBRUE7SUFDRSwyQkFBMkI7RUFDN0I7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7O0VBRUE7SUFDRSxnQkFBZ0I7O0VBRWxCOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCOztBQUVGO0FBRUE7RUFDRTs7O09BR0s7O0VBRUw7SUFDRSxnQ0FBZ0M7SUFDaEMsd0JBQXdCO0lBQ3hCLGdCQUFnQjtFQUNsQjs7RUFFQTtJQUNFLGdDQUFnQztJQUNoQyxhQUFhO0VBQ2Y7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7O0VBRUE7SUFDRSxnQkFBZ0I7O0VBRWxCOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCOztBQUVGO0FBRUE7RUFDRTtJQUNFLDJCQUEyQjtFQUM3Qjs7RUFFQTtJQUNFLDhCQUE4QjtJQUM5Qix3QkFBd0I7RUFDMUI7O0VBRUE7SUFDRSxnQ0FBZ0M7SUFDaEMsb0JBQW9COztFQUV0Qjs7RUFFQTtJQUNFLGdCQUFnQjtFQUNsQjs7RUFFQTtJQUNFLGdCQUFnQjs7RUFFbEI7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7QUFDRjtBQUVBO0VBQ0U7SUFDRSwyQkFBMkI7RUFDN0I7O0VBRUE7SUFDRSxxQ0FBcUM7SUFDckMsd0JBQXdCO0VBQzFCOztFQUVBO0lBQ0UsZ0NBQWdDO0lBQ2hDLG9CQUFvQjs7RUFFdEI7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7O0VBRUE7SUFDRSxnQkFBZ0I7O0VBRWxCOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCO0FBQ0Y7QUFFQTtFQUNFO0lBQ0UsMkJBQTJCO0VBQzdCOztFQUVBO0lBQ0UsMENBQTBDO0lBQzFDLHdCQUF3QjtFQUMxQjs7RUFFQTtJQUNFLHFDQUFxQztJQUNyQyxvQkFBb0I7O0VBRXRCOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCOztFQUVBO0lBQ0UsZ0JBQWdCOztFQUVsQjs7RUFFQTtJQUNFLGdCQUFnQjtFQUNsQjtBQUNGO0FBR0E7RUFDRTtJQUNFLDhCQUE4QjtFQUNoQzs7RUFFQTtJQUNFLGdDQUFnQztJQUNoQyx3QkFBd0I7RUFDMUI7O0VBRUE7SUFDRSwwQ0FBMEM7SUFDMUMsb0JBQW9COztFQUV0Qjs7RUFFQTtJQUNFLGdCQUFnQjtFQUNsQjs7RUFFQTtJQUNFLGdCQUFnQjs7RUFFbEI7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7QUFDRjtBQUVBO0VBQ0U7SUFDRSw4QkFBOEI7RUFDaEM7O0VBRUE7SUFDRSxnQ0FBZ0M7SUFDaEMsd0JBQXdCO0VBQzFCOztFQUVBO0lBQ0Usb0RBQW9EO0lBQ3BELG9CQUFvQjs7RUFFdEI7O0VBRUE7SUFDRSxnQkFBZ0I7RUFDbEI7O0VBRUE7SUFDRSxnQkFBZ0I7O0VBRWxCOztFQUVBO0lBQ0UsZ0JBQWdCO0VBQ2xCO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9ob21lL2thYXJ0L2thYXJ0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKm1hcCovXHJcbi5jb250ZW50LXdyYXBwZXIge1xyXG4gIHRyYW5zZm9ybS1vcmlnaW46IDAgMCAwO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICB3aWR0aDogMTAwJTtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuOmhvc3Qge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxufVxyXG5cclxuLm1hcC1zdmcge1xyXG4gIG1heC13aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmdyaWQtY29udGFpbmVyLW1hcCB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMTI5LCAxNjksIDE5NSk7XHJcbiAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG87XHJcbn1cclxuXHJcbi5ncmlkLWl0ZW0tbWFwIHtcclxuICAvKnBhZGRpbmc6IDIwcHg7Ki9cclxuICAvKmZvbnQtc2l6ZTogMzBweDsqL1xyXG4gIC8qdGV4dC1hbGlnbjogY2VudGVyOyovXHJcbiAgdHJhbnNmb3JtLW9yaWdpbjogMCAwIDA7XHJcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG5cclxufVxyXG5cclxuLmdyaWQtaXRlbS1tYXAtZGF0YSB7XHJcbiAgdmlzaWJpbGl0eTogdmlzaWJsZTtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgcGFkZGluZzogNXB4O1xyXG4gIGZvbnQtc2l6ZTogMzBweDtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgbWF4LXdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4vKm1hcCBkYXRhKi9cclxuLmdyaWQtY29udGFpbmVyLW1hcC1kYXRhLVBCIHtcclxuICBkaXNwbGF5OiBncmlkO1xyXG4gIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvO1xyXG4gIGdyaWQtdGVtcGxhdGUtcm93czogYXV0byBhdXRvO1xyXG4gIGdyaWQtcm93LWdhcDogNXB4O1xyXG4gIGdyaWQtY29sdW1uLWdhcDogNXB4O1xyXG4gIHBhZGRpbmc6IDEwcHg7XHJcbn1cclxuXHJcbi5ncmlkLWl0ZW0tbWFwLWRhdGEtUEIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIHBhZGRpbmc6IDEwcHg7XHJcbiAgZm9udC1zaXplOiAzMHB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICB3aWR0aDogMjAwcHg7XHJcbn1cclxuXHJcbi5ncmlkLWNvbnRhaW5lci1tYXAtZGF0YS1JbWFnZS1QQiB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG87XHJcbiAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiBhdXRvIGF1dG87XHJcbiAgcGFkZGluZzogMTBweDtcclxufVxyXG5cclxuLmdyaWQtaXRlbS1tYXAtZGF0YS1JbWFnZS1QQiB7XHJcbiAgY29sb3I6IGJsYWNrO1xyXG4gIHBhZGRpbmc6IDVweDtcclxufVxyXG5cclxuLmdyaWQtaXRlbS1tYXAtZGF0YS1JbWFnZS1TdHlsZS1QQiB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5ncmlkLWl0ZW0tbWFwLWRhdGEtVGV4dC1QQiB7XHJcbiAgY29sb3I6IGJsYWNrO1xyXG4gIHBhZGRpbmc6IDEwcHg7XHJcbiAgZm9udC1zaXplOiAyMHB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBmb250LWZhbWlseTogQ2hpbGRXcml0aW5nICFpbXBvcnRhbnQ7XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5jb250YWluZXItcHJpa2JvcmQtaW1hZ2UtdGV4dCB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi5jZW50ZXJlZC1wcmlrYm9yZC1pbWFnZS10ZXh0IHtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiA1MCU7XHJcbiAgbGVmdDogNTAlO1xyXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG59XHJcblxyXG5cclxuXHJcblxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiAyODBweCkge1xyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvO1xyXG5cclxuICB9XHJcblxyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAtZGF0YS1QQiB7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG87XHJcbiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IGF1dG87XHJcbiAgICBtYXgtd2lkdGg6IDE1MHB4O1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtY29udGFpbmVyLVByaWtib3JkIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0bztcclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUHJpa2JvcmQge1xyXG4gICAgbWF4LXdpZHRoOiA0MDBweDtcclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUEItSW1hZ2Uge1xyXG4gICAgbWF4LXdpZHRoOiAxODBweDtcclxuXHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVBCLUltYWdlLVN0eWxlIHtcclxuICAgIG1heC13aWR0aDogMTc1cHg7XHJcbiAgfVxyXG5cclxufVxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNTI4cHgpIHtcclxuICAvKiAuZ3JpZC1jb250YWluZXItbWFwIHtcclxuICAgICAgICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvOyBcclxuICAgICAgICAgXHJcbiAgICAgfSovXHJcblxyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAtZGF0YS1QQiB7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG8gYXV0bztcclxuICAgIGdyaWQtdGVtcGxhdGUtcm93czogYXV0bztcclxuICAgIG1heC13aWR0aDogMTUwcHg7XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1jb250YWluZXItUHJpa2JvcmQge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG87XHJcbiAgICBwYWRkaW5nOiAzMHB4O1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QcmlrYm9yZCB7XHJcbiAgICBtYXgtd2lkdGg6IDQwMHB4O1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QQi1JbWFnZSB7XHJcbiAgICBtYXgtd2lkdGg6IDE4MHB4O1xyXG5cclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUEItSW1hZ2UtU3R5bGUge1xyXG4gICAgbWF4LXdpZHRoOiAxNzVweDtcclxuICB9XHJcblxyXG59XHJcblxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA1MDBweCkge1xyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvO1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtY29udGFpbmVyLW1hcC1kYXRhLVBCIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNzAlIDMwJTtcclxuICAgIGdyaWQtdGVtcGxhdGUtcm93czogYXV0bztcclxuICB9XHJcblxyXG4gIC5ncmlkLWNvbnRhaW5lci1QcmlrYm9yZCB7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG8gYXV0bztcclxuICAgIGdyaWQtY29sdW1uLWdhcDogNXB4O1xyXG5cclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUHJpa2JvcmQge1xyXG4gICAgbWF4LXdpZHRoOiAyMDBweDtcclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUEItSW1hZ2Uge1xyXG4gICAgbWF4LXdpZHRoOiAxODBweDtcclxuXHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVBCLUltYWdlLVN0eWxlIHtcclxuICAgIG1heC13aWR0aDogMTc1cHg7XHJcbiAgfVxyXG59XHJcblxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA2MjhweCkge1xyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvO1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtY29udGFpbmVyLW1hcC1kYXRhLVBCIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvIGF1dG87XHJcbiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IGF1dG87XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1jb250YWluZXItUHJpa2JvcmQge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG87XHJcbiAgICBncmlkLWNvbHVtbi1nYXA6IDVweDtcclxuXHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVByaWtib3JkIHtcclxuICAgIG1heC13aWR0aDogMjAwcHg7XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVBCLUltYWdlIHtcclxuICAgIG1heC13aWR0aDogMTgwcHg7XHJcblxyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QQi1JbWFnZS1TdHlsZSB7XHJcbiAgICBtYXgtd2lkdGg6IDE3NXB4O1xyXG4gIH1cclxufVxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogODM1cHgpIHtcclxuICAuZ3JpZC1jb250YWluZXItbWFwIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0bztcclxuICB9XHJcblxyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAtZGF0YS1QQiB7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IGF1dG8gYXV0byBhdXRvIGF1dG87XHJcbiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IGF1dG87XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1jb250YWluZXItUHJpa2JvcmQge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG8gYXV0bztcclxuICAgIGdyaWQtY29sdW1uLWdhcDogNXB4O1xyXG5cclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUHJpa2JvcmQge1xyXG4gICAgbWF4LXdpZHRoOiAyMDBweDtcclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUEItSW1hZ2Uge1xyXG4gICAgbWF4LXdpZHRoOiAxODBweDtcclxuXHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVBCLUltYWdlLVN0eWxlIHtcclxuICAgIG1heC13aWR0aDogMTc1cHg7XHJcbiAgfVxyXG59XHJcblxyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTI1MnB4KSB7XHJcbiAgLmdyaWQtY29udGFpbmVyLW1hcCB7XHJcbiAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IDcwJSAzMCU7XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1jb250YWluZXItbWFwLWRhdGEtUEIge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG87XHJcbiAgICBncmlkLXRlbXBsYXRlLXJvd3M6IGF1dG87XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1jb250YWluZXItUHJpa2JvcmQge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiBhdXRvIGF1dG8gYXV0byBhdXRvO1xyXG4gICAgZ3JpZC1jb2x1bW4tZ2FwOiA1cHg7XHJcblxyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QcmlrYm9yZCB7XHJcbiAgICBtYXgtd2lkdGg6IDIwMHB4O1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QQi1JbWFnZSB7XHJcbiAgICBtYXgtd2lkdGg6IDE4MHB4O1xyXG5cclxuICB9XHJcblxyXG4gIC5ncmlkLWl0ZW0tUEItSW1hZ2UtU3R5bGUge1xyXG4gICAgbWF4LXdpZHRoOiAxNzVweDtcclxuICB9XHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDE2ODFweCkge1xyXG4gIC5ncmlkLWNvbnRhaW5lci1tYXAge1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1jb2x1bW5zOiA3MCUgMzAlO1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtY29udGFpbmVyLW1hcC1kYXRhLVBCIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvO1xyXG4gICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiBhdXRvO1xyXG4gIH1cclxuXHJcbiAgLmdyaWQtY29udGFpbmVyLVByaWtib3JkIHtcclxuICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogYXV0byBhdXRvIGF1dG8gYXV0byBhdXRvIGF1dG87XHJcbiAgICBncmlkLWNvbHVtbi1nYXA6IDVweDtcclxuXHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVByaWtib3JkIHtcclxuICAgIG1heC13aWR0aDogMjAwcHg7XHJcbiAgfVxyXG5cclxuICAuZ3JpZC1pdGVtLVBCLUltYWdlIHtcclxuICAgIG1heC13aWR0aDogMTgwcHg7XHJcblxyXG4gIH1cclxuXHJcbiAgLmdyaWQtaXRlbS1QQi1JbWFnZS1TdHlsZSB7XHJcbiAgICBtYXgtd2lkdGg6IDE3NXB4O1xyXG4gIH1cclxufVxyXG4iXX0= */"], data: { animation: [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('transformAnimation', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('*', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({ transform: '{{transform}}' }), { params: { transform: 'scale(1)', duration: '0s' } }),
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('* => *', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])('{{duration}} ease'))])
+        ] } });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](KaartComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-kaart',
                 templateUrl: './kaart.component.html',
-                styleUrls: ['./kaart.component.css']
+                styleUrls: ['./kaart.component.css'],
+                animations: [
+                    Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["trigger"])('transformAnimation', [Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["state"])('*', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["style"])({ transform: '{{transform}}' }), { params: { transform: 'scale(1)', duration: '0s' } }),
+                        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["transition"])('* => *', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_1__["animate"])('{{duration}} ease'))])
+                ]
             }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _visitors_service__WEBPACK_IMPORTED_MODULE_1__["VisitorsService"] }, { type: _countries_service__WEBPACK_IMPORTED_MODULE_2__["CountriesService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }]; }, { mySvg: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _visitors_service__WEBPACK_IMPORTED_MODULE_2__["VisitorsService"] }, { type: _countries_service__WEBPACK_IMPORTED_MODULE_3__["CountriesService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }]; }, { mySvg: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: ['mySvg']
+        }], onMouseWheel: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['mousewheel', ['$event']]
+        }], onPanStart: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["panstart", ["$event"]]
+        }], onPan: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ["pan", ["$event"]]
         }] }); })();
 
 
