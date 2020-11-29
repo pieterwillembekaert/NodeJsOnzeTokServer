@@ -21,7 +21,8 @@
         "imgScr": "/upload/thuis.jpg",
         "id": 1,
         "year": "2020"
-    }, {
+    },
+     {
         "id": 2,
         "name": "ksa",
         "date": "2020-09-26T22:00:00.000Z",
