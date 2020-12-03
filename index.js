@@ -103,6 +103,7 @@ app.use(express.static('public'));
 const dataPath = "./public/static/json/bezocht.json";
 const dataPathCountry = "./public/static/json/country.json";
 const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
+const dataPathInterviews = "./public/static/json/interviews.json";
 /**
  * Routes Definitions
  */
@@ -163,8 +164,25 @@ app
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
     })
+    .post('/saveToInterviews', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newDataToSave = req.body;
 
+        if (!newDataToSave) {
+             res.sendStatus(404);
+             console.log("Error")
+             return;
+        }
 
+        //data klaarmaken om te bewaren
+        let dataToStave= {
+            "LastEdit": "",
+            "members": newDataToSave
+        }
+        let jsonContent = JSON.stringify(dataToStave);
+        SaveDataToFile(dataPathInterviews, jsonContent);
+        res.sendStatus(200);
+    })
     .post('/newdata', bodyParser.json(), (req, res) => {
         //data van pagina
         let newData = req.body;
@@ -271,6 +289,7 @@ app
         SaveDataToFile(dataPath, jsonContent)
     })
     .post('/logout', bodyParser.json(), (req, res) => {
+        console.log("logout")
         login.actief = false;
 
     })
@@ -330,6 +349,17 @@ app
             res.json(dataCountryTranslation.Gdata);
         });
 
+
+    })
+    .get('/interviews', function (req, res) {
+        console.log("test")
+        fs.readFile(dataPathInterviews, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            let sendInterviews = JSON.parse(data);
+            res.json(sendInterviews);
+        });
 
     })
     .on('error', function (error) {
