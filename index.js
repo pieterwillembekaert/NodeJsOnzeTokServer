@@ -159,8 +159,14 @@ app
             return;
         }
 
+        let dataToStave= {
+            "Tok": "test",
+            "active": true,
+            "members": newDataToSave
+        }
+
         //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(newDataToSave);
+        let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
     })
@@ -421,19 +427,20 @@ app
         let sampleFile;
         let uploadPath;
 
-        if (!req.files || Object.keys(req.files).length === 0) {
+        if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
+            console.log('No files were uploaded.')
             res.status(400).send('No files were uploaded.');
             return;
         }
 
         console.log('req.files >>>', req.files); // eslint-disable-line
 
+        console.log(req.files.file.name)
         sampleFile = req.files.sampleFile;
-        console.log(__dirname)
 
-        uploadPath = __dirname + '/public/upload/' + sampleFile.name;
+        uploadPath = __dirname + '/public/upload/' + req.files.file.name;
 
-        sampleFile.mv(uploadPath, function (err) {
+        req.files.file.mv(uploadPath, function (err) {
             if (err) {
                 console.log("error", err)
                 return res.status(500).send(err);
