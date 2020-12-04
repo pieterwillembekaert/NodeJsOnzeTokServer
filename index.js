@@ -315,7 +315,7 @@ app
         }
         res.end();
     })
-    .get('/database', bodyParser.json(), function (req, res) {
+    .get('/databaseOld', bodyParser.json(), function (req, res) {
 
         res
             .status(200)
@@ -358,7 +358,6 @@ app
 
     })
     .get('/interviews', function (req, res) {
-        console.log("test")
         fs.readFile(dataPathInterviews, (err, data) => {
             if (err) {
                 throw err;
