@@ -104,6 +104,7 @@ const dataPath = "./public/static/json/bezocht.json";
 const dataPathCountry = "./public/static/json/country.json";
 const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
 const dataPathInterviews = "./public/static/json/interviews.json";
+const dataPathNieuweDeelnemer = "./public/static/json/nieweDeelnemers.json";
 /**
  * Routes Definitions
  */
@@ -159,7 +160,7 @@ app
             return;
         }
 
-        let dataToStave= {
+        let dataToStave = {
             "Tok": "test",
             "active": true,
             "members": newDataToSave
@@ -175,19 +176,45 @@ app
         let newDataToSave = req.body;
 
         if (!newDataToSave) {
-             res.sendStatus(404);
-             console.log("Error")
-             return;
+            res.sendStatus(404);
+            console.log("Error")
+            return;
         }
 
         //data klaarmaken om te bewaren
-        let dataToStave= {
+        let dataToStave = {
             "LastEdit": "",
             "members": newDataToSave
         }
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathInterviews, jsonContent);
         res.sendStatus(200);
+    })
+    .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res) => {
+        //data van pagina
+        var newDataToSave = req.body;
+        //console.log(newDataToSave)
+
+        if (!newDataToSave) {
+            res.sendStatus(404);
+            console.log("Error")
+            return;
+        }
+
+
+        fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            //console.log(data)
+            var dataToSave = JSON.parse(data);
+
+            dataToSave.members.push(newDataToSave);
+            let jsonContent = JSON.stringify(dataToSave);
+            SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
+            res.sendStatus(200);
+        });
+
     })
     .post('/newdata', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -357,13 +384,23 @@ app
 
 
     })
-    .get('/interviews', function (req, res) {
+    .get('/interviewsdata', function (req, res) {
         fs.readFile(dataPathInterviews, (err, data) => {
             if (err) {
                 throw err;
             }
-            let sendInterviews = JSON.parse(data);
-            res.json(sendInterviews);
+            let sendData = JSON.parse(data);
+            res.json(sendData);
+        });
+
+    })
+    .get('/nieuwedeelnemerdata', function (req, res) {
+        fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
+            if (err) {
+                throw err;
+            }
+            let sendData = JSON.parse(data);
+            res.json(sendData);
         });
 
     })
