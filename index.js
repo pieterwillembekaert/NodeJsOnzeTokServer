@@ -190,6 +190,26 @@ app
         SaveDataToFile(dataPathInterviews, jsonContent);
         res.sendStatus(200);
     })
+    .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res) => {
+        //data van pagina
+        let newDataToSave = req.body;
+
+        if (!newDataToSave) {
+            res.sendStatus(404);
+            console.log("Error")
+            return;
+        }
+
+        //data klaarmaken om te bewaren
+        let dataToStave = {
+            "Tok": "test",
+            "active": true,
+            "members": newDataToSave
+        }
+        let jsonContent = JSON.stringify(dataToStave);
+        SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
+        res.sendStatus(200);
+    })
     .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res) => {
         //data van pagina
         var newDataToSave = req.body;
