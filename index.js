@@ -87,7 +87,6 @@ const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser')
 const formidable = require('formidable');
-
 /**
  * App Variables
  */
@@ -105,6 +104,8 @@ const dataPathCountry = "./public/static/json/country.json";
 const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
 const dataPathInterviews = "./public/static/json/interviews.json";
 const dataPathNieuweDeelnemer = "./public/static/json/nieweDeelnemers.json";
+
+
 /**
  * Routes Definitions
  */
@@ -346,6 +347,11 @@ app
         login.actief = false;
 
     })
+    .get('/test', bodyParser.json(), (req, res) => {
+        
+        
+
+    })
     .get('/home', function (req, res) {
         var a = {
             user: "",
@@ -491,8 +497,8 @@ app
 
         console.log('req.files >>>', req.files); // eslint-disable-line
 
-        console.log(req.files.file.name)
-        sampleFile = req.files.sampleFile;
+        let jsonContent = JSON.stringify(req.files);
+        SaveDataToFile(dataPathTest, jsonContent);
 
         uploadPath = __dirname + '/public/upload/' + req.files.file.name;
 
