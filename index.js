@@ -73,9 +73,6 @@ var CorrectMasterLogin = {
     "email": "pwb@ksa.be",
     "password": "123456"
 };
-/**
- * Init fuction 
- */
 
 
 /**
@@ -87,6 +84,19 @@ const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser')
 const formidable = require('formidable');
+const ftp = require("basic-ftp")
+/**
+ * App init download database
+ */
+
+
+/**
+ * Init fuction 
+ */
+downloadDatabase(); 
+downloadFotos();
+
+
 /**
  * App Variables
  */
@@ -171,6 +181,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
+        uploadDatabase(); 
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -190,6 +201,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathInterviews, jsonContent);
         res.sendStatus(200);
+        uploadDatabase(); 
     })
     .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -210,6 +222,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
         res.sendStatus(200);
+        uploadDatabase(); 
     })
     .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -234,6 +247,7 @@ app
             let jsonContent = JSON.stringify(dataToSave);
             SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
             res.sendStatus(200);
+            uploadDatabase(); 
         });
 
     })
@@ -497,17 +511,18 @@ app
 
         console.log('req.files >>>', req.files); // eslint-disable-line
 
-        let jsonContent = JSON.stringify(req.files);
-        SaveDataToFile(dataPathTest, jsonContent);
-
+    
         uploadPath = __dirname + '/public/upload/' + req.files.file.name;
 
-        req.files.file.mv(uploadPath, function (err) {
+        res= req.files.file.mv(uploadPath, function (err) {
             if (err) {
                 console.log("error", err)
                 return res.status(500).send(err);
+               
             }
-            //res.send('File uploaded to ' + uploadPath);
+            console.log("upload")
+            uploadFotos(); 
+            //return res.status(200).send('Done');
         });
     })
     .get('/downloadSjabloon', function (req, res) {
@@ -703,4 +718,95 @@ function completeTotalDistYear(inputdata, inputYear) {
     out.z10 = Math.round(((x % 1000000000000) / 100000000000) - (out.z9 / 10 + out.z8 / 100 + out.z7 / 1000 + out.z6 / 10000 + out.z5 / 100000 + out.z4 / 1000000 + out.z3 / 10000000 + out.z2 / 100000000 + out.z1 / 1000000000));
 
     return out;
+}
+
+
+/*Ftp */
+async function downloadDatabase() {
+    //console.log("download Database")
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+        //await client.uploadFrom
+        await client.downloadTo(__dirname+"/public/static/json/bezocht.json","/DataTok/bezocht.json"); 
+        await client.downloadTo(__dirname+"/public/static/json/interviews.json","/DataTok/interviews.json")
+        await client.downloadTo(__dirname+"/public/static/json/nieweDeelnemers.json","/DataTok/nieweDeelnemers.json")
+    }
+    catch(err) {
+        console.log(err)
+    }
+    client.close()
+}
+
+async function uploadDatabase() {
+    //console.log("download Database")
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+
+        //await client.uploadFrom        
+        await client.uploadFrom(__dirname+"/public/static/json/bezocht.json","/DataTok/bezocht.json"); 
+        await client.uploadFrom(__dirname+"/public/static/json/interviews.json","/DataTok/interviews.json")
+        await client.uploadFrom(__dirname+"/public/static/json/nieweDeelnemers.json","/DataTok/nieweDeelnemers.json")
+    }
+    catch(err) {
+        console.log(err)
+    }
+    client.close()
+}
+
+async function downloadFotos() {
+    //console.log("download Database")
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+        //await client.uploadFrom
+        await client.downloadToDir(__dirname+"/public/upload/","/ImageTok/")
+    }
+    catch(err) {
+        console.log(err)
+    }
+    client.close()
+}
+
+async function uploadFotos() {
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+
+        //await client.uploadFrom        
+        await client.uploadFromDir(__dirname+"/public/upload/","/ImageTok/")
+    }
+    catch(err) {
+        console.log(err)
+    }
+    client.close()
 }
