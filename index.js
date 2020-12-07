@@ -93,7 +93,7 @@ const ftp = require("basic-ftp")
 /**
  * Init fuction 
  */
-downloadDatabase(); 
+downloadDatabase();
 downloadFotos();
 
 
@@ -114,7 +114,7 @@ const dataPathCountry = "./public/static/json/country.json";
 const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
 const dataPathInterviews = "./public/static/json/interviews.json";
 const dataPathNieuweDeelnemer = "./public/static/json/nieweDeelnemers.json";
-
+const folderPathUpload = "./public/upload";
 
 /**
  * Routes Definitions
@@ -181,7 +181,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
-        uploadDatabase(); 
+        uploadDatabase();
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -201,7 +201,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathInterviews, jsonContent);
         res.sendStatus(200);
-        uploadDatabase(); 
+        uploadDatabase();
     })
     .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -222,7 +222,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
         res.sendStatus(200);
-        uploadDatabase(); 
+        uploadDatabase();
     })
     .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -235,7 +235,6 @@ app
             return;
         }
 
-
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
                 throw err;
@@ -247,125 +246,125 @@ app
             let jsonContent = JSON.stringify(dataToSave);
             SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
             res.sendStatus(200);
-            uploadDatabase(); 
+            uploadDatabase();
         });
 
     })
-    .post('/newdata', bodyParser.json(), (req, res) => {
-        //data van pagina
-        let newData = req.body;
+    // .post('/newdata', bodyParser.json(), (req, res) => {
+    //     //data van pagina
+    //     let newData = req.body;
 
-        let listCountrysTranslation = dataCountryTranslation.Gdata;
-        let listCountrys = dataCountry.Gdata;
+    //     let listCountrysTranslation = dataCountryTranslation.Gdata;
+    //     let listCountrys = dataCountry.Gdata;
 
-        //land vertalen nl -> en
-        for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
-            if (newData.countryTanslation == listCountrysTranslation.countrys[i]) {
-                newData.country = listCountrys.countrys[i];
-            }
-        }
+    //     //land vertalen nl -> en
+    //     for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
+    //         if (newData.countryTanslation == listCountrysTranslation.countrys[i]) {
+    //             newData.country = listCountrys.countrys[i];
+    //         }
+    //     }
 
-        newData.dateConvert = convertDateFromPage(newData.date);
-        newData.year = convertDateFromPageYear(newData.date)
+    //     newData.dateConvert = convertDateFromPage(newData.date);
+    //     newData.year = convertDateFromPageYear(newData.date)
 
-        //data opslaan naar de tussen var
-        let dataGet = dataObjVisiters.Gdata;
-        let length = dataGet.members.length;
-        dataGet.members[length] = newData;
+    //     //data opslaan naar de tussen var
+    //     let dataGet = dataObjVisiters.Gdata;
+    //     let length = dataGet.members.length;
+    //     dataGet.members[length] = newData;
 
-        //id opnieuw bepalen
-        for (let i = 0; i < dataGet.members.length; i++) {
-            dataGet.members[i].id = i;
-        }
+    //     //id opnieuw bepalen
+    //     for (let i = 0; i < dataGet.members.length; i++) {
+    //         dataGet.members[i].id = i;
+    //     }
 
-        //data terug opslaan naar de globale var
-        dataObjVisiters.Sdata = dataGet;
+    //     //data terug opslaan naar de globale var
+    //     dataObjVisiters.Sdata = dataGet;
 
-        //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-        SaveDataToFile(dataPath, jsonContent)
-    })
-    .post('/changedata', bodyParser.json(), (req, res) => {
-        //data van pagina
-        let DataFromPage = req.body;
+    //     //data klaarmaken om te bewaren
+    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
+    //     SaveDataToFile(dataPath, jsonContent)
+    // })
+    // .post('/changedata', bodyParser.json(), (req, res) => {
+    //     //data van pagina
+    //     let DataFromPage = req.body;
 
-        //reeds opgeslagen data openen 
-        let dataGet = dataObjVisiters.Gdata;
-        let listCountrysTranslation = dataCountryTranslation.Gdata;
-        let listCountrys = dataCountry.Gdata;
+    //     //reeds opgeslagen data openen 
+    //     let dataGet = dataObjVisiters.Gdata;
+    //     let listCountrysTranslation = dataCountryTranslation.Gdata;
+    //     let listCountrys = dataCountry.Gdata;
 
-        var country;
+    //     var country;
 
-        //land vertalen nl -> en
-        for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
-            if (DataFromPage.countryTanslation == listCountrysTranslation.countrys[i]) {
-                country = listCountrys.countrys[i];
-            }
-        }
+    //     //land vertalen nl -> en
+    //     for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
+    //         if (DataFromPage.countryTanslation == listCountrysTranslation.countrys[i]) {
+    //             country = listCountrys.countrys[i];
+    //         }
+    //     }
 
-        var convertDate = convertDateFromPage(DataFromPage.date);
-        var convertYear = convertDateFromPageYear(DataFromPage.date);
+    //     var convertDate = convertDateFromPage(DataFromPage.date);
+    //     var convertYear = convertDateFromPageYear(DataFromPage.date);
 
-        //data opslaan naar de tussen var
-        let i = DataFromPage.index;
-        dataGet.members[i].name = DataFromPage.name;
-        dataGet.members[i].country = country;
-        dataGet.members[i].countryTanslation = DataFromPage.countryTanslation;
-        dataGet.members[i].date = DataFromPage.date;
-        dataGet.members[i].dateConvert = convertDate;
-        dataGet.members[i].distance = DataFromPage.distance;
-        dataGet.members[i].imgScr = DataFromPage.imgScr;
-        dataGet.members[i].year = convertYear;
+    //     //data opslaan naar de tussen var
+    //     let i = DataFromPage.index;
+    //     dataGet.members[i].name = DataFromPage.name;
+    //     dataGet.members[i].country = country;
+    //     dataGet.members[i].countryTanslation = DataFromPage.countryTanslation;
+    //     dataGet.members[i].date = DataFromPage.date;
+    //     dataGet.members[i].dateConvert = convertDate;
+    //     dataGet.members[i].distance = DataFromPage.distance;
+    //     dataGet.members[i].imgScr = DataFromPage.imgScr;
+    //     dataGet.members[i].year = convertYear;
 
-        //id opnieuw bepalen
-        for (let i = 0; i < dataGet.members.length; i++) {
-            dataGet.members[i].id = i;
-        }
+    //     //id opnieuw bepalen
+    //     for (let i = 0; i < dataGet.members.length; i++) {
+    //         dataGet.members[i].id = i;
+    //     }
 
-        //data terug opslaan naar de globale var
-        dataObjVisiters.Sdata = dataGet;
+    //     //data terug opslaan naar de globale var
+    //     dataObjVisiters.Sdata = dataGet;
 
-        //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-        SaveDataToFile(dataPath, jsonContent)
-    })
-    .post('/deletdata', bodyParser.json(), (req, res) => {
-        //data van pagina
-        let DataFromPage = req.body;
+    //     //data klaarmaken om te bewaren
+    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
+    //     SaveDataToFile(dataPath, jsonContent)
+    // })
+    // .post('/deletdata', bodyParser.json(), (req, res) => {
+    //     //data van pagina
+    //     let DataFromPage = req.body;
 
-        //reeds opgeslagen data openen 
-        let dataGet = dataObjVisiters.Gdata;
+    //     //reeds opgeslagen data openen 
+    //     let dataGet = dataObjVisiters.Gdata;
 
-        //open te wissen id
-        let i = DataFromPage.index;
+    //     //open te wissen id
+    //     let i = DataFromPage.index;
 
-        //object wissen en herschikken array
-        dataGet.members[i] = null;
-        dataGet.members.sort();
-        dataGet.members.pop();
+    //     //object wissen en herschikken array
+    //     dataGet.members[i] = null;
+    //     dataGet.members.sort();
+    //     dataGet.members.pop();
 
-        //id opnieuw bepalen
-        for (let i = 0; i < dataGet.members.length; i++) {
-            dataGet.members[i].id = i;
-        }
+    //     //id opnieuw bepalen
+    //     for (let i = 0; i < dataGet.members.length; i++) {
+    //         dataGet.members[i].id = i;
+    //     }
 
-        //data terug opslaan naar de globale var
-        dataObjVisiters.Sdata = dataGet;
+    //     //data terug opslaan naar de globale var
+    //     dataObjVisiters.Sdata = dataGet;
 
-        //data klaarmaken om te bewaren
-        let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-        SaveDataToFile(dataPath, jsonContent)
-    })
-    .post('/logout', bodyParser.json(), (req, res) => {
-        console.log("logout")
-        login.actief = false;
+    //     //data klaarmaken om te bewaren
+    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
+    //     SaveDataToFile(dataPath, jsonContent)
+    // })
+    // .post('/logout', bodyParser.json(), (req, res) => {
+    //     console.log("logout")
+    //     login.actief = false;
 
-    })
-    .get('/test', bodyParser.json(), (req, res) => {
-        
-        
+    // })
+    // .get('/test', bodyParser.json(), (req, res) => {
 
-    })
+
+
+    // })
     .get('/home', function (req, res) {
         var a = {
             user: "",
@@ -381,6 +380,53 @@ app
             res.send('Please login to view this page!');
         }
         res.end();
+    })
+    .get('/ContentFolderUpload', function (req, res) {
+
+        let folderContent = fs.readdirSync(folderPathUpload)
+        //console.log(folderContent)
+
+        res
+            .status(200)
+            .send(folderContent)
+    })
+    .get('/DeletContentFolderUpload/:File', function (req, res) {
+        var file = String(req.params.File);
+        console.log(file)
+        if (file == null || undefined) {
+            res.status(404);
+            return;
+        }
+        let folderContentCheck = fs.readdirSync(folderPathUpload)
+        var found = false;
+        for (let i = 0; i < folderContentCheck.length; i++) {
+            if (folderContentCheck[i] == file) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            res.sendStatus(404);
+            return;
+        }
+        //console.log(file)
+        var filePath = __dirname + "/public/upload/" + file
+        console.log(filePath)
+
+        // delete file
+        fs.unlink(filePath, function (err) {
+            if (err) throw err;
+            // if no error, file has been deleted successfully
+            console.log('File deleted!');
+        });
+
+        //uploadFotos(); 
+        
+        res.send(200)
+            
+
+
     })
     .get('/databaseOld', bodyParser.json(), function (req, res) {
 
@@ -505,23 +551,24 @@ app
 
         if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
             console.log('No files were uploaded.')
-            res.status(400).send('No files were uploaded.');
+            res.sendStatus(500);
             return;
         }
 
         console.log('req.files >>>', req.files); // eslint-disable-line
 
-    
-        uploadPath = __dirname + '/public/upload/' + req.files.file.name;
 
-        res= req.files.file.mv(uploadPath, function (err) {
+        uploadPath = __dirname + '/public/upload/' + req.files.file.name;
+        res.sendStatus(200)
+
+        req.files.file.mv(uploadPath, function (err) {
             if (err) {
                 console.log("error", err)
                 return res.status(500).send(err);
-               
+
             }
             console.log("upload")
-            uploadFotos(); 
+            uploadFotos();
             //return res.status(200).send('Done');
         });
     })
@@ -735,11 +782,10 @@ async function downloadDatabase() {
         })
         //console.log(await client.list())
         //await client.uploadFrom
-        await client.downloadTo(__dirname+"/public/static/json/bezocht.json","/DataTok/bezocht.json"); 
-        await client.downloadTo(__dirname+"/public/static/json/interviews.json","/DataTok/interviews.json")
-        await client.downloadTo(__dirname+"/public/static/json/nieweDeelnemers.json","/DataTok/nieweDeelnemers.json")
-    }
-    catch(err) {
+        await client.downloadTo(__dirname + "/public/static/json/bezocht.json", "/DataTok/bezocht.json");
+        await client.downloadTo(__dirname + "/public/static/json/interviews.json", "/DataTok/interviews.json")
+        await client.downloadTo(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json")
+    } catch (err) {
         console.log(err)
     }
     client.close()
@@ -759,11 +805,10 @@ async function uploadDatabase() {
         //console.log(await client.list())
 
         //await client.uploadFrom        
-        await client.uploadFrom(__dirname+"/public/static/json/bezocht.json","/DataTok/bezocht.json"); 
-        await client.uploadFrom(__dirname+"/public/static/json/interviews.json","/DataTok/interviews.json")
-        await client.uploadFrom(__dirname+"/public/static/json/nieweDeelnemers.json","/DataTok/nieweDeelnemers.json")
-    }
-    catch(err) {
+        await client.uploadFrom(__dirname + "/public/static/json/bezocht.json", "/DataTok/bezocht.json");
+        await client.uploadFrom(__dirname + "/public/static/json/interviews.json", "/DataTok/interviews.json")
+        await client.uploadFrom(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json")
+    } catch (err) {
         console.log(err)
     }
     client.close()
@@ -782,9 +827,8 @@ async function downloadFotos() {
         })
         //console.log(await client.list())
         //await client.uploadFrom
-        await client.downloadToDir(__dirname+"/public/upload/","/ImageTok/")
-    }
-    catch(err) {
+        await client.downloadToDir(__dirname + "/public/upload/", "/ImageTok/")
+    } catch (err) {
         console.log(err)
     }
     client.close()
@@ -803,9 +847,8 @@ async function uploadFotos() {
         //console.log(await client.list())
 
         //await client.uploadFrom        
-        await client.uploadFromDir(__dirname+"/public/upload/","/ImageTok/")
-    }
-    catch(err) {
+        await client.uploadFromDir(__dirname + "/public/upload/", "/ImageTok/")
+    } catch (err) {
         console.log(err)
     }
     client.close()
