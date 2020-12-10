@@ -203,9 +203,11 @@ app
         res.sendStatus(200);
         uploadDatabase();
     })
-    .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res) => {
+    .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res, next) => {
         //data van pagina
         let newDataToSave = req.body;
+        console.log("saveToNieweDeelnemersDatabase")
+        console.log(newDataToSave)
 
         if (!newDataToSave) {
             res.sendStatus(404);
@@ -219,21 +221,25 @@ app
             "active": true,
             "members": newDataToSave
         }
+        console.log(dataToStave)
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
         res.sendStatus(200);
+        next(); 
+    }, function (req, res) {
         uploadDatabase();
     })
-    .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res) => {
+    .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res, next) => {
         //data van pagina
         var newDataToSave = req.body;
-        //console.log(newDataToSave)
+        console.log(newDataToSave)
 
         if (!newDataToSave) {
             res.sendStatus(404);
             console.log("Error")
             return;
         }
+
 
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
@@ -246,125 +252,12 @@ app
             let jsonContent = JSON.stringify(dataToSave);
             SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
             res.sendStatus(200);
-            uploadDatabase();
+            next();
+
         });
-
+    }, function (req, res) {
+        uploadDatabase();
     })
-    // .post('/newdata', bodyParser.json(), (req, res) => {
-    //     //data van pagina
-    //     let newData = req.body;
-
-    //     let listCountrysTranslation = dataCountryTranslation.Gdata;
-    //     let listCountrys = dataCountry.Gdata;
-
-    //     //land vertalen nl -> en
-    //     for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
-    //         if (newData.countryTanslation == listCountrysTranslation.countrys[i]) {
-    //             newData.country = listCountrys.countrys[i];
-    //         }
-    //     }
-
-    //     newData.dateConvert = convertDateFromPage(newData.date);
-    //     newData.year = convertDateFromPageYear(newData.date)
-
-    //     //data opslaan naar de tussen var
-    //     let dataGet = dataObjVisiters.Gdata;
-    //     let length = dataGet.members.length;
-    //     dataGet.members[length] = newData;
-
-    //     //id opnieuw bepalen
-    //     for (let i = 0; i < dataGet.members.length; i++) {
-    //         dataGet.members[i].id = i;
-    //     }
-
-    //     //data terug opslaan naar de globale var
-    //     dataObjVisiters.Sdata = dataGet;
-
-    //     //data klaarmaken om te bewaren
-    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-    //     SaveDataToFile(dataPath, jsonContent)
-    // })
-    // .post('/changedata', bodyParser.json(), (req, res) => {
-    //     //data van pagina
-    //     let DataFromPage = req.body;
-
-    //     //reeds opgeslagen data openen 
-    //     let dataGet = dataObjVisiters.Gdata;
-    //     let listCountrysTranslation = dataCountryTranslation.Gdata;
-    //     let listCountrys = dataCountry.Gdata;
-
-    //     var country;
-
-    //     //land vertalen nl -> en
-    //     for (let i = 0; i < listCountrysTranslation.countrys.length; i++) {
-    //         if (DataFromPage.countryTanslation == listCountrysTranslation.countrys[i]) {
-    //             country = listCountrys.countrys[i];
-    //         }
-    //     }
-
-    //     var convertDate = convertDateFromPage(DataFromPage.date);
-    //     var convertYear = convertDateFromPageYear(DataFromPage.date);
-
-    //     //data opslaan naar de tussen var
-    //     let i = DataFromPage.index;
-    //     dataGet.members[i].name = DataFromPage.name;
-    //     dataGet.members[i].country = country;
-    //     dataGet.members[i].countryTanslation = DataFromPage.countryTanslation;
-    //     dataGet.members[i].date = DataFromPage.date;
-    //     dataGet.members[i].dateConvert = convertDate;
-    //     dataGet.members[i].distance = DataFromPage.distance;
-    //     dataGet.members[i].imgScr = DataFromPage.imgScr;
-    //     dataGet.members[i].year = convertYear;
-
-    //     //id opnieuw bepalen
-    //     for (let i = 0; i < dataGet.members.length; i++) {
-    //         dataGet.members[i].id = i;
-    //     }
-
-    //     //data terug opslaan naar de globale var
-    //     dataObjVisiters.Sdata = dataGet;
-
-    //     //data klaarmaken om te bewaren
-    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-    //     SaveDataToFile(dataPath, jsonContent)
-    // })
-    // .post('/deletdata', bodyParser.json(), (req, res) => {
-    //     //data van pagina
-    //     let DataFromPage = req.body;
-
-    //     //reeds opgeslagen data openen 
-    //     let dataGet = dataObjVisiters.Gdata;
-
-    //     //open te wissen id
-    //     let i = DataFromPage.index;
-
-    //     //object wissen en herschikken array
-    //     dataGet.members[i] = null;
-    //     dataGet.members.sort();
-    //     dataGet.members.pop();
-
-    //     //id opnieuw bepalen
-    //     for (let i = 0; i < dataGet.members.length; i++) {
-    //         dataGet.members[i].id = i;
-    //     }
-
-    //     //data terug opslaan naar de globale var
-    //     dataObjVisiters.Sdata = dataGet;
-
-    //     //data klaarmaken om te bewaren
-    //     let jsonContent = JSON.stringify(dataObjVisiters.Gdata);
-    //     SaveDataToFile(dataPath, jsonContent)
-    // })
-    // .post('/logout', bodyParser.json(), (req, res) => {
-    //     console.log("logout")
-    //     login.actief = false;
-
-    // })
-    // .get('/test', bodyParser.json(), (req, res) => {
-
-
-
-    // })
     .get('/home', function (req, res) {
         var a = {
             user: "",
@@ -422,9 +315,9 @@ app
         });
 
         //uploadFotos(); 
-        
+
         res.send(200)
-            
+
 
 
     })
@@ -546,7 +439,6 @@ app
             .sendfile('public/static/folder.html');
     })
     .post('/upload', function (req, res) {
-        let sampleFile;
         let uploadPath;
 
         if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
@@ -555,8 +447,7 @@ app
             return;
         }
 
-        console.log('req.files >>>', req.files); // eslint-disable-line
-
+        //console.log('req.files >>>', req.files); // eslint-disable-line
 
         uploadPath = __dirname + '/public/upload/' + req.files.file.name;
         res.sendStatus(200)
@@ -565,10 +456,9 @@ app
             if (err) {
                 console.log("error", err)
                 return res.status(500).send(err);
-
             }
-            console.log("upload")
-            uploadFotos();
+            //console.log("upload")
+            //uploadFotos();
             //return res.status(200).send('Done');
         });
     })
