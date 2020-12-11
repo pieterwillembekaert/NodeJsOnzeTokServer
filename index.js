@@ -131,37 +131,6 @@ app
             next();
         }
     )
-    .get('/home/login', function (req, res) {
-        console.log('Login request');
-        res.status(200).send('Login from server.');
-    })
-
-    .get('/Login', bodyParser.json(), function (req, res) {
-
-        res
-            .status(200)
-            .set({
-                'content-type': 'text/html; charset=utf-8'
-            })
-            .sendfile('public/login.html');
-    })
-    .post('/Login/requist', bodyParser.json(), (req, res) => {
-        console.log(req.body)
-        login.email = req.body.email;
-        login.password = req.body.password;
-
-
-        if (login.email == CorrectLogin.email && login.password == CorrectLogin.password) {
-            login.actief = true;
-            console.log("ok")
-            res.redirect('/home')
-        } else if (login.email == CorrectMasterLogin.email && login.password == CorrectMasterLogin.password) {
-            login.actief = true;
-            console.log("ok")
-            res.redirect('/home')
-        }
-
-    })
     .post('/saveToDB', bodyParser.json(), (req, res) => {
         //data van pagina
         let newDataToSave = req.body;
@@ -181,6 +150,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
+       
         uploadDatabase();
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
@@ -240,7 +210,6 @@ app
             return;
         }
 
-
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
                 throw err;
@@ -258,22 +227,6 @@ app
     }, function (req, res) {
         uploadDatabase();
     })
-    .get('/home', function (req, res) {
-        var a = {
-            user: "",
-            actief: false
-        }
-        a.user = login.email;
-        a.user = login.actief;
-        if (true) {
-            res
-                .status(200)
-                .json(a);
-        } else {
-            res.send('Please login to view this page!');
-        }
-        res.end();
-    })
     .get('/ContentFolderUpload', function (req, res) {
 
         let folderContent = fs.readdirSync(folderPathUpload)
@@ -283,7 +236,7 @@ app
             .status(200)
             .send(folderContent)
     })
-    .get('/DeletContentFolderUpload/:File', function (req, res) {
+    .get('/DeletContentFolderUpload/:File', function (req, res, next) {
         var file = String(req.params.File);
         console.log(file)
         if (file == null || undefined) {
@@ -312,28 +265,12 @@ app
             if (err) throw err;
             // if no error, file has been deleted successfully
             console.log('File deleted!');
+            res.sendStatus(200); 
+            next();
         });
 
-        //uploadFotos(); 
-
-        res.send(200)
-
-
-
-    })
-    .get('/databaseOld', bodyParser.json(), function (req, res) {
-
-        res
-            .status(200)
-            .set({
-                'content-type': 'text/html; charset=utf-8'
-            })
-        if (login.actief == true) {
-            res.sendfile('public/database.html')
-        } else {
-            res.sendfile('public/login.html')
-
-        }
+    }, function (req, res) {
+        uploadDatabase();
     })
     .get('/download', bodyParser.json(), function (req, res) {
 
@@ -342,7 +279,7 @@ app
             .download(dataPath)
 
     })
-    .get('/country', function (req, res) {
+    .get('/api/country', function (req, res) {
         fs.readFile(dataPathCountry, (err, data) => {
             if (err) {
                 throw err;
@@ -352,7 +289,7 @@ app
         });
 
     })
-    .get('/countryTranslation', function (req, res) {
+    .get('/api/countryTranslation', function (req, res) {
         fs.readFile(dataPathCountrytranslation, (err, data) => {
             if (err) {
                 throw err;
@@ -363,7 +300,7 @@ app
 
 
     })
-    .get('/interviewsdata', function (req, res) {
+    .get('/api/interviewsdata', function (req, res) {
         fs.readFile(dataPathInterviews, (err, data) => {
             if (err) {
                 throw err;
@@ -373,7 +310,7 @@ app
         });
 
     })
-    .get('/nieuwedeelnemerdata', function (req, res) {
+    .get('/api/nieuwedeelnemerdata', function (req, res) {
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
                 throw err;
@@ -387,7 +324,7 @@ app
         console.log("Error: \n" + error.message);
         console.log(error.stack);
     })
-    .get('/data', function (req, res) {
+    .get('/api/visitors', function (req, res) {
         fs.readFile(dataPath, (err, data) => {
             if (err) {
                 throw err;
@@ -396,7 +333,7 @@ app
             res.json(dataObjVisiters.Gdata);
         });
     })
-    .get('/TotalDist', function (req, res) {
+    .get('/api/TotalDist', function (req, res) {
         var out;
         if (dataObjVisiters.Gdata.members == null || undefined) {
             fs.readFile(dataPath, (err, data) => {
@@ -413,7 +350,7 @@ app
             res.json(out);
         }
     })
-    .get('/TotalDist/:year', function (req, res) {
+    .get('/api/TotalDist/:year', function (req, res) {
         var year = Number(req.params.year);
         //console.log(year)
         var out;
@@ -430,15 +367,7 @@ app
             res.json(out);
         }
     })
-    .get('/folder', function (req, res) {
-        res
-            .status(200)
-            .set({
-                'content-type': 'text/html; charset=utf-8'
-            })
-            .sendfile('public/static/folder.html');
-    })
-    .post('/upload', function (req, res) {
+    .post('/upload', function (req, res, next) {
         let uploadPath;
 
         if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
@@ -457,10 +386,11 @@ app
                 console.log("error", err)
                 return res.status(500).send(err);
             }
-            //console.log("upload")
-            //uploadFotos();
-            //return res.status(200).send('Done');
+            next();
+            
         });
+    }, function (req, res) {
+        uploadDatabase();
     })
     .get('/downloadSjabloon', function (req, res) {
 
