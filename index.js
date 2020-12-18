@@ -390,7 +390,7 @@ app
             
         });
     }, function (req, res) {
-        uploadDatabase();
+        uploadFotos();
     })
     .get('/downloadSjabloon', function (req, res) {
 
