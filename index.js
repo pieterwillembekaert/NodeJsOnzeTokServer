@@ -271,6 +271,7 @@ app
 
     }, function (req, res) {
         uploadDatabase();
+        uploadFotos();
     })
     .get('/download', bodyParser.json(), function (req, res) {
 
@@ -352,7 +353,7 @@ app
     })
     .get('/api/TotalDist/:year', function (req, res) {
         var year = Number(req.params.year);
-        //console.log(year)
+        console.log(year)
         var out;
         if (dataObjVisiters.Gdata.members == null || undefined) {
             fs.readFile(dataPath, (err, data) => {
@@ -363,6 +364,7 @@ app
                 res.json(out);
             });
         } else {
+            
             out = completeTotalDistYear(dataObjVisiters.Gdata.members, year)
             res.json(out);
         }
@@ -558,13 +560,13 @@ function completeTotalDistYear(inputdata, inputYear) {
 
     if (inputYear == 0) {
         for (let i = 0; i < inputdata.length; i++) {
-            totaal = totaal + inputdata[i].distance;
+            totaal = totaal + Number(inputdata[i].distance);
         }
 
     } else {
         for (let i = 0; i < inputdata.length; i++) {
             if (inputdata[i].year == inputYear) {
-                totaal = totaal + inputdata[i].distance;
+                totaal = totaal + Number(inputdata[i].distance);
             }
         }
     }
