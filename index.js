@@ -176,8 +176,8 @@ app
     .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res, next) => {
         //data van pagina
         let newDataToSave = req.body;
-        console.log("saveToNieweDeelnemersDatabase")
-        console.log(newDataToSave)
+        //console.log("saveToNieweDeelnemersDatabase")
+        //console.log(newDataToSave)
 
         if (!newDataToSave) {
             res.sendStatus(404);
@@ -191,7 +191,7 @@ app
             "active": true,
             "members": newDataToSave
         }
-        console.log(dataToStave)
+        //console.log(dataToStave)
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
         res.sendStatus(200);
@@ -202,7 +202,7 @@ app
     .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res, next) => {
         //data van pagina
         var newDataToSave = req.body;
-        console.log(newDataToSave)
+        //console.log(newDataToSave)
 
         if (!newDataToSave) {
             res.sendStatus(404);
@@ -238,7 +238,7 @@ app
     })
     .get('/DeletContentFolderUpload/:File', function (req, res, next) {
         var file = String(req.params.File);
-        console.log(file)
+        //console.log(file)
         if (file == null || undefined) {
             res.status(404);
             return;
@@ -258,13 +258,13 @@ app
         }
         //console.log(file)
         var filePath = __dirname + "/public/upload/" + file
-        console.log(filePath)
+        //console.log(filePath)
 
         // delete file
         fs.unlink(filePath, function (err) {
             if (err) throw err;
             // if no error, file has been deleted successfully
-            console.log('File deleted!');
+            //console.log('File deleted!');
             res.sendStatus(200); 
             next();
         });
@@ -353,7 +353,7 @@ app
     })
     .get('/api/TotalDist/:year', function (req, res) {
         var year = Number(req.params.year);
-        console.log(year)
+        //console.log(year)
         var out;
         if (dataObjVisiters.Gdata.members == null || undefined) {
             fs.readFile(dataPath, (err, data) => {
@@ -373,7 +373,7 @@ app
         let uploadPath;
 
         if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
-            console.log('No files were uploaded.')
+            //console.log('No files were uploaded.')
             res.sendStatus(500);
             return;
         }
