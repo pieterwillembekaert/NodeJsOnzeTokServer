@@ -109,11 +109,11 @@ const port = process.env.PORT || 3000;
  */
 
 app.use(express.static('public'));
-const dataPath = "./public/static/json/bezocht.json";
-const dataPathCountry = "./public/static/json/country.json";
-const dataPathCountrytranslation = "./public/static/json/countryTranslation.json";
-const dataPathInterviews = "./public/static/json/interviews.json";
-const dataPathNieuweDeelnemer = "./public/static/json/nieweDeelnemers.json";
+const dataPath = "./public/database/bezocht.json";
+const dataPathCountry = "./public/database/country.json";
+const dataPathCountrytranslation = "./public/database/countryTranslation.json";
+const dataPathInterviews = "./public/database/interviews.json";
+const dataPathNieuweDeelnemer = "./public/database/nieweDeelnemers.json";
 const folderPathUpload = "./public/upload";
 
 /**
