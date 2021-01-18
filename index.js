@@ -745,8 +745,8 @@ function fSendMailDeelnemer(transporter, emailDeelnemer, deelnemerData) {
             to: String(emailDeelnemer),
             subject: 'Onze tok de wereld rond',
             html: '<h1>Hallo ' + deelnemerData.name + 
-            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
-            '</li><li>naam: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
+            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email + 
+            '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -768,8 +768,8 @@ function fSendMailBeheerder(transporter, emailBeheerders, deelnemerData) {
             to: String(emailBeheerders),
             cc: 'werkgroepmultimedia.ksanzg@gmail.com',
             subject: 'Onze tok de wereld rond',
-            html: '<h1>Nieuwe Deelname beschikbaar</h1><p><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
-            '</li><li>naam: ' + deelnemerData.opmerking + '</li></ul></p> <p>Bekijk de gegevens op: http://onzetokdewereldrond.be/Database</p><p>KSA groet u</p>'
+            html: '<h1>Nieuwe Deelname beschikbaar</h1><p><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email + 
+            '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul></p> <p>Bekijk de gegevens op: http://onzetokdewereldrond.be/Database</p><p>KSA groet u</p>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
