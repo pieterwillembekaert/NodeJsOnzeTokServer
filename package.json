@@ -15,6 +15,7 @@
     "express-fileupload": "^1.1.7-alpha.3",
     "formidable": "^1.2.2",
     "http": "0.0.1-security",
+    "nodemailer": "^6.4.17",
     "pg": "^8.5.1"
   },
   "devDependencies": {},

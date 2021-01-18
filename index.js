@@ -59,6 +59,27 @@ var dataObjVisiters = {
     }
 };
 
+
+var beheerders = {
+    data: {},
+
+    set Sdata(dataSet) {
+        this.data = dataSet;
+    },
+
+    get Gdata() {
+        return this.data;
+    },
+
+    getAsString() {
+        var outputString = this.data[0].email
+        for (let i = 1; i < this.data.length; i++) {
+            outputString = outputString + ", " + this.data[i].email;
+        }
+        return outputString
+    }
+};
+
 var login = {
     email: String,
     password: String,
@@ -85,16 +106,30 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser')
 const formidable = require('formidable');
 const ftp = require("basic-ftp")
+const nodemailer = require('nodemailer');
+
+
+/**
+ * Send email
+ */
+
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'werkgroepmultimedia.ksanzg@gmail.com',
+        pass: 'KSAnzg123456'
+    }
+});
+
+
+
 /**
  * App init download database
  */
-
-
-/**
- * Init fuction 
- */
 downloadDatabase();
 downloadFotos();
+
 
 
 /**
@@ -114,7 +149,17 @@ const dataPathCountry = "./public/database/country.json";
 const dataPathCountrytranslation = "./public/database/countryTranslation.json";
 const dataPathInterviews = "./public/database/interviews.json";
 const dataPathNieuweDeelnemer = "./public/database/nieweDeelnemers.json";
+const dataPathBeheerders = "./public/database/beheerders.json";
 const folderPathUpload = "./public/upload";
+
+
+fs.readFile(dataPathBeheerders, (err, data) => {
+    if (err) {
+        throw err;
+    }
+    beheerders.Sdata = JSON.parse(data);
+});
+
 
 /**
  * Routes Definitions
@@ -150,8 +195,8 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPath, jsonContent);
         res.sendStatus(200);
-       
-        uploadDatabase();
+
+        //uploadDatabase();
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -171,7 +216,7 @@ app
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathInterviews, jsonContent);
         res.sendStatus(200);
-        uploadDatabase();
+        //uploadDatabase();
     })
     .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res, next) => {
         //data van pagina
@@ -192,6 +237,7 @@ app
             "members": newDataToSave
         }
         //console.log(dataToStave)
+
         let jsonContent = JSON.stringify(dataToStave);
         SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
         res.sendStatus(200);
@@ -202,6 +248,7 @@ app
     .post('/saveToNieweDeelnemers', bodyParser.json(), (req, res, next) => {
         //data van pagina
         var newDataToSave = req.body;
+        //console.log("/saveToNieweDeelnemers'")
         //console.log(newDataToSave)
 
         if (!newDataToSave) {
@@ -209,6 +256,19 @@ app
             console.log("Error")
             return;
         }
+
+        fSendMailDeelnemer(transporter, newDataToSave.email, newDataToSave).then(
+            msg => {
+                //console.log("done")
+                fSendMailBeheerder(transporter, beheerders.getAsString(),newDataToSave);
+
+            },
+            error => {
+                //console.log("error")
+                fSendMailBeheerder(transporter, beheerders.getAsString(), newDataToSave);
+
+            }
+        )
 
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
@@ -265,7 +325,7 @@ app
             if (err) throw err;
             // if no error, file has been deleted successfully
             //console.log('File deleted!');
-            res.sendStatus(200); 
+            res.sendStatus(200);
             next();
         });
 
@@ -364,7 +424,7 @@ app
                 res.json(out);
             });
         } else {
-            
+
             out = completeTotalDistYear(dataObjVisiters.Gdata.members, year)
             res.json(out);
         }
@@ -389,7 +449,7 @@ app
                 return res.status(500).send(err);
             }
             next();
-            
+
         });
     }, function (req, res) {
         uploadFotos();
@@ -674,4 +734,52 @@ async function uploadFotos() {
         console.log(err)
     }
     client.close()
+}
+
+
+function fSendMailDeelnemer(transporter, emailDeelnemer, deelnemerData) {
+    return new Promise((resole, reject) => {
+        console.log(emailDeelnemer)
+        var mailOptions = {
+            from: 'werkgroepmultimedia.ksanzg@gmail.com',
+            to: String(emailDeelnemer),
+            subject: 'Onze tok de wereld rond',
+            html: '<h1>Hallo ' + deelnemerData.name + 
+            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br> </p><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
+            '</li><li>naam: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+                resole(info.response);
+            }
+        });
+    })
+}
+
+function fSendMailBeheerder(transporter, emailBeheerders, deelnemerData) {
+    return new Promise((resole, reject) => {
+        var mailOptions = {
+            from: 'werkgroepmultimedia.ksanzg@gmail.com',
+            to: String(emailBeheerders),
+            cc: 'werkgroepmultimedia.ksanzg@gmail.com',
+            subject: 'Onze tok de wereld rond',
+            html: '<h1>Nieuwe Deelname beschikbaar</h1><p><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
+            '</li><li>naam: ' + deelnemerData.opmerking + '</li></ul></p> <p>Bekijk de gegevens op: http://onzetokdewereldrond.be/Database</p><p>KSA groet u</p>'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                reject(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+                resole(info.response);
+            }
+        });
+    })
 }
