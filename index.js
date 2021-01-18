@@ -745,7 +745,7 @@ function fSendMailDeelnemer(transporter, emailDeelnemer, deelnemerData) {
             to: String(emailDeelnemer),
             subject: 'Onze tok de wereld rond',
             html: '<h1>Hallo ' + deelnemerData.name + 
-            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br> </p><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
+            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br><ul><li>naam: ' + deelnemerData.name + '</li><ul><li>naam: ' + deelnemerData.email + 
             '</li><li>naam: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
         };
 
