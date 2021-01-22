@@ -127,8 +127,8 @@ var transporter = nodemailer.createTransport({
 /**
  * App init download database
  */
-downloadDatabase();
-downloadFotos();
+//downloadDatabase();
+//downloadFotos();
 
 
 
@@ -193,9 +193,17 @@ app
 
         //data klaarmaken om te bewaren
         let jsonContent = JSON.stringify(dataToStave);
-        SaveDataToFile(dataPath, jsonContent);
-        res.sendStatus(200);
-
+        SaveDataToFile(dataPath, jsonContent).then(
+            msg => {
+                //console.log("done")
+                res.sendStatus(200);
+               
+            },
+            error => {
+                res.sendStatus(404);
+            }
+        )
+      
         //uploadDatabase();
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
@@ -204,7 +212,6 @@ app
 
         if (!newDataToSave) {
             res.sendStatus(404);
-            console.log("Error")
             return;
         }
 
@@ -214,9 +221,16 @@ app
             "members": newDataToSave
         }
         let jsonContent = JSON.stringify(dataToStave);
-        SaveDataToFile(dataPathInterviews, jsonContent);
-        res.sendStatus(200);
-        //uploadDatabase();
+        SaveDataToFile(dataPathInterviews, jsonContent).then(
+            msg => {
+                //console.log("done")
+                uploadDatabase();
+                res.sendStatus(200);   
+            },
+            error => {
+                res.sendStatus(404);
+            }
+        )
     })
     .post('/saveToNieweDeelnemersDatabase', bodyParser.json(), (req, res, next) => {
         //data van pagina
@@ -239,9 +253,51 @@ app
         //console.log(dataToStave)
 
         let jsonContent = JSON.stringify(dataToStave);
-        SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
-        res.sendStatus(200);
-        next(); 
+        SaveDataToFile(dataPathNieuweDeelnemer, jsonContent).then(
+            msg => {
+                //console.log("done", msg)
+                res.sendStatus(200);
+                next();
+            },
+            error => {
+                //console.log("done", error)
+                res.sendStatus(404);
+            }
+        )
+        
+      
+    }, function (req, res) {
+        uploadDatabase();
+    })
+    .post('/api/updateBeheerders', bodyParser.json(), (req, res, next) => {
+        //data van pagina
+        let newDataToSave = req.body;
+        //console.log("saveToNieweDeelnemersDatabase")
+        //console.log(newDataToSave)
+        console.log(newDataToSave)
+
+        if (!newDataToSave) {
+            res.sendStatus(404);
+            return;
+        }
+
+       
+        console.log(newDataToSave)
+
+        let jsonContent = JSON.stringify(newDataToSave);
+        SaveDataToFile(dataPathBeheerders, jsonContent).then(
+            msg => {
+                //console.log("done", msg)
+                res.sendStatus(200);
+                next();
+            },
+            error => {
+                //console.log("done", error)
+                res.sendStatus(404);
+            }
+        )
+        
+      
     }, function (req, res) {
         uploadDatabase();
     })
@@ -253,22 +309,21 @@ app
 
         if (!newDataToSave) {
             res.sendStatus(404);
-            console.log("Error")
             return;
         }
 
         fSendMailDeelnemer(transporter, newDataToSave.email, newDataToSave).then(
             msg => {
-                //console.log("done")
-                fSendMailBeheerder(transporter, beheerders.getAsString(),newDataToSave);
-
+                //console.log("done", msg)
+                fSendMailBeheerder(transporter, beheerders.getAsString(), newDataToSave);
             },
             error => {
-                //console.log("error")
+                //console.log("error", error)
                 fSendMailBeheerder(transporter, beheerders.getAsString(), newDataToSave);
-
             }
         )
+        //save image to ftp server
+        uploadFoto(newDataToSave.imgScr);
 
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
@@ -279,10 +334,17 @@ app
 
             dataToSave.members.push(newDataToSave);
             let jsonContent = JSON.stringify(dataToSave);
-            SaveDataToFile(dataPathNieuweDeelnemer, jsonContent);
-            res.sendStatus(200);
-            next();
-
+            SaveDataToFile(dataPathNieuweDeelnemer, jsonContent).then(
+                msg => {
+                    //console.log("done",msg)
+                    res.sendStatus(200);
+                    next();
+                },
+                error => {
+                    //console.log("done",error)
+                    res.sendStatus(404);
+                }
+            )
         });
     }, function (req, res) {
         uploadDatabase();
@@ -338,7 +400,6 @@ app
         res
             .status(200)
             .download(dataPath)
-
     })
     .get('/api/country', function (req, res) {
         fs.readFile(dataPathCountry, (err, data) => {
@@ -350,6 +411,17 @@ app
         });
 
     })
+    .get('/api/databaseBeheerders', function (req, res) {
+        fs.readFile(dataPathBeheerders, (err, data) => {
+            if (err) {
+                res.sendStatus(404);
+                throw err;                
+            }
+            
+            res.json(JSON.parse(data));
+        });
+
+    })
     .get('/api/countryTranslation', function (req, res) {
         fs.readFile(dataPathCountrytranslation, (err, data) => {
             if (err) {
@@ -358,8 +430,6 @@ app
             dataCountryTranslation.Sdata = JSON.parse(data);
             res.json(dataCountryTranslation.Gdata);
         });
-
-
     })
     .get('/api/interviewsdata', function (req, res) {
         fs.readFile(dataPathInterviews, (err, data) => {
@@ -380,10 +450,6 @@ app
             res.json(sendData);
         });
 
-    })
-    .on('error', function (error) {
-        console.log("Error: \n" + error.message);
-        console.log(error.stack);
     })
     .get('/api/visitors', function (req, res) {
         fs.readFile(dataPath, (err, data) => {
@@ -406,7 +472,6 @@ app
                 res.json(out);
             });
         } else {
-
             out = completeTotalDistYear(dataObjVisiters.Gdata.members, 0);
             res.json(out);
         }
@@ -424,35 +489,30 @@ app
                 res.json(out);
             });
         } else {
-
             out = completeTotalDistYear(dataObjVisiters.Gdata.members, year)
             res.json(out);
         }
     })
-    .post('/upload', function (req, res, next) {
-        let uploadPath;
+    .post('/upload', (req, res)=> {
 
         if (!req.files || Object.keys(req.files).length === 0 || req.files.file.length > 0) {
             //console.log('No files were uploaded.')
-            res.sendStatus(500);
+            res.sendStatus(400);
             return;
         }
 
-        //console.log('req.files >>>', req.files); // eslint-disable-line
-
-        uploadPath = __dirname + '/public/upload/' + req.files.file.name;
-        res.sendStatus(200)
-
-        req.files.file.mv(uploadPath, function (err) {
-            if (err) {
-                console.log("error", err)
-                return res.status(500).send(err);
+        let uploadPath = __dirname + '/public/upload/' + req.files.file.name;
+       
+        fUploadImage(req, uploadPath).then(
+            msg => {
+                console.log(msg);
+                res.sendStatus(200);
+            },
+            error => {
+                console.log(error);
+                res.sendStatus(404);
             }
-            next();
-
-        });
-    }, function (req, res) {
-        uploadFotos();
+        )
     })
     .get('/downloadSjabloon', function (req, res) {
 
@@ -499,14 +559,16 @@ http
 function SaveDataToFile(dataPath, newdata) {
     //var jsonContent = JSON.stringify(newdata);
     //console.log(jsonContent);
-    fs.writeFile(dataPath, newdata, function (err) {
-        if (err) {
-            console.log("An error occured while writing JSON Object to File.");
-            return console.log(err);
-        }
 
-        console.log("JSON file has been saved.");
-    });
+    return new Promise((resole, reject) => {
+        fs.writeFile(dataPath, newdata, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resole("JSON file has been saved.");
+            }
+        });
+    })
 }
 
 //Open json file 
@@ -673,6 +735,8 @@ async function downloadDatabase() {
     client.close()
 }
 
+
+
 async function uploadDatabase() {
     //console.log("download Database")
     const client = new ftp.Client()
@@ -689,7 +753,8 @@ async function uploadDatabase() {
         //await client.uploadFrom        
         await client.uploadFrom(__dirname + "/public/static/json/bezocht.json", "/DataTok/bezocht.json");
         await client.uploadFrom(__dirname + "/public/static/json/interviews.json", "/DataTok/interviews.json")
-        await client.uploadFrom(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json")
+        await client.uploadFrom(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json");
+        await client.uploadFrom(__dirname + "/public/static/json/beheerders.json", "/DataTok/beheerders.json")
     } catch (err) {
         console.log(err)
     }
@@ -736,6 +801,25 @@ async function uploadFotos() {
     client.close()
 }
 
+async function uploadFoto(ImageName) {
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+
+        await client.uploadFrom(__dirname + "/public/upload/" + ImageName, "/ImageTok/" + ImageName)
+    } catch (err) {
+        console.log(err)
+    }
+    client.close()
+}
+
 
 function fSendMailDeelnemer(transporter, emailDeelnemer, deelnemerData) {
     return new Promise((resole, reject) => {
@@ -744,9 +828,9 @@ function fSendMailDeelnemer(transporter, emailDeelnemer, deelnemerData) {
             from: 'werkgroepmultimedia.ksanzg@gmail.com',
             to: String(emailDeelnemer),
             subject: 'Onze tok de wereld rond',
-            html: '<h1>Hallo ' + deelnemerData.name + 
-            '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email + 
-            '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
+            html: '<h1>Hallo ' + deelnemerData.name +
+                '</h1><p>We hebben uw gegevens ontvangen en worden zo snel mogelijk verwerkt!</p><p>Details: <br><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email +
+                '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul> <p>Bedankt voor het deelnemen</p><p>KSA groet u</p>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -768,8 +852,8 @@ function fSendMailBeheerder(transporter, emailBeheerders, deelnemerData) {
             to: String(emailBeheerders),
             cc: 'werkgroepmultimedia.ksanzg@gmail.com',
             subject: 'Onze tok de wereld rond',
-            html: '<h1>Nieuwe Deelname beschikbaar</h1><p><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email + 
-            '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul></p> <p>Bekijk de gegevens op: http://onzetokdewereldrond.be/Database</p><p>KSA groet u</p>'
+            html: '<h1>Nieuwe Deelname beschikbaar</h1><p><ul><li>naam: ' + deelnemerData.name + '</li><li>email: ' + deelnemerData.email +
+                '</li><li>opmerking: ' + deelnemerData.opmerking + '</li></ul></p> <p>Bekijk de gegevens op: http://onzetokdewereldrond.be/Database</p><p>KSA groet u</p>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -781,5 +865,17 @@ function fSendMailBeheerder(transporter, emailBeheerders, deelnemerData) {
                 resole(info.response);
             }
         });
+    })
+}
+
+function fUploadImage(req, uploadPath) {
+    return new Promise((resole, reject) => {
+        req.files.file.mv(uploadPath, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resole("done");
+            }
+        })
     })
 }
