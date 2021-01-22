@@ -204,7 +204,7 @@ app
             }
         )
       
-        //uploadDatabase();
+        uploadDatabase();
     })
     .post('/saveToInterviews', bodyParser.json(), (req, res) => {
         //data van pagina
@@ -323,7 +323,12 @@ app
             }
         )
         //save image to ftp server
-        uploadFoto(newDataToSave.imgScr);
+        console.log(newDataToSave.imgScr)
+       
+        let imageName = newDataToSave.imgScr.split("/");
+        let l=imageName.length -1;
+        
+        uploadFoto(imageName[l]);
 
         fs.readFile(dataPathNieuweDeelnemer, (err, data) => {
             if (err) {
@@ -347,7 +352,9 @@ app
             )
         });
     }, function (req, res) {
+        console.log("upload to ftp-server")
         uploadDatabase();
+        //uploadFotos(); 
     })
     .get('/ContentFolderUpload', function (req, res) {
 
@@ -358,9 +365,9 @@ app
             .status(200)
             .send(folderContent)
     })
-    .get('/DeletContentFolderUpload/:File', function (req, res, next) {
+    .get('/DeletContentFolderUpload/:File', function (req, res) {
         var file = String(req.params.File);
-        //console.log(file)
+        console.log(file)
         if (file == null || undefined) {
             res.status(404);
             return;
@@ -388,12 +395,11 @@ app
             // if no error, file has been deleted successfully
             //console.log('File deleted!');
             res.sendStatus(200);
-            next();
+           
         });
 
-    }, function (req, res) {
-        uploadDatabase();
-        uploadFotos();
+        removeFoto(file); 
+
     })
     .get('/download', bodyParser.json(), function (req, res) {
 
@@ -726,9 +732,10 @@ async function downloadDatabase() {
         })
         //console.log(await client.list())
         //await client.uploadFrom
-        await client.downloadTo(__dirname + "/public/static/json/bezocht.json", "/DataTok/bezocht.json");
-        await client.downloadTo(__dirname + "/public/static/json/interviews.json", "/DataTok/interviews.json")
-        await client.downloadTo(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json")
+        await client.downloadTo(__dirname + "/public/database/bezocht.json", "/DataTok/bezocht.json");
+        await client.downloadTo(__dirname + "/public/database/interviews.json", "/DataTok/interviews.json")
+        await client.downloadTo(__dirname + "/public/database/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json");
+        await client.uploadFrom(__dirname + "/public/database/beheerders.json", "/DataTok/beheerders.json")
     } catch (err) {
         console.log(err)
     }
@@ -751,10 +758,10 @@ async function uploadDatabase() {
         //console.log(await client.list())
 
         //await client.uploadFrom        
-        await client.uploadFrom(__dirname + "/public/static/json/bezocht.json", "/DataTok/bezocht.json");
-        await client.uploadFrom(__dirname + "/public/static/json/interviews.json", "/DataTok/interviews.json")
-        await client.uploadFrom(__dirname + "/public/static/json/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json");
-        await client.uploadFrom(__dirname + "/public/static/json/beheerders.json", "/DataTok/beheerders.json")
+        await client.uploadFrom(__dirname + "/public/database/bezocht.json", "/DataTok/bezocht.json");
+        await client.uploadFrom(__dirname + "/public/database/interviews.json", "/DataTok/interviews.json")
+        await client.uploadFrom(__dirname + "/public/database/nieweDeelnemers.json", "/DataTok/nieweDeelnemers.json");
+        await client.uploadFrom(__dirname + "/public/database/beheerders.json", "/DataTok/beheerders.json")
     } catch (err) {
         console.log(err)
     }
@@ -813,7 +820,28 @@ async function uploadFoto(ImageName) {
         })
         //console.log(await client.list())
 
+        console.log(ImageName)
         await client.uploadFrom(__dirname + "/public/upload/" + ImageName, "/ImageTok/" + ImageName)
+    } catch (err) {
+        console.log(err)
+    }
+    client.close()
+}
+
+async function removeFoto(ImageName) {
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "ftp.lourdes2020.be",
+            user: "lourdes2020.be",
+            password: "KSAnzg12345",
+            secure: false
+        })
+        //console.log(await client.list())
+
+        console.log(ImageName)
+        await client.remove("/ImageTok/" + ImageName); 
     } catch (err) {
         console.log(err)
     }
