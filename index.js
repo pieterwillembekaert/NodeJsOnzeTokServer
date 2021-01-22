@@ -127,8 +127,8 @@ var transporter = nodemailer.createTransport({
 /**
  * App init download database
  */
-//downloadDatabase();
-//downloadFotos();
+downloadDatabase();
+downloadFotos();
 
 
 
