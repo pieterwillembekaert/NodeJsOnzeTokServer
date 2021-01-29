@@ -1,10 +1,6 @@
 /**
  * Global var
  */
-
-
-
-
 var dataCountryTranslation = {
     data: {},
 
